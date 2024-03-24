@@ -11,7 +11,7 @@ public class CheckFile {
         }
         else{
             System.out.println("There is no such file");
-            File file1=new File("C:\\Users\\Asus\\Desktop\\OOP-PROJECT\\OOP-Project");
+            File file1=new File("C:\\Users\\Asus\\Desktop\\OOP-PROJECT\\OOP-Project\\Files");
         }
         return false;
     }
