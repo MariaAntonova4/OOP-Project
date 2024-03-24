@@ -22,7 +22,7 @@ public class Application {
         //fileOpen.readFile(file);
         //P1
         //6 10
-        char []array={ p1,
+        char []array={ //p1,
                 6,10,
                 0, 0, 0, 0, 1, 0,
                 0, 0, 0, 0, 1, 0,
