@@ -3,6 +3,7 @@ package bg.tu_varna.sit.b4.f22621705;
 import java.io.*;
 import java.util.*;
 
+
 public class Application {
     public static void main(String[] args) throws IOException {
 
@@ -68,5 +69,6 @@ public class Application {
         Menu menu=new Menu();
         String string="open";
         menu.menuCreator(string, menu.open());
+        menu.bbp(string);
     }
 }
