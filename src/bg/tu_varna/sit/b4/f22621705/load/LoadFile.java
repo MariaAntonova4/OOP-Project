@@ -4,12 +4,9 @@ import bg.tu_varna.sit.b4.f22621705.Menu;
 
 import java.util.*;
 
-public class LoadFile {
-    private Map<String, Menu>loadMap=new HashMap<>();
-
-    public LoadFile(Map<String, Menu> loadMap) {
+public abstract class LoadFile {
+    private Map<Integer, ListOfImages>loadMap=new HashMap<>();
+    public LoadFile(Map<Integer, ListOfImages> loadMap) {
         this.loadMap = loadMap;
     }
-
-    public void rotate(Direction direction){}
 }
