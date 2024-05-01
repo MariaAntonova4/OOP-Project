@@ -3,7 +3,9 @@ package bg.tu_varna.sit.b4.f22621705.open;
 import java.io.*;
 
 public class CheckFile {
-    public boolean checkIfFileExists(File file){
+    public boolean checkIfFileExists(String fileName){
+        File file=new File("C:\\Users\\Asus\\Desktop\\OOP-PROJECT\\OOP-Project\\Files\\"+fileName);
+
         if (file.exists())
         {
             System.out.println("File exists!");

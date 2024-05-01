@@ -1,6 +1,7 @@
 package bg.tu_varna.sit.b4.f22621705;
 
 import bg.tu_varna.sit.b4.f22621705.open.CheckFile;
+import bg.tu_varna.sit.b4.f22621705.open.FileOpen;
 
 import java.io.*;
 import java.util.*;
@@ -8,6 +9,7 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) throws IOException {
+        Menu menu=new Menu();
         File fileFole=new File("C:\\Users\\Asus\\Desktop\\OOP-PROJECT\\OOP-Project\\Files\\FoleFile.pbm");
         FileOutputStream fileWriter=new FileOutputStream(fileFole);
         /*byte zero=0;
@@ -33,8 +35,20 @@ public class Application {
         fileWriter.write(" ".getBytes());
         fileWriter.write("1".getBytes());
         CheckFile checkFile=new CheckFile();
-        checkFile.checkIfFileExists(fileFole);
-
+        FileOpen fileOpen=new FileOpen();
+        //
+        int string;
+        System.out.println("Write something: ");
+        Scanner scanner=new Scanner(System.in);
+        /*string= Integer.parseInt(scanner.next());
+        int sum=string+string;
+        System.out.println(sum);*/
+        String fileName;
+        System.out.println("File name: ");
+        fileName=scanner.next();
+        menu.menuCreator();
+        menu.bbp(fileName);
+        //fileOpen.readFile(fileName);
        /* Byte byteZero=Byte.valueOf(zero);
         Byte byteOne=Byte.valueOf(one);
         Byte byteTwo=Byte.valueOf(two);
@@ -51,10 +65,10 @@ public class Application {
         fileWriter.write(byteOne);
         fileWriter.write(byteOne);*/
         fileWriter.close();
-        FileInputStream fileReader=new FileInputStream("Fole.pbm");
+       /* FileInputStream fileReader=new FileInputStream("Fole.pbm");
         System.out.println(fileReader.read());
         System.out.println(fileReader.read());
-        fileReader.close();
+        fileReader.close();*/
 /*
         FileWriter fileWriter1=new FileWriter("File.txt");
         FileWriter fileWriter=new FileWriter("PBMFile.pbm");
