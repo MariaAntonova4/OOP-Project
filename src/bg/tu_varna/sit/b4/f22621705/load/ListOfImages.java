@@ -4,12 +4,26 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ListOfImages {
+    //private String imageInSession;
     private Set<String> imagesInSession=new HashSet();
 
-    public ListOfImages(Set<String> imagesInSession) {
+    public Set<String> getImagesInSession() {
+        return imagesInSession;
+    }
+
+    public void setImagesInSession(Set<String> imagesInSession) {
         this.imagesInSession = imagesInSession;
     }
-    public void addImageInSession(String newImage){
-        this.imagesInSession.add(newImage);
+
+    public boolean checkImageInSession(String newImage){
+        if (imagesInSession.contains(newImage)) {
+            return true;
+        }
+        else return false;
+    }
+    public ListOfImages addImageInSession(String newImage){
+        if (!checkImageInSession(newImage)){
+        this.imagesInSession.add(newImage);}
+        return this;
     }
 }
