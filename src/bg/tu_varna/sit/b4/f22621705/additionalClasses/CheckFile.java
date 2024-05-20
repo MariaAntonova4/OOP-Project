@@ -1,4 +1,4 @@
-package bg.tu_varna.sit.b4.f22621705.open;
+package bg.tu_varna.sit.b4.f22621705.additionalClasses;
 
 import java.io.*;
 
