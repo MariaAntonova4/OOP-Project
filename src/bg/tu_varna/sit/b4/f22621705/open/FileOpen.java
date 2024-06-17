@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class FileOpen {
     private File file;
     private StringBuilder data=new StringBuilder();
+    private StringBuilder notFormatedData=new StringBuilder();
     private int numbers;
     private int height;
     private int width;
@@ -27,7 +28,13 @@ public class FileOpen {
     public void setData(StringBuilder data) {
         this.data = data;
     }
+    public StringBuilder getNoFormatData() {
+        return notFormatedData;
+    }
 
+    public void setNotFormatedData(StringBuilder notFormatedData) {
+        this.notFormatedData = notFormatedData;
+    }
     public void setHeight(int height) {
         this.height = height;
     }
@@ -117,7 +124,7 @@ public class FileOpen {
                         numbers=nums;
                         if (numbers>47&&numbers<58){
                             numbers=Character.getNumericValue(numbers);
-
+                            notFormatedData.append(numbers);
                             data.append(numbers)
                                     .append(" ");
                             //System.out.println(numbers);
@@ -127,7 +134,8 @@ public class FileOpen {
             }
             setData(getData());
                 System.out.println(getData());
-
+            setNotFormatedData(getNoFormatData());
+                System.out.println(getNoFormatData());
             }
 
 

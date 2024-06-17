@@ -1,0 +1,23 @@
+package bg.tu_varna.sit.b4.f22621705.load.negative;
+
+import bg.tu_varna.sit.b4.f22621705.open.FileOpen;
+
+import java.io.IOException;
+
+public class NegativePBM {
+    private StringBuilder negativePBM=new StringBuilder();
+    private FileOpen fileOpen;
+    public void turnPBMnegative(String fileName) throws IOException {
+        fileOpen=new FileOpen();
+        fileOpen.readFile(fileName);
+        System.out.println("This is PBM!");
+        for (int dataLength=0;dataLength<fileOpen.getNoFormatData().length();dataLength++){
+            if (fileOpen.getNoFormatData().charAt(dataLength)==49){
+                negativePBM.append(0);
+            }
+            else {negativePBM.append(1);}
+        }
+        System.out.println(negativePBM);
+
+    }
+}
