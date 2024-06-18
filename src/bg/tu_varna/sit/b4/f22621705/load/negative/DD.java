@@ -24,6 +24,8 @@ public class DD implements AA {
             String s=iterator.next();
             if (s.contains(".pbm")){
                 new NegativePBM().turnPBMnegative(s);}
+            else if(s.contains(".pgm")){
+                new NegativePGM().turnPGMnegative(s);}
             }
 
         return null;

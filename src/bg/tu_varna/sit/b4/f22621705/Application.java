@@ -1,8 +1,7 @@
 package bg.tu_varna.sit.b4.f22621705;
 
-import bg.tu_varna.sit.b4.f22621705.additionalClasses.CheckFile;
-import bg.tu_varna.sit.b4.f22621705.open.FileOpen;
-import bg.tu_varna.sit.b4.f22621705.save.SaveInFile;
+import bg.tu_varna.sit.b4.f22621705.open.CheckFile;
+import bg.tu_varna.sit.b4.f22621705.open.OpenPGM;
 
 import java.io.*;
 import java.util.*;
@@ -28,10 +27,11 @@ public class Application {
         m.putInMap();
 
         CheckFile checkFile=new CheckFile();
-        FileOpen fileOpen=new FileOpen();
+        //FileOpen fileOpen=new FileOpen();
+        OpenPGM openPGM=new OpenPGM();
+        //openPGM.readFile("RotateLeftFile.pgm");
 
-
-
+        System.out.println(openPGM.cleanFormat());
 
         Scanner scanner=new Scanner(System.in);
         String commandName;

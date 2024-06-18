@@ -92,15 +92,15 @@ public class SaveInFile {
                     .append(" ")
                     .append(getWidth())
                     .append("\n");
-            FileOpen fileOpen=new FileOpen();
+           // FileOpen fileOpen=new FileOpen();
         for(int j=0;j<getHeight();j++){
             for (int i=0;i<(getWidth()*2);i++){
                 /*System.out.println("Please write the data: ");
                 Scanner scanner=new Scanner(System.in);*/
                 /*stringBuilder.append(scanner.nextLine())
                         */
-                stringBuilder.append(fileOpen.getData().charAt(i))
-                        .append(" ");;
+                //stringBuilder.append(fileOpen.getData().charAt(i))
+                       // .append(" ");;
             }
            // stringBuilder.append("\n");
         }

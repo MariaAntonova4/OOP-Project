@@ -1,5 +1,6 @@
 package bg.tu_varna.sit.b4.f22621705;
 
+import bg.tu_varna.sit.b4.f22621705.open.CheckFile;
 import bg.tu_varna.sit.b4.f22621705.open.FileOpen;
 
 import java.io.IOException;
@@ -13,7 +14,7 @@ public class Open implements Menu {
             Scanner scanner=new Scanner(System.in);
             fileName=scanner.nextLine();
 
-            return new FileOpen().readFile(fileName);
+            return new CheckFile().checkIfFileExists(fileName);
         }
     }
 

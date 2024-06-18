@@ -3,6 +3,7 @@ package bg.tu_varna.sit.b4.f22621705.load.rotate;
 import bg.tu_varna.sit.b4.f22621705.load.ListOfImages;
 import bg.tu_varna.sit.b4.f22621705.load.Load;
 import bg.tu_varna.sit.b4.f22621705.open.FileOpen;
+import bg.tu_varna.sit.b4.f22621705.open.OpenPBM;
 import bg.tu_varna.sit.b4.f22621705.save.SaveInFile;
 
 import java.io.IOException;
@@ -11,7 +12,6 @@ import java.util.Map;
 import java.util.Set;
 
 public class LeftRotation {
-    private FileOpen fileOpen;
     private SaveInFile saveInFile;
     private ListOfImages listOfImages;
     private Load load;
@@ -24,7 +24,7 @@ public class LeftRotation {
         int mapNumber=1;
         Iterator<String> iterator=session.get(mapNumber).iterator();
         while (iterator.hasNext()){
-            fileOpen=new FileOpen();
+            OpenPBM fileOpen=new OpenPBM();
             String s=iterator.next();
             fileOpen.readFile(s);
             newHeight=fileOpen.getHeight();

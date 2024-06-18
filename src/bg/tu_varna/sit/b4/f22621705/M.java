@@ -1,6 +1,6 @@
 package bg.tu_varna.sit.b4.f22621705;
 
-import bg.tu_varna.sit.b4.f22621705.additionalClasses.Map1;
+//import bg.tu_varna.sit.b4.f22621705.additionalClasses.Map1;
 
 public class M {
     private MapClass e;
