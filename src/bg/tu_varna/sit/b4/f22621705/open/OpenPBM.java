@@ -159,6 +159,12 @@ public class OpenPBM implements FileOpen{
         }
         return null;
     }
+
+    @Override
+    public int findWidthAndHeight(FileInputStream reader) throws IOException {
+        return 0;
+    }
+
     public boolean checkIfFileExists(String fileName) throws IOException {
         setFile(fileName);
         if (file.exists())

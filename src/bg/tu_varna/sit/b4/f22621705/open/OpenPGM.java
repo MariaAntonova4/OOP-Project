@@ -56,15 +56,15 @@ public class OpenPGM extends CheckFile implements FileOpen{
         char nums;
         int i=0;
         int j=0;
-        while(j<3){
+        while(j==0){
             nums=(char) reader.read();
             numbers=nums;
-            if (numbers>47&&numbers<58){
+            if (numbers==80||numbers>47&&numbers<58){
                 i=(Character.getNumericValue(nums));
-            } else if ((numbers==10&&j>0)||(numbers==32&&j>0)) {
+            } else {
                 break;
             }
-            j++;
+
         }return i;
     }
     public StringBuilder cleanFormat(){
@@ -91,19 +91,22 @@ public class OpenPGM extends CheckFile implements FileOpen{
             setHeight(findWidthAndHeight(reader));
             setMaxValue(findWidthAndHeight(reader));
 
-
-                for(int jj=0;jj<getHeight();jj++){
-                    for (int ii=0;ii<(getWidth())*2;ii++){
+            int jj=1;
+                while(jj<=getHeight()){
                         nums=(char) reader.read();
-                        if (nums!=' '&&nums!='\n'){
                             numbers=nums;
                             if (numbers>47&&numbers<58){
                                 numbers=Character.getNumericValue(numbers);
                                 data.append(numbers)
                                         .append(" ");
-                            }}
+                            }
+                    if (nums=='\n'){
+                        data.append("\n");
+                        jj++;
                     }
-                    data.append("\n");
+                    if (numbers==65535){
+                        break;
+                    }
                 }
                 setData(getData());
                 System.out.println(getData());

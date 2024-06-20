@@ -2,6 +2,7 @@ package bg.tu_varna.sit.b4.f22621705;
 
 import bg.tu_varna.sit.b4.f22621705.open.CheckFile;
 import bg.tu_varna.sit.b4.f22621705.open.OpenPGM;
+import bg.tu_varna.sit.b4.f22621705.open.OpenPPM;
 
 import java.io.*;
 import java.util.*;
@@ -28,16 +29,16 @@ public class Application {
 
         CheckFile checkFile=new CheckFile();
         //FileOpen fileOpen=new FileOpen();
-        OpenPGM openPGM=new OpenPGM();
-        //openPGM.readFile("RotateLeftFile.pgm");
+        OpenPPM openPGM=new OpenPPM();
 
-        System.out.println(openPGM.cleanFormat());
-
+         System.out.println(openPGM.readFile("PPM.ppm"));
+        System.out.println(openPGM.getHeight());
+        System.out.println(openPGM.getMagicNumber());
         Scanner scanner=new Scanner(System.in);
         String commandName;
         System.out.println("Please write the command you want to be executed: ");
         commandName=scanner.next();
-        mapClass.commands(commandName);
+         mapClass.commands(commandName);
 
         //menu.addCommands();
        /* menu.menuCreator();
