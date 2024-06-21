@@ -14,7 +14,8 @@ import java.util.*;
 
 
 public class Load {
-    private Map<Integer, Set<String>> session=new HashMap<>();
+    private Session session;
+
     private EE ee;
 
     public EE getEe() {
@@ -23,35 +24,6 @@ public class Load {
 
     public void setEe(EE ee) {
         this.ee = ee;
-    }
-
-    private Map<Integer, Set<String>> loadMap=new HashMap<>();
-    private int mapNumber;
-    private ListOfImages listOfImages;
-
-    public int getMapNumber() {
-        return mapNumber;
-    }
-
-    public void setMapNumber(int mapNumber) {
-        this.mapNumber = mapNumber;
-    }
-    public Map<Integer, Set<String>> getLoadMap() {
-        return loadMap;
-    }
-
-    public void setLoadMap(Map<Integer, Set<String>> loadMap) {
-        this.loadMap = loadMap;
-    }
-
-    public void addInLoadMap(String fileName) throws IOException {
-
-        if (listOfImages==null){
-            listOfImages=new ListOfImages().addImageInSession(fileName);
-        }
-        if (listOfImages.checkImageInSession(fileName)){
-            getLoadMap().put(mapNumber,listOfImages.getImagesInSession());}
-        session=getLoadMap();
     }
 
     public void loadMapping(){
@@ -67,11 +39,11 @@ public class Load {
     public Menu exe(String fileName) throws IOException {
         setEe(new FF());
         loadMapping();
-        addInLoadMap(fileName);
+        session=new Session();
         System.out.println("Session with ID:");
         Scanner scannerNum=new Scanner(System.in);
         int mapNum= Integer.parseInt(scannerNum.next());
-        setMapNumber(mapNum);
+        session.createSession(mapNum,fileName);
         Scanner scanner=new Scanner(System.in);
         String commandName;
 
@@ -79,7 +51,7 @@ public class Load {
         commandName=scanner.next();
 
         while(ee.commandExist(commandName)){
-        ee.commands(commandName,session);
+        ee.commands(commandName,session.getSession());
             System.out.println("Please write the LOAD command you want to be executed: ");
             commandName=scanner.next();
         }

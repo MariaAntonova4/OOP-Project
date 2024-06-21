@@ -19,7 +19,7 @@ public class LeftRotation {
     private int newWidth;
     public void rotateLeft(Map<Integer, Set<String>> session) throws IOException {
         load=new Load();
-
+/*
         Set<Map.Entry<Integer, Set<String>>> entries = load.getLoadMap().entrySet();
         int mapNumber=1;
         Iterator<String> iterator=session.get(mapNumber).iterator();
@@ -56,5 +56,5 @@ public class LeftRotation {
             newData.append("\n");
             fileOpen.getData().reverse();
             System.out.println(newData);}
-
+*/
 }}

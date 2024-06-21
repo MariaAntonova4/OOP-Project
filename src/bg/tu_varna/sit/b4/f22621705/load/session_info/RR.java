@@ -16,14 +16,19 @@ public class RR implements AA {
     public AA executeLoad(Map<Integer, Set<String>> session) throws IOException {
         load=new Load();
 
-        Set<Map.Entry<Integer, Set<String>>> entries = load.getLoadMap().entrySet();
+        //Set<Map.Entry<Account,Float>> entries = bankAccounts.entrySet();
+       // for (Map.Entry<Account,Float> entry : entries) {
+        //    System.out.println("Account: " + entry.getKey()+"\nInterestValue: "+entry.getValue());
+        //}
 
-        Iterator<String> iterator=session.get(load.getMapNumber()).iterator();
-        System.out.println();
-        while (iterator.hasNext()){
-            String s=iterator.next();
-            System.out.println(s);
+
+        Set<Map.Entry<Integer, Set<String>>> entries = session.entrySet();
+
+        for(Map.Entry<Integer, Set<String>>entry:entries){
+            System.out.println(entry.getKey());
+            System.out.println(entry.getValue());
         }
+
         return null;
     }
 }

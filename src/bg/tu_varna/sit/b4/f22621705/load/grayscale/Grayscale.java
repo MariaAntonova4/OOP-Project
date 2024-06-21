@@ -32,9 +32,9 @@ public class Grayscale {
         openPPM.readFile(fileName);
         System.out.println("Grayscale: ");
         int jj=0;
-        int dataLength=0;
+        int dataLength=1;
 
-            while (jj<=openPPM.getHeight()* openPPM.getWidth()){
+            while (dataLength<openPPM.getData().length()){
                 if (openPPM.getData().charAt(dataLength)=='\n'){
                     grayscale.append("\n");
                     jj++;
@@ -42,7 +42,6 @@ public class Grayscale {
                     setRedFlag(true);
                 }
                 else{
-                    while (openPPM.getData().charAt(dataLength)!='\n'){
                         if (dataLength+1==openPPM.getData().length()){
                             jj++;
                             break;}
@@ -70,6 +69,6 @@ public class Grayscale {
                         }dataLength++;
                 }
 
-        }}
+        }
         System.out.println(grayscale);
     }}

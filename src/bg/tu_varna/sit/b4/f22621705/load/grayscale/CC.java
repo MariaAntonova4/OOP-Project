@@ -13,16 +13,23 @@ public class CC implements AA {
     @Override
     public AA executeLoad(Map<Integer, Set<String>> session) throws IOException {
         load=new Load();
-        Set<Map.Entry<Integer, Set<String>>> entries = load.getLoadMap().entrySet();
-        int mapNumber=1;
-        Iterator<String> iterator=session.get(mapNumber).iterator();
-        while (iterator.hasNext()){
-            System.out.println("Grayscale!:)");
-            String s=iterator.next();
-            if (s.contains(".ppm")){
-                new Grayscale().turnGrayscale(s);
+
+        Set<Map.Entry<Integer, Set<String>>> entries = session.entrySet();
+
+        for(Map.Entry<Integer, Set<String>>entry:entries){
+            Iterator<String> iterator=entry.getValue().iterator();
+          //  while (iterator.hasNext()){
+                System.out.println("Grayscale!:)");
+                String s=iterator.next();
+
+                if (s.contains(".ppm")){
+                    new Grayscale().turnGrayscale(s);
+                }
             }
-        }
-    return null;
+        return null;}
+       /* Set<Map.Entry<Integer, Set<String>>> entries = load.getLoadMap().entrySet();
+        int mapNumber=1;*/
+
+
     }
-}
+//}

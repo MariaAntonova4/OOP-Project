@@ -30,27 +30,29 @@ public class SS implements AA {
         this.mapNumber = mapNumber;
     }
 
-    public Map addInSession(String fileName) throws IOException {
-
-        if (listOfImages==null){
-            listOfImages=new ListOfImages().addImageInSession(fileName);
-        }
+    public void addInSession(Map<Integer, Set<String>> session,String fileName) throws IOException {
+        listOfImages.addImageInSession(fileName);
+        listOfImages.setImagesInSession(listOfImages.getImagesInSession());
         if (listOfImages.checkImageInSession(fileName)){
-            getSession().put(mapNumber,listOfImages.getImagesInSession());}
-        return getSession();
+            getSession().put(getMapNumber(),listOfImages.getImagesInSession());}
     }
     @Override
     public AA executeLoad(Map<Integer, Set<String>> session) throws IOException {
             load=new Load();
+            listOfImages=new ListOfImages();
+            //Set<Map.Entry<Integer, Set<String>>> entries = load.getLoadMap().entrySet();
 
-            Set<Map.Entry<Integer, Set<String>>> entries = load.getLoadMap().entrySet();
+        Set<Map.Entry<Integer, Set<String>>> entries = session.entrySet();
 
-            Iterator<String> iterator=session.get(load.getMapNumber()).iterator();
-           // while (iterator.hasNext()){
-                String fileName;
-                System.out.println("Please enter the name of the file which you want to load: ");
-                Scanner scanner=new Scanner(System.in);
-                fileName=scanner.nextLine();
-            addInSession(fileName);
+
+        String fileName;
+        System.out.println("Please enter the name of the file which you want to load: ");
+        Scanner scanner=new Scanner(System.in);
+        fileName=scanner.nextLine();
+        for(Map.Entry<Integer, Set<String>>entry:entries){
+
+            listOfImages.setImagesInSession(entry.getValue());
+            listOfImages.addImageInSession(fileName);
+        }
         return null;}
-}//}
+}

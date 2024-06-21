@@ -14,7 +14,7 @@ public class DD implements AA {
 
     @Override
     public AA executeLoad(Map<Integer, Set<String>> session) throws IOException {
-        load=new Load();
+      /*  load=new Load();
         Set<Map.Entry<Integer, Set<String>>> entries = load.getLoadMap().entrySet();
 
         //entries.int mapNumber=1;
@@ -29,7 +29,7 @@ public class DD implements AA {
                 new NegativePGM().turnPGMnegative(s);}
             else if (s.contains(".ppm")) {
                 new NegativePPM().turnPPMnegative(s);}
-        }return null;
+        }*/return null;
         }
 
 
