@@ -1,5 +1,6 @@
 package bg.tu_varna.sit.b4.f22621705;
 
+import bg.tu_varna.sit.b4.f22621705.load.grayscale.Grayscale;
 import bg.tu_varna.sit.b4.f22621705.open.CheckFile;
 import bg.tu_varna.sit.b4.f22621705.open.OpenPGM;
 import bg.tu_varna.sit.b4.f22621705.open.OpenPPM;
@@ -27,13 +28,11 @@ public class Application {
         m.setE(mapClass);
         m.putInMap();
 
-        CheckFile checkFile=new CheckFile();
-        //FileOpen fileOpen=new FileOpen();
-        OpenPPM openPGM=new OpenPPM();
+        OpenPPM openPPM=new OpenPPM();
+        //openPPM.readFile("TryPPM.ppm");
+        Grayscale grayscale=new Grayscale();
+        //grayscale.turnGrayscale("TryPPM.ppm");
 
-         System.out.println(openPGM.readFile("PPM.ppm"));
-        System.out.println(openPGM.getHeight());
-        System.out.println(openPGM.getMagicNumber());
         Scanner scanner=new Scanner(System.in);
         String commandName;
         System.out.println("Please write the command you want to be executed: ");

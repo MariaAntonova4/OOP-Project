@@ -15,6 +15,16 @@ public abstract class EE {
         loaaad.put(command,aa);
     }
 
+    public boolean commandExist(String commandName){
+        for (Map.Entry<String, AA> element : loaaad.entrySet()) {
+            if (loaaad.containsKey(commandName)) {
+                if (Objects.equals(element.getKey(), commandName)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     public AA goToCommand(String string){
 
         for (Map.Entry<String, AA> element : loaaad.entrySet()) {

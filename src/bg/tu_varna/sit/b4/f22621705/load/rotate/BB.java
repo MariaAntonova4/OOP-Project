@@ -19,7 +19,7 @@ public class BB implements AA {
         String string;
         System.out.println("Please write the direction: ");
         string=scanner.next();
-
+        System.out.println("Rotate!:)");
         if (string.equals(direction.getDirection())){
             new LeftRotation().rotateLeft(session);
         }

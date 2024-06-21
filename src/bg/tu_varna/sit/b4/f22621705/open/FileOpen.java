@@ -8,4 +8,5 @@ import java.io.IOException;
 public interface FileOpen {
     Menu readFile(String fileName) throws IOException;
     int findWidthAndHeight(FileInputStream reader) throws IOException;
+    public StringBuilder cleanFormat();
 }

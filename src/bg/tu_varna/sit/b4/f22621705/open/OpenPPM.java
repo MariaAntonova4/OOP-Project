@@ -88,10 +88,11 @@ public class OpenPPM extends CheckFile implements FileOpen{
             FileInputStream reader=new FileInputStream("C:\\Users\\Asus\\Desktop\\OOP-PROJECT\\OOP-Project\\Files\\"+fileName);
             setMagicNumber(magicNumber,(char) reader.read());
             setMagicNumber(magicNumber,(char) reader.read());
-
+            reader.read();
             reader.read();
             setWidth(findWidthAndHeight(reader));
             setHeight(findWidthAndHeight(reader));
+            reader.read();
             setMaxValue(findWidthAndHeight(reader));
 
             int jj=1;

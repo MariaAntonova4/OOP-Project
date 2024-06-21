@@ -12,6 +12,6 @@ public class LoadCommand implements Menu {
         System.out.println("Please enter the name of the file which you want to load: ");
         Scanner scanner=new Scanner(System.in);
         fileName=scanner.nextLine();
-        return new Load().addInLoadMap(fileName);
+        return new Load().exe(fileName);
     }
 }

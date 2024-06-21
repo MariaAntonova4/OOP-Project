@@ -165,6 +165,11 @@ public class OpenPBM implements FileOpen{
         return 0;
     }
 
+    @Override
+    public StringBuilder cleanFormat() {
+        return null;
+    }
+
     public boolean checkIfFileExists(String fileName) throws IOException {
         setFile(fileName);
         if (file.exists())

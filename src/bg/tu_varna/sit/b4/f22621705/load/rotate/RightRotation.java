@@ -8,9 +8,7 @@ import bg.tu_varna.sit.b4.f22621705.open.OpenPBM;
 import bg.tu_varna.sit.b4.f22621705.save.SaveInFile;
 
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class RightRotation {
     private SaveInFile saveInFile;
