@@ -2,6 +2,7 @@ package bg.tu_varna.sit.b4.f22621705.load.session_info;
 
 import bg.tu_varna.sit.b4.f22621705.load.AA;
 import bg.tu_varna.sit.b4.f22621705.load.Load;
+import bg.tu_varna.sit.b4.f22621705.load.Session;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -13,8 +14,12 @@ public class RR implements AA {
 
     private StringBuilder sessionInfo=new StringBuilder();
     @Override
-    public AA executeLoad(Map<Integer, Set<String>> session) throws IOException {
-        load=new Load();
+    public AA executeLoad(Session session) throws IOException {
+        //load=new Load();
+        //Session session1=new Session();
+
+        session.addInHistory("session info");
+        System.out.println(session.getCommandHistory());
 
         //Set<Map.Entry<Account,Float>> entries = bankAccounts.entrySet();
        // for (Map.Entry<Account,Float> entry : entries) {
@@ -22,7 +27,7 @@ public class RR implements AA {
         //}
 
 
-        Set<Map.Entry<Integer, Set<String>>> entries = session.entrySet();
+        Set<Map.Entry<Integer, Set<String>>> entries = session.getSession().entrySet();
 
         for(Map.Entry<Integer, Set<String>>entry:entries){
             System.out.println(entry.getKey());
@@ -30,5 +35,13 @@ public class RR implements AA {
         }
 
         return null;
+    } @Override
+    public StringBuilder result() {
+        return result();
+    }
+
+    @Override
+    public void setResult(StringBuilder result) {
+        this.result();
     }
 }

@@ -1,6 +1,7 @@
 package bg.tu_varna.sit.b4.f22621705;
 
 import bg.tu_varna.sit.b4.f22621705.load.grayscale.Grayscale;
+import bg.tu_varna.sit.b4.f22621705.load.monochrome.MonochromePGM;
 import bg.tu_varna.sit.b4.f22621705.open.CheckFile;
 import bg.tu_varna.sit.b4.f22621705.open.OpenPGM;
 import bg.tu_varna.sit.b4.f22621705.open.OpenPPM;
@@ -27,22 +28,13 @@ public class Application {
         //e.aaa();
         m.setE(mapClass);
         m.putInMap();
-
-        OpenPPM openPPM=new OpenPPM();
-        //openPPM.readFile("TryPPM.ppm");
-        Grayscale grayscale=new Grayscale();
-        //grayscale.turnGrayscale("TryPPM.ppm");
+        MonochromePGM monochromePGM=new MonochromePGM();
+        monochromePGM.turnMonochrome("PGM.pgm");
 
         Scanner scanner=new Scanner(System.in);
         String commandName;
         System.out.println("Please write the command you want to be executed: ");
         commandName=scanner.next();
-         mapClass.commands(commandName);
-
-        //menu.addCommands();
-       /* menu.menuCreator();
-        menu.bbp(commandName);*/
-        //fileOpen.readFile(fileName);
-
+        // mapClass.commands(commandName);
 
 }}

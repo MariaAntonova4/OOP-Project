@@ -5,5 +5,7 @@ import java.util.Map;
 import java.util.Set;
 
 public interface AA {
-    AA executeLoad(Map<Integer, Set<String>> session) throws IOException;
+    AA executeLoad(Session session) throws IOException;
+    StringBuilder result();
+    void setResult(StringBuilder result);
 }

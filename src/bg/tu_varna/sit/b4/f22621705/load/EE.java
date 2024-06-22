@@ -35,7 +35,7 @@ public abstract class EE {
             }
         }return null;}
 
-    public AA commands(String string,Map<Integer, Set<String>> session) throws IOException {
+    public AA commands(String string,Session session) throws IOException {
         return goToCommand(string).executeLoad(session);
     }
 

@@ -7,6 +7,7 @@ import bg.tu_varna.sit.b4.f22621705.load.monochrome.KK;
 import bg.tu_varna.sit.b4.f22621705.load.negative.HH;
 import bg.tu_varna.sit.b4.f22621705.load.rotate.FF;
 import bg.tu_varna.sit.b4.f22621705.load.session_info.PP;
+import bg.tu_varna.sit.b4.f22621705.load.switchh.LoadSwitch;
 import bg.tu_varna.sit.b4.f22621705.load.undo.XX;
 
 import java.io.IOException;
@@ -15,6 +16,18 @@ import java.util.*;
 
 public class Load {
     private Session session;
+
+    public Load(Session session) {
+        this.session = session;
+    }
+
+    public Session getSession() {
+        return session;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
+    }
 
     private EE ee;
 
@@ -34,6 +47,7 @@ public class Load {
         getEe().putLoad("undo",new XX().aAA());
         getEe().putLoad("add",new ZZ().aAA());
         getEe().putLoad("session_info",new PP().aAA());
+        getEe().putLoad("switch",new LoadSwitch().aAA());
     }
 
     public Menu exe(String fileName) throws IOException {
@@ -51,7 +65,7 @@ public class Load {
         commandName=scanner.next();
 
         while(ee.commandExist(commandName)){
-        ee.commands(commandName,session.getSession());
+        ee.commands(commandName,session);
             System.out.println("Please write the LOAD command you want to be executed: ");
             commandName=scanner.next();
         }

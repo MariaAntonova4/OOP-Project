@@ -2,6 +2,8 @@ package bg.tu_varna.sit.b4.f22621705.load.negative;
 
 import bg.tu_varna.sit.b4.f22621705.load.AA;
 import bg.tu_varna.sit.b4.f22621705.load.Load;
+import bg.tu_varna.sit.b4.f22621705.load.Session;
+import bg.tu_varna.sit.b4.f22621705.load.grayscale.Grayscale;
 import bg.tu_varna.sit.b4.f22621705.open.OpenPGM;
 
 import java.io.IOException;
@@ -10,18 +12,15 @@ import java.util.Map;
 import java.util.Set;
 
 public class DD implements AA {
-    private Load load;
 
     @Override
-    public AA executeLoad(Map<Integer, Set<String>> session) throws IOException {
-      /*  load=new Load();
-        Set<Map.Entry<Integer, Set<String>>> entries = load.getLoadMap().entrySet();
+    public AA executeLoad(Session session) throws IOException {
+        Set<Map.Entry<Integer, Set<String>>> entries = session.getSession().entrySet();
 
-        //entries.int mapNumber=1;
-        Iterator<String> iterator=session.get(load.getMapNumber()).iterator();
-        while (iterator.hasNext()){
-            System.out.println("Negative!:)");
-            //fileOpen=new FileOpen();
+
+        for(Map.Entry<Integer, Set<String>>entry:entries){
+            Iterator<String> iterator=entry.getValue().iterator();
+
             String s=iterator.next();
             if (s.contains(".pbm")){
                 new NegativePBM().turnPBMnegative(s);}
@@ -29,8 +28,18 @@ public class DD implements AA {
                 new NegativePGM().turnPGMnegative(s);}
             else if (s.contains(".ppm")) {
                 new NegativePPM().turnPPMnegative(s);}
-        }*/return null;
+
         }
+        return null;
 
-
+        }
+    @Override
+    public StringBuilder result() {
+        return result();
     }
+
+    @Override
+    public void setResult(StringBuilder result) {
+        this.result();
+    }
+        }

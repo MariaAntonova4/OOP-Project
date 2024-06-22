@@ -6,7 +6,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public interface FileOpen {
+    int getHeight();
+    int getWidth();
     Menu readFile(String fileName) throws IOException;
     int findWidthAndHeight(FileInputStream reader) throws IOException;
-    public StringBuilder cleanFormat();
+    StringBuilder cleanFormat();
 }

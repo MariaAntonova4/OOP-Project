@@ -3,6 +3,7 @@ package bg.tu_varna.sit.b4.f22621705.load.add;
 import bg.tu_varna.sit.b4.f22621705.load.AA;
 import bg.tu_varna.sit.b4.f22621705.load.ListOfImages;
 import bg.tu_varna.sit.b4.f22621705.load.Load;
+import bg.tu_varna.sit.b4.f22621705.load.Session;
 
 import java.io.IOException;
 import java.util.*;
@@ -37,12 +38,11 @@ public class SS implements AA {
             getSession().put(getMapNumber(),listOfImages.getImagesInSession());}
     }
     @Override
-    public AA executeLoad(Map<Integer, Set<String>> session) throws IOException {
-            load=new Load();
-            listOfImages=new ListOfImages();
-            //Set<Map.Entry<Integer, Set<String>>> entries = load.getLoadMap().entrySet();
+    public AA executeLoad(Session session) throws IOException {
 
-        Set<Map.Entry<Integer, Set<String>>> entries = session.entrySet();
+            listOfImages=new ListOfImages();
+
+        Set<Map.Entry<Integer, Set<String>>> entries = session.getSession().entrySet();
 
 
         String fileName;
@@ -53,6 +53,16 @@ public class SS implements AA {
 
             listOfImages.setImagesInSession(entry.getValue());
             listOfImages.addImageInSession(fileName);
-        }
+
+        }session.addInHistory("add");
         return null;}
+    @Override
+    public StringBuilder result() {
+        return result();
+    }
+
+    @Override
+    public void setResult(StringBuilder result) {
+        this.result();
+    }
 }

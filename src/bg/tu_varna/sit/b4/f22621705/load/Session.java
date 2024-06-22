@@ -1,14 +1,34 @@
 package bg.tu_varna.sit.b4.f22621705.load;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Session {
     private Map<Integer, Set<String>>session=new HashMap<>();
     private ListOfImages listOfImages;
     private int sessionNumber;
+
+    public ListOfImages getListOfImages() {
+        return listOfImages;
+    }
+
+    public void setListOfImages(ListOfImages listOfImages) {
+        this.listOfImages = listOfImages;
+    }
+
+    // private Map<Integer, List<String>>sessionHistory=new HashMap<>();
+    private List<String>commandHistory=new ArrayList<>();
+
+    public List<String> getCommandHistory() {
+        return commandHistory;
+    }
+
+    public void setCommandHistory(List<String> commandHistory) {
+        this.commandHistory = commandHistory;
+    }
+
+    public void addInHistory(String commandName){
+        commandHistory.add(commandName);
+    }
 
     public void setSessionNumber(int sessionNumber) {
         this.sessionNumber = sessionNumber;

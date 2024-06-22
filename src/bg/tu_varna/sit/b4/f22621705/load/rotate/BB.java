@@ -1,6 +1,8 @@
 package bg.tu_varna.sit.b4.f22621705.load.rotate;
 
 import bg.tu_varna.sit.b4.f22621705.load.AA;
+import bg.tu_varna.sit.b4.f22621705.load.Session;
+import bg.tu_varna.sit.b4.f22621705.load.grayscale.Grayscale;
 
 import java.io.IOException;
 import java.util.*;
@@ -14,42 +16,39 @@ public class BB implements AA {
     }
 
     @Override
-    public AA executeLoad(Map<Integer, Set<String>> session) throws IOException {
+    public AA executeLoad(Session session) throws IOException {
         Scanner scanner=new Scanner(System.in);
         String string;
         System.out.println("Please write the direction: ");
         string=scanner.next();
-        System.out.println("Rotate!:)");
-        if (string.equals(direction.getDirection())){
-            new LeftRotation().rotateLeft(session);
-        }
-        else
-            new RightRotation().rotateRight(session);
 
 
+        Set<Map.Entry<Integer, Set<String>>> entries = session.getSession().entrySet();
 
-           /* int [][]abi=new int[fileOpen.getHeight()][fileOpen.getWidth()];
-            int charNumber=0;
-            for(int jj=0;jj< fileOpen.getHeight();jj++){
-                for (int ii=0;ii< fileOpen.getWidth();ii++){
-                    char pop=fileOpen.getData().charAt(charNumber);
-                    abi[jj][ii]= pop;
-                    charNumber++;
-                }
+        for(Map.Entry<Integer, Set<String>>entry:entries){
+            Iterator<String> iterator=entry.getValue().iterator();
+            String s=iterator.next();
 
+            if (string.equals(direction.getDirection())){
+                session.addInHistory("rotate left");
+                setResult(new LeftRotation().rotateLeft(s));
             }
-            int [][]aBi=new int[newHeight][newWidth];
-int nH=newHeight;
-int nW=newWidth;
-                for(int jj=0;jj<newHeight;jj++){
-                    for (int ii=0;ii<(newWidth);ii++){
-                        aBi[jj][ii]=abi[nW][nH];
-                    }nW--;
-                nH--;
-                }*/
-            //saveInFile.saveFile(s);
+            else{
+                session.addInHistory("rotate right");
+                setResult(new RightRotation().rotateRight(s));
+                }
+        }
         return null;  }
-        //System.out.println("BB");
 
+    @Override
+    public StringBuilder result() {
+        return result();
     }
+
+    @Override
+    public void setResult(StringBuilder result) {
+        this.result();
+    }
+
+}
 
