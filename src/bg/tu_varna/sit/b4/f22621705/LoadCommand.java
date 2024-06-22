@@ -7,12 +7,22 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class LoadCommand implements Menu {
+    private Session session;
+
+    public Session getSession() {
+        return session;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
+    }
+
     @Override
-    public Menu execute() throws IOException {
+    public Menu execute(Session session) throws IOException {
         String fileName;
         System.out.println("Please enter the name of the file which you want to load: ");
         Scanner scanner=new Scanner(System.in);
         fileName=scanner.nextLine();
-        return new Load(new Session()).exe(fileName);
+        return new Load(session).exe(fileName,session);
     }
 }

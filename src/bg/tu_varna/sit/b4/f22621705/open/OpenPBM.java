@@ -8,37 +8,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class OpenPBM implements FileOpen{
-    private File file;
-    private StringBuilder data=new StringBuilder();
-    private StringBuilder notFormatedData=new StringBuilder();
-    private int numbers;
-    private int height;
+
+    private StringBuilder magicNumber=new StringBuilder();
     private int width;
-    private StringBuilder format=new StringBuilder();
-
-    private char nums;
-
-    public int getHeight() {
-        return height;
-    }
-
-    public StringBuilder getData() {
-        return data;
-    }
-
-    public void setData(StringBuilder data) {
-        this.data = data;
-    }
-    public StringBuilder getNoFormatData() {
-        return notFormatedData;
-    }
-
-    public void setNotFormatedData(StringBuilder notFormatedData) {
-        this.notFormatedData = notFormatedData;
-    }
-    public void setHeight(int height) {
-        this.height = height;
-    }
+    private int height;
+    private StringBuilder data=new StringBuilder();
 
     public int getWidth() {
         return width;
@@ -48,141 +22,94 @@ public class OpenPBM implements FileOpen{
         this.width = width;
     }
 
-    public File getFile() {
-        return file;
+    public int getHeight() {
+        return height;
     }
 
-    public void setFile(String fileName) {
-        this.file = new File("C:\\Users\\Asus\\Desktop\\OOP-PROJECT\\OOP-Project\\Files\\"+fileName);
+    public void setHeight(int height) {
+        this.height = height;
     }
 
-    public StringBuilder getFormat() {
-        return format;
+
+    public StringBuilder getData() {
+        return data;
     }
 
-    public void setFormat(StringBuilder format,char addChar) {
-        this.format = format.append(addChar);
+    public void setData(StringBuilder data) {
+        this.data = data;
     }
 
-    public Menu readFile(String fileName) throws IOException {
-        if (checkIfFileExists(fileName)){
-            //StringBuilder stringBuilder1=new StringBuilder();
-            //setFile(fileName);
-            FileInputStream reader=new FileInputStream("C:\\Users\\Asus\\Desktop\\OOP-PROJECT\\OOP-Project\\Files\\"+fileName);
-            setFormat(format,(char) reader.read());
-            setFormat(format,(char)reader.read());
-        /*format.append();
-            format.append();*/
-            reader.read();
-            int j=0;
-            while(j<3){
-                nums=(char) reader.read();
-                numbers=nums;
-                if (numbers>47&&numbers<58){
-                    setWidth(Character.getNumericValue(nums));
-                } else if ((numbers==10&&j>0)||(numbers==32&&j>0)) {
-                    break;
-                }
-                j++;
-            }
-
-            /*
-            reader.read();
-            nums=(char)reader.read();
-            length=Character.getNumericValue(nums);*/
-
-            int i=0;
-            //int ij=0;
-            //char[] weightFormat=new char[2];
-            while(i<3){
-                nums=(char) reader.read();
-                numbers=nums;
-                if (numbers>47&&numbers<58){
-                    setHeight(Character.getNumericValue(nums));
-                    //weightFormat[ij]= (char) weight;
-                    //ij++;
-                } else if (numbers==10) {
-                    break;
-                }
-                i++;
-            }
-            //if (ij==1){
-            //weight=weightFormat[0];}
-            // else {
-            //weight= toString().getBytes()weightFormat[0]+weightFormat[1];
-            //}
-           /* Integer cislo=Integer.valueOf(String.valueOf(weightFormat));
-            int cislo2=cislo.intValue();
-            weight=weightFormat;*/
-            System.out.println("A: "+getWidth());
-            System.out.println("B: "+ getHeight());
-
-            if(file.canRead()){
-                for(int jj=0;jj<getHeight();jj++){
-                    for (int ii=0;ii<(getWidth())*2;ii++){
-                        nums=(char) reader.read();
-                        if (nums!=' '&&nums!='\n'){
-                            numbers=nums;
-                            if (numbers>47&&numbers<58){
-                                numbers=Character.getNumericValue(numbers);
-                                notFormatedData.append(numbers);
-                                data.append(numbers)
-                                        .append(" ");
-                                //System.out.println(numbers);
-                            }}
-                    }
-                    data.append("\n");
-                }
-                setData(getData());
-                System.out.println(getData());
-                setNotFormatedData(getNoFormatData());
-                System.out.println(getNoFormatData());
-            }
-
-
-            /*
-            nums=;
-            System.out.println();
-            System.out.println((char) );
-            System.out.println();
-            System.out.println((char) );
-            //
-            reader.read();
-            nums=(char) reader.read();
-        //int fileLength[length][weight];
-        for (int i=0;i<length;i++) {
-            for (int j = 0; j < weight * 2; j++) {
-                System.out.println((char) reader.read());
-            }}
-        }*/
-            reader.close();
-        }
-        return null;
+    public StringBuilder getMagicNumber() {
+        return magicNumber;
     }
 
-    @Override
+    public void setMagicNumber(StringBuilder magicNumber,char addChar) {
+        this.magicNumber = magicNumber.append(addChar);
+    }
+
     public int findWidthAndHeight(FileInputStream reader) throws IOException {
-        return 0;
-    }
+        int numbers;
+        char nums;
+        int i=0;
+        int j=0;
+        while(j==0){
+            nums=(char) reader.read();
+            numbers=nums;
+            if (nums==80||(nums>47&&nums<58)){
+                i=(Character.getNumericValue(nums));
+            } else {
+                break;
+            }
 
+        }return i;
+    }
+    public StringBuilder cleanFormat(){
+        StringBuilder noFormat=new StringBuilder();
+        for (int dataLength=0;dataLength<getData().length();dataLength++){
+            if (getData().charAt(dataLength)>47&&getData().charAt(dataLength)<58){
+                int i=Character.getNumericValue(getData().charAt(dataLength));
+                noFormat.append(i);
+            }}
+        return noFormat;
+    }
     @Override
-    public StringBuilder cleanFormat() {
-        return null;
-    }
+    public Menu readFile(String fileName) throws IOException {
+        int numbers;
+        char nums;
 
-    public boolean checkIfFileExists(String fileName) throws IOException {
-        setFile(fileName);
-        if (file.exists())
-        {
-            System.out.println("File exists!");
-            return true;
+            FileInputStream reader=new FileInputStream("C:\\Users\\Asus\\Desktop\\OOP-PROJECT\\OOP-Project\\Files\\"+fileName);
+            setMagicNumber(magicNumber,(char) reader.read());
+            setMagicNumber(magicNumber,(char) reader.read());
+            reader.read();
+            reader.read();
+            numbers=findWidthAndHeight(reader);
+            setWidth(numbers);
+            //reader.read();
+            numbers=findWidthAndHeight(reader);
+            setHeight(numbers);
+
+
+            int jj=0;
+            while(jj<=getHeight()){
+                nums=(char) reader.read();
+                numbers=nums;
+                if (numbers>47&&numbers<58){
+                    numbers=Character.getNumericValue(numbers);
+                    data.append(numbers)
+                            .append(" ");
+                }
+                if (nums=='\n'){
+                    data.append("\n");
+                    jj++;
+                }
+                if (numbers==65535){
+                    break;
+                }
+            }
+            setData(getData());
+            System.out.println(getData());
+        return null;
         }
-        else{
-            System.out.println("There is no such file");
-            setFile(fileName);
-            FileWriter fileWriter=new FileWriter(getFile());
-            fileWriter.close();
-        }
-        return false;
+
+
     }
-}

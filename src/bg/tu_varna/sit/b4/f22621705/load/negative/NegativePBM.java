@@ -12,8 +12,8 @@ public class NegativePBM {
         OpenPBM fileOpen=new OpenPBM();
         fileOpen.readFile(fileName);
         System.out.println("This is PBM!");
-        for (int dataLength=0;dataLength<fileOpen.getNoFormatData().length();dataLength++){
-            if (fileOpen.getNoFormatData().charAt(dataLength)==49){
+        for (int dataLength=0;dataLength<fileOpen.cleanFormat().length();dataLength++){
+            if (fileOpen.cleanFormat().charAt(dataLength)==49){
                 negativePBM.append(0);
             }
             else {negativePBM.append(1);}

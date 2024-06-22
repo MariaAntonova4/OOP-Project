@@ -3,6 +3,7 @@ package bg.tu_varna.sit.b4.f22621705;
 import bg.tu_varna.sit.b4.f22621705.load.grayscale.Grayscale;
 import bg.tu_varna.sit.b4.f22621705.load.monochrome.MonochromePGM;
 import bg.tu_varna.sit.b4.f22621705.open.CheckFile;
+import bg.tu_varna.sit.b4.f22621705.open.OpenPBM;
 import bg.tu_varna.sit.b4.f22621705.open.OpenPGM;
 import bg.tu_varna.sit.b4.f22621705.open.OpenPPM;
 
@@ -28,13 +29,13 @@ public class Application {
         //e.aaa();
         m.setE(mapClass);
         m.putInMap();
-        MonochromePGM monochromePGM=new MonochromePGM();
-        monochromePGM.turnMonochrome("PGM.pgm");
+
 
         Scanner scanner=new Scanner(System.in);
-        String commandName;
-        System.out.println("Please write the command you want to be executed: ");
-        commandName=scanner.next();
-        // mapClass.commands(commandName);
+        String commandName="";
+        while(!Objects.equals(commandName, "exit")){
+            System.out.println("Please write the command you want to be executed: ");
+            commandName=scanner.next();
+            mapClass.commands(commandName);}
 
 }}

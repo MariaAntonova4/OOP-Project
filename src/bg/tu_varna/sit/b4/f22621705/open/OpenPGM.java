@@ -87,11 +87,20 @@ public class OpenPGM extends CheckFile implements FileOpen{
             setMagicNumber(magicNumber,(char) reader.read());
 
             reader.read();
-            setWidth(findWidthAndHeight(reader));
-            setHeight(findWidthAndHeight(reader));
+            reader.read();
+            numbers=findWidthAndHeight(reader);
+            setWidth(numbers);
+            //reader.read();
+            numbers=findWidthAndHeight(reader);
+            setHeight(numbers);
+
+
+
+            reader.read();
+
             setMaxValue(findWidthAndHeight(reader));
 
-            int jj=1;
+            int jj=0;
                 while(jj<=getHeight()){
                         nums=(char) reader.read();
                             numbers=nums;

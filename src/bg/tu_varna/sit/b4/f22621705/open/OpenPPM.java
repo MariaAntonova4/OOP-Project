@@ -86,16 +86,24 @@ public class OpenPPM extends CheckFile implements FileOpen{
          checkIfFileExists(fileName);
          if (isFlag()==true){
             FileInputStream reader=new FileInputStream("C:\\Users\\Asus\\Desktop\\OOP-PROJECT\\OOP-Project\\Files\\"+fileName);
-            setMagicNumber(magicNumber,(char) reader.read());
-            setMagicNumber(magicNumber,(char) reader.read());
-            reader.read();
-            reader.read();
-            setWidth(findWidthAndHeight(reader));
-            setHeight(findWidthAndHeight(reader));
-            reader.read();
-            setMaxValue(findWidthAndHeight(reader));
+             setMagicNumber(magicNumber,(char) reader.read());
+             setMagicNumber(magicNumber,(char) reader.read());
 
-            int jj=1;
+             reader.read();
+             reader.read();
+             numbers=findWidthAndHeight(reader);
+             setWidth(numbers);
+             //reader.read();
+             numbers=findWidthAndHeight(reader);
+             setHeight(numbers);
+
+
+
+             reader.read();
+
+             setMaxValue(findWidthAndHeight(reader));
+
+             int jj=0;
             while(jj<=getHeight()*3){
                nums=(char) reader.read();
                numbers=nums;

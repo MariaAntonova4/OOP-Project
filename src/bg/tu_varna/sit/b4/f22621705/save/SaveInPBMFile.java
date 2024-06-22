@@ -51,8 +51,8 @@ public class SaveInPBMFile {
         FileOutputStream fileWriter=new FileOutputStream(file);
         OpenPBM openPBM=new OpenPBM();
         openPBM.readFile(fileName);
-        fileWriter.write(openPBM.getFormat().charAt(0));
-        fileWriter.write(openPBM.getFormat().charAt(1));
+        fileWriter.write(openPBM.getMagicNumber().charAt(0));
+        fileWriter.write(openPBM.getMagicNumber().charAt(1));
         fileWriter.write('\n');
         fileWriter.write(openPBM.getHeight());
         fileWriter.write(" ".getBytes());

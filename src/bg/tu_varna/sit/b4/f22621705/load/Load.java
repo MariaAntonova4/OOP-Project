@@ -1,5 +1,6 @@
 package bg.tu_varna.sit.b4.f22621705.load;
 
+import bg.tu_varna.sit.b4.f22621705.LoadCommand;
 import bg.tu_varna.sit.b4.f22621705.Menu;
 import bg.tu_varna.sit.b4.f22621705.load.add.ZZ;
 import bg.tu_varna.sit.b4.f22621705.load.grayscale.GG;
@@ -25,8 +26,11 @@ public class Load {
         return session;
     }
 
+
     public void setSession(Session session) {
-        this.session = session;
+        if (session==null){
+            session=new Session();
+        }else this.session = session;
     }
 
     private EE ee;
@@ -50,10 +54,10 @@ public class Load {
         getEe().putLoad("switch",new LoadSwitch().aAA());
     }
 
-    public Menu exe(String fileName) throws IOException {
+    public Menu exe(String fileName,Session session) throws IOException {
         setEe(new FF());
         loadMapping();
-        session=new Session();
+        //session=new Session();
         System.out.println("Session with ID:");
         Scanner scannerNum=new Scanner(System.in);
         int mapNum= Integer.parseInt(scannerNum.next());
@@ -69,7 +73,8 @@ public class Load {
             System.out.println("Please write the LOAD command you want to be executed: ");
             commandName=scanner.next();
         }
-
+        LoadCommand loadCommand=new LoadCommand();
+       // loadCommand.setSession(session);
       return null;
     }
 }

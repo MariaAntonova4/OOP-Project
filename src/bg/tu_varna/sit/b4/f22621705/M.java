@@ -2,6 +2,9 @@ package bg.tu_varna.sit.b4.f22621705;
 
 //import bg.tu_varna.sit.b4.f22621705.additionalClasses.Map1;
 
+import bg.tu_varna.sit.b4.f22621705.exit.Exit;
+import bg.tu_varna.sit.b4.f22621705.help.HelpCommand;
+
 public class M {
     private MapClass e;
     public MapClass getE() {
@@ -18,5 +21,7 @@ public class M {
         e.puttingInMap("open",new H().aaa());
         e.puttingInMap("load",new F().aaa());
         e.puttingInMap("save",new G().aaa());
+        e.puttingInMap("help",new HelpCommand().aaa());
+        e.puttingInMap("exit",new Exit().aaa());
     }
 }
