@@ -24,11 +24,10 @@ public class Save implements Menu {
     @Override
     public Menu execute(Session session2) throws IOException {
 
-        System.out.println("Please enter the name of the file which you want to save: ");
-        Scanner scanner=new Scanner(System.in);
-        String fileName=scanner.nextLine();
-        File file=new File(fileName);
-        if (file.exists()){}
-        return new SaveInFile(session2).saveFile(fileName);
+        /*System.out.println("Please enter the name of the file which you want to save: ");
+        */
+        //File file=new File(fileName);
+        //if (file.exists()){}
+        return new SaveInFile(session2).saveFile(session2);
     }
 }

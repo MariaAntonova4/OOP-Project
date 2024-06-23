@@ -34,7 +34,7 @@ public class Application {
         Scanner scanner=new Scanner(System.in);
         String commandName="";
         while(!Objects.equals(commandName, "exit")){
-            System.out.println("Please write the command you want to be executed: ");
+            System.out.println(">"+commandName);
             commandName=scanner.next();
             mapClass.commands(commandName);}
 

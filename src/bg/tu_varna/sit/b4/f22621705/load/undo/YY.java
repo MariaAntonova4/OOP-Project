@@ -12,13 +12,4 @@ public class YY implements AA {
     public AA executeLoad(Session session) throws IOException {
         return null;
     }
-    @Override
-    public StringBuilder result() {
-        return result();
-    }
-
-    @Override
-    public void setResult(StringBuilder result) {
-        this.result();
-    }
 }

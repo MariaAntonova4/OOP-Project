@@ -23,5 +23,6 @@ public class M {
         e.puttingInMap("save",new G().aaa());
         e.puttingInMap("help",new HelpCommand().aaa());
         e.puttingInMap("exit",new Exit().aaa());
+        e.puttingInMap("saveas",new SaveAs().aaa());
     }
 }

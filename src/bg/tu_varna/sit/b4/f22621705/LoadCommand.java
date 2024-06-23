@@ -20,7 +20,7 @@ public class LoadCommand implements Menu {
     @Override
     public Menu execute(Session session) throws IOException {
         String fileName;
-        System.out.println("Please enter the name of the file which you want to load: ");
+       // System.out.println(">");
         Scanner scanner=new Scanner(System.in);
         fileName=scanner.nextLine();
         return new Load(session).exe(fileName,session);

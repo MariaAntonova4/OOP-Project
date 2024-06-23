@@ -6,6 +6,5 @@ import java.util.Set;
 
 public interface AA {
     AA executeLoad(Session session) throws IOException;
-    StringBuilder result();
-    void setResult(StringBuilder result);
+
 }

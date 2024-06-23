@@ -56,13 +56,5 @@ public class SS implements AA {
 
         }session.addInHistory("add");
         return null;}
-    @Override
-    public StringBuilder result() {
-        return result();
-    }
 
-    @Override
-    public void setResult(StringBuilder result) {
-        this.result();
-    }
 }

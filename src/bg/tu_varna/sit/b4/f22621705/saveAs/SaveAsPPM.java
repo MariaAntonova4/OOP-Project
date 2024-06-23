@@ -1,4 +1,4 @@
-package bg.tu_varna.sit.b4.f22621705.save;
+package bg.tu_varna.sit.b4.f22621705.saveAs;
 
 import bg.tu_varna.sit.b4.f22621705.Menu;
 import bg.tu_varna.sit.b4.f22621705.open.OpenPPM;
@@ -7,10 +7,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class SaveInPPMFile implements SaveFile{
-    @Override
-    public Menu saveFile(String fileName, StringBuilder stringBuilder) throws IOException {
-        File file=new File(filePath+fileName);
+public class SaveAsPPM {
+    public Menu saveAsFile(String fileName, StringBuilder stringBuilder,String fileDirector) throws IOException {
+        File file=new File(fileDirector+fileName);
         FileOutputStream fileWriter=new FileOutputStream(file);
         OpenPPM openPPM=new OpenPPM();
         openPPM.readFile(fileName);

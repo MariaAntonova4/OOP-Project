@@ -62,15 +62,16 @@ public class Load {
         Scanner scannerNum=new Scanner(System.in);
         int mapNum= Integer.parseInt(scannerNum.next());
         session.createSession(mapNum,fileName);
+        System.out.println("Image "+fileName+" added");
         Scanner scanner=new Scanner(System.in);
         String commandName;
 
-        System.out.println("Please write the LOAD command you want to be executed: ");
+
         commandName=scanner.next();
 
         while(ee.commandExist(commandName)){
         ee.commands(commandName,session);
-            System.out.println("Please write the LOAD command you want to be executed: ");
+           // System.out.println("Please write the LOAD command you want to be executed: ");
             commandName=scanner.next();
         }
         LoadCommand loadCommand=new LoadCommand();

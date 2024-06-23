@@ -30,7 +30,9 @@ public class SaveInPGMFile implements SaveFile{
                 fileWriter.write(stringBuilder.charAt(dataLength));
             }
             dataLength++;
-        }fileWriter.close();
+        } System.out.println("> save\n" +
+                "Successfully saved"+fileName);
+        fileWriter.close();
         return null;
     }
 }

@@ -4,26 +4,33 @@ import java.util.*;
 
 public class Session {
     private Map<Integer, Set<String>>session=new HashMap<>();
+    private Map<String,StringBuilder>newData=new HashMap<>();
     private ListOfImages listOfImages;
     private int sessionNumber;
 
-    public ListOfImages getListOfImages() {
-        return listOfImages;
+    public Map<String, StringBuilder> getNewData() {
+        if (newData.isEmpty()){setNewData(new HashMap<>());}
+        return newData;
+    }
+    public StringBuilder saveData(String fileName){
+        Set<Map.Entry<String, StringBuilder>>entries = getNewData().entrySet();
+
+        for(Map.Entry<String,StringBuilder>entry:entries){
+            if (entry.getKey().equals(fileName)){
+                return entry.getValue();}
+        }
+
+        return null;
+    }
+    public void setNewData(Map<String, StringBuilder> newData) {
+
+        this.newData = newData;
     }
 
-    public void setListOfImages(ListOfImages listOfImages) {
-        this.listOfImages = listOfImages;
-    }
-
-    // private Map<Integer, List<String>>sessionHistory=new HashMap<>();
     private List<String>commandHistory=new ArrayList<>();
 
     public List<String> getCommandHistory() {
         return commandHistory;
-    }
-
-    public void setCommandHistory(List<String> commandHistory) {
-        this.commandHistory = commandHistory;
     }
 
     public void addInHistory(String commandName){
@@ -53,4 +60,9 @@ public class Session {
         listOfImages.addImageInSession(fileName);
             session.put(sessionNumber,listOfImages.getImagesInSession());
         }
+    public void addNewData(String fileName,StringBuilder stringBuilder){
+        getNewData();
+
+        newData.put(fileName,stringBuilder);
+    }
 }

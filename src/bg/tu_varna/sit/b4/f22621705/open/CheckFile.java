@@ -27,7 +27,8 @@ public class CheckFile {
             setFile(fileName);
             if (file.exists())
             {
-                System.out.println("File exists!");
+               // System.out.println("> open"+file.getPath());
+                System.out.println("Successfully opened "+fileName);
                 setFlag(true);
             }
             else{

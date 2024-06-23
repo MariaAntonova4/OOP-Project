@@ -1,13 +1,12 @@
-package bg.tu_varna.sit.b4.f22621705.save;
+package bg.tu_varna.sit.b4.f22621705.saveAs;
+
+import java.io.*;
 import bg.tu_varna.sit.b4.f22621705.Menu;
 import bg.tu_varna.sit.b4.f22621705.open.OpenPBM;
 
-import java.io.*;
-import java.util.Scanner;
-
 import static bg.tu_varna.sit.b4.f22621705.save.SaveFile.filePath;
 
-public class SaveInPBMFile {
+public class SaveAsPBM {
     private StringBuilder format=new StringBuilder();
 
     private int width;
@@ -46,8 +45,8 @@ public class SaveInPBMFile {
         this.height = height;
     }
 
-    public Menu saveFile(String fileName,StringBuilder stringBuilder) throws IOException {
-        File file=new File(filePath+fileName);
+    public Menu saveAsFile(String fileName,StringBuilder stringBuilder,String fileDirector) throws IOException {
+        File file=new File(fileDirector+fileName);
         FileOutputStream fileWriter=new FileOutputStream(file);
         OpenPBM openPBM=new OpenPBM();
         openPBM.readFile(fileName);
@@ -66,12 +65,8 @@ public class SaveInPBMFile {
             }
             dataLength++;
         }
-        System.out.println("Successfully saved "+fileName);
+        System.out.println("Successfully saved as"+fileName);
         fileWriter.close();
         return null;
-        }
     }
-
-
-
-
+}

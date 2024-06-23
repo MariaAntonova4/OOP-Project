@@ -30,16 +30,8 @@ public class DD implements AA {
                 new NegativePPM().turnPPMnegative(s);}
 
         }
+        session.addInHistory("negative");
         return null;
 
         }
-    @Override
-    public StringBuilder result() {
-        return result();
-    }
-
-    @Override
-    public void setResult(StringBuilder result) {
-        this.result();
-    }
         }

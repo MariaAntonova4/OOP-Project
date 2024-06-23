@@ -31,24 +31,16 @@ public class BB implements AA {
 
             if (string.equals(direction.getDirection())){
                 session.addInHistory("rotate left");
-                setResult(new LeftRotation().rotateLeft(s));
+                session.addNewData(s,new LeftRotation().rotateLeft(s));
+
             }
             else{
                 session.addInHistory("rotate right");
-                setResult(new RightRotation().rotateRight(s));
+                new RightRotation().rotateRight(s);
                 }
         }
         return null;  }
 
-    @Override
-    public StringBuilder result() {
-        return result();
-    }
-
-    @Override
-    public void setResult(StringBuilder result) {
-        this.result();
-    }
 
 }
 

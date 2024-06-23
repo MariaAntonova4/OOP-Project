@@ -22,7 +22,7 @@ public class Open implements Menu {
     @Override
     public Menu execute(Session session) throws IOException {
             String fileName;
-            System.out.println("Please enter the name of the file which you want to open: ");
+            //System.out.println("Please enter the name of the file which you want to open: ");
             Scanner scanner=new Scanner(System.in);
             fileName=scanner.nextLine();
 

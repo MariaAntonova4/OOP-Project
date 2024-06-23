@@ -4,6 +4,7 @@ import bg.tu_varna.sit.b4.f22621705.Menu;
 import bg.tu_varna.sit.b4.f22621705.load.AA;
 import bg.tu_varna.sit.b4.f22621705.load.EE;
 import bg.tu_varna.sit.b4.f22621705.load.Session;
+import bg.tu_varna.sit.b4.f22621705.load.rotate.FF;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -15,31 +16,48 @@ public class SaveInFile{
     private EE ee;
     private AA aa;
 
+    public AA getAa() {
+        return aa;
+    }
+
+    public void setAa(AA aa) {
+        this.aa = aa;
+    }
+
+    public EE getEe() {
+        return ee;
+    }
+
+    public void setEe(EE ee) {
+        this.ee = ee;
+    }
+
     public SaveInFile(Session session) {
         this.session = session;
     }
 
-    public Menu saveFile(String fileName) throws IOException {
+    public Menu saveFile(Session session) throws IOException {
         Iterator<String>iterator=session.getCommandHistory().iterator();
         while (iterator.hasNext()){
             String s= iterator.next();
-            ee.commands(s,session);
+            //setEe(new FF());
+            //ee.commands(s,session);
 
             Set<Map.Entry<Integer, Set<String>>> entries = session.getSession().entrySet();
 
             for(Map.Entry<Integer, Set<String>>entry:entries){
                 Iterator<String>iterator2=entry.getValue().iterator();
                 String str=iterator2.next();
-        if (s.contains(".pbm")){
+        if (str.contains(".pbm")){
             SaveInPBMFile saveInPBMFile=new SaveInPBMFile();
-            saveInPBMFile.saveFile(str,aa.result());
+            saveInPBMFile.saveFile(str,session.saveData(str));
         }
-        else if (s.contains(".pgm")) {
+        else if (str.contains(".pgm")) {
             SaveInPGMFile saveInPGMFile=new SaveInPGMFile();
-            saveInPGMFile.saveFile(str,aa.result());
-        } else if (s.contains(".ppm")) {
+           // saveInPGMFile.saveFile(str,aa.result());
+        } else if (str.contains(".ppm")) {
             SaveInPPMFile saveInPPMFile=new SaveInPPMFile();
-            saveInPPMFile.saveFile(str,aa.result());
+            //saveInPPMFile.saveFile(str,aa.result());
         }}}
         return null;
     }

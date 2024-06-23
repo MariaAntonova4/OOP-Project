@@ -35,13 +35,5 @@ public class RR implements AA {
         }
 
         return null;
-    } @Override
-    public StringBuilder result() {
-        return result();
-    }
-
-    @Override
-    public void setResult(StringBuilder result) {
-        this.result();
     }
 }

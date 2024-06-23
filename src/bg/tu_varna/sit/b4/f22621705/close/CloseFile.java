@@ -19,8 +19,7 @@ public class CloseFile {
                 String str=iterator2.next();
                 FileReader fileReader=new FileReader(str);
                 fileReader.close();
-                System.out.println("> close\n" +
-                        "Successfully closed "+str);
+                System.out.println("Successfully closed "+str);
     }
     }
 }
