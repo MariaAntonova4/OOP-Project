@@ -43,7 +43,7 @@ public abstract class MapClass {
             }
         }return null;}
 
-    public Menu commands(String string) throws IOException {
+    public Menu commands(String string) throws IOException, CommandException {
        // goToCommand(string);
         //session=new Session();
         setSession(session);
