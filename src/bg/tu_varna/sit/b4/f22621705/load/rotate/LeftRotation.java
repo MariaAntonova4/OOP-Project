@@ -12,8 +12,6 @@ import java.io.IOException;
 
 public class LeftRotation {
     private SaveInPBMFile saveInFile;
-    private ListOfImages listOfImages;
-    private Load load;
     private int newHeight;
     private int newWidth;
 
@@ -45,7 +43,7 @@ public class LeftRotation {
                     for (int j=(newWidth-1);j>0;j--){
                     newData.append(fileOpen.cleanFormat().charAt(j));
                     for (int i=1;i<newHeight;i++){
-                        newData.append(fileOpen.cleanFormat().charAt((j+(newWidth))*i));
+                        newData.append(fileOpen.cleanFormat().charAt((j+((newWidth)*i))));
                     }
                     newData.append("\n");
                 }

@@ -13,7 +13,7 @@ public class MonochromePPM implements Monochrome{
         Grayscale grayscale=new Grayscale();
         grayscale.turnGrayscale(fileName);
         MonochromePGM monochromePGM=new MonochromePGM();
-        monochromePGM.turnMonochrome(fileName);
-        return null;
+
+        return monochromePGM.turnMonochrome(fileName);
     }
 }
