@@ -10,6 +10,11 @@ import java.util.Set;
 public class YY implements AA {
     @Override
     public AA executeLoad(Session session) throws IOException {
+        Set<Map.Entry<String,StringBuilder>> entries = session.getNewData().entrySet();
+
+        for(Map.Entry<String,StringBuilder>entry:entries){
+            //entries.remove(entry.getValue());
+        }
         return null;
     }
 }

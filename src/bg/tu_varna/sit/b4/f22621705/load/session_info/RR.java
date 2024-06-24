@@ -21,12 +21,6 @@ public class RR implements AA {
         session.addInHistory("session info");
         System.out.println(session.getCommandHistory());
 
-        //Set<Map.Entry<Account,Float>> entries = bankAccounts.entrySet();
-       // for (Map.Entry<Account,Float> entry : entries) {
-        //    System.out.println("Account: " + entry.getKey()+"\nInterestValue: "+entry.getValue());
-        //}
-
-
         Set<Map.Entry<Integer, Set<String>>> entries = session.getSession().entrySet();
 
         for(Map.Entry<Integer, Set<String>>entry:entries){
