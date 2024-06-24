@@ -1,22 +1,21 @@
 package bg.tu_varna.sit.b4.f22621705.load.rotate;
 
-import bg.tu_varna.sit.b4.f22621705.load.AA;
+import bg.tu_varna.sit.b4.f22621705.load.LoadCommands;
 import bg.tu_varna.sit.b4.f22621705.load.Session;
-import bg.tu_varna.sit.b4.f22621705.load.grayscale.Grayscale;
 
 import java.io.IOException;
 import java.util.*;
 
-public class BB implements AA {
+public class ChooseDirection implements LoadCommands {
 
     private Direction direction;
 
-    public BB() {
+    public ChooseDirection() {
         this.direction = Direction.LEFT;
     }
 
     @Override
-    public AA executeLoad(Session session) throws IOException {
+    public LoadCommands executeLoad(Session session) throws IOException {
         Scanner scanner=new Scanner(System.in);
         String string;
         System.out.println("Please write the direction: ");
@@ -36,7 +35,7 @@ public class BB implements AA {
             }
             else{
                 session.addInHistory("rotate right");
-                new RightRotation().rotateRight(s);
+                session.addNewData(s,new RightRotation().rotateRight(s));
                 }
         }
         return null;  }

@@ -8,7 +8,7 @@ import java.io.IOException;
 public class NegativePBM {
     private StringBuilder negativePBM=new StringBuilder();
     private FileOpen fileOpen;
-    public void turnPBMnegative(String fileName) throws IOException {
+    public StringBuilder turnPBMnegative(String fileName) throws IOException {
         OpenPBM fileOpen=new OpenPBM();
         fileOpen.readFile(fileName);
         System.out.println("This is PBM!");
@@ -19,6 +19,6 @@ public class NegativePBM {
             else {negativePBM.append(1);}
         }
         System.out.println(negativePBM);
-
+        return negativePBM;
     }
 }

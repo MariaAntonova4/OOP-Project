@@ -1,10 +1,9 @@
 package bg.tu_varna.sit.b4.f22621705.save;
 
 import bg.tu_varna.sit.b4.f22621705.Menu;
-import bg.tu_varna.sit.b4.f22621705.load.AA;
-import bg.tu_varna.sit.b4.f22621705.load.EE;
+import bg.tu_varna.sit.b4.f22621705.load.LoadCommands;
+import bg.tu_varna.sit.b4.f22621705.load.ConnectWithLoadCommands;
 import bg.tu_varna.sit.b4.f22621705.load.Session;
-import bg.tu_varna.sit.b4.f22621705.load.rotate.FF;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -13,22 +12,22 @@ import java.util.Set;
 
 public class SaveInFile{
     private Session session;
-    private EE ee;
-    private AA aa;
+    private ConnectWithLoadCommands ee;
+    private LoadCommands aa;
 
-    public AA getAa() {
+    public LoadCommands getAa() {
         return aa;
     }
 
-    public void setAa(AA aa) {
+    public void setAa(LoadCommands aa) {
         this.aa = aa;
     }
 
-    public EE getEe() {
+    public ConnectWithLoadCommands getEe() {
         return ee;
     }
 
-    public void setEe(EE ee) {
+    public void setEe(ConnectWithLoadCommands ee) {
         this.ee = ee;
     }
 

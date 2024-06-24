@@ -8,7 +8,7 @@ import java.io.IOException;
 public class MonochromePGM implements Monochrome{
     private StringBuilder monoPGM=new StringBuilder();
     @Override
-    public void turnMonochrome(String fileName) throws IOException {
+    public StringBuilder turnMonochrome(String fileName) throws IOException {
         OpenPGM openPGM=new OpenPGM();
         int i=0;
         openPGM.readFile(fileName);
@@ -28,4 +28,5 @@ public class MonochromePGM implements Monochrome{
 
 
         }dataLength++;}
-        System.out.println(monoPGM);}}
+        System.out.println(monoPGM);
+    return monoPGM;}}

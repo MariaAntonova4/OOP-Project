@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class NegativePPM {
     private StringBuilder negativePPM=new StringBuilder();
-    public void turnPPMnegative(String fileName) throws IOException {
+    public StringBuilder turnPPMnegative(String fileName) throws IOException {
         int i;
         OpenPGM openPGM=new OpenPGM();
         openPGM.readFile(fileName);
@@ -23,5 +23,6 @@ public class NegativePPM {
             }
         }
         System.out.println(negativePPM);
+        return negativePPM;
     }
 }

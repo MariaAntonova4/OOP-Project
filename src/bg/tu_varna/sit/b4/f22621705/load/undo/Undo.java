@@ -1,15 +1,15 @@
 package bg.tu_varna.sit.b4.f22621705.load.undo;
 
-import bg.tu_varna.sit.b4.f22621705.load.AA;
+import bg.tu_varna.sit.b4.f22621705.load.LoadCommands;
 import bg.tu_varna.sit.b4.f22621705.load.Session;
 
 import java.io.IOException;
 import java.util.Map;
 import java.util.Set;
 
-public class YY implements AA {
+public class Undo implements LoadCommands {
     @Override
-    public AA executeLoad(Session session) throws IOException {
+    public LoadCommands executeLoad(Session session) throws IOException {
         Set<Map.Entry<String,StringBuilder>> entries = session.getNewData().entrySet();
 
         for(Map.Entry<String,StringBuilder>entry:entries){

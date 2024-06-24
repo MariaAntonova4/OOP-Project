@@ -12,8 +12,6 @@ import java.io.IOException;
 
 public class RightRotation {
     private SaveInPBMFile saveInFile;
-    private ListOfImages listOfImages;
-    private Load load;
     private int newHeight;
     private int newWidth;
 
@@ -26,7 +24,7 @@ public class RightRotation {
         return new OpenPPM();
     }
 
-    public void rotateRight(String fileName) throws IOException {
+    public StringBuilder rotateRight(String fileName) throws IOException {
 
         FileOpen fileOpen=checkOpening(fileName);
 
@@ -57,6 +55,6 @@ public class RightRotation {
         }
         newData.append("\n");
         System.out.println(newData);
-
+    return newData;
         }
     }

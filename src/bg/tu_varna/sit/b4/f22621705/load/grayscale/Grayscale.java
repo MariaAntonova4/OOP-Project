@@ -25,7 +25,7 @@ public class Grayscale {
         this.greenFlag = greenFlag;
     }
 
-    public void turnGrayscale(String fileName) throws IOException {
+    public StringBuilder turnGrayscale(String fileName) throws IOException {
         int i=0;
         double d=0;
         OpenPPM openPPM=new OpenPPM();
@@ -71,4 +71,5 @@ public class Grayscale {
 
         }
         System.out.println(grayscale);
+            return grayscale;
     }}

@@ -5,7 +5,7 @@ package bg.tu_varna.sit.b4.f22621705;
 import bg.tu_varna.sit.b4.f22621705.exit.Exit;
 import bg.tu_varna.sit.b4.f22621705.help.HelpCommand;
 
-public class M {
+public class CreateFiles {
     private MapClass e;
     public MapClass getE() {
         return e;
@@ -15,12 +15,10 @@ public class M {
         this.e = e;
     }
 
-    //private Map<String,A> mapABC=new HashMap<>();
     public void putInMap(){
-       // mapABC.put(string,aaa());
-        e.puttingInMap("open",new H().aaa());
-        e.puttingInMap("load",new F().aaa());
-        e.puttingInMap("save",new G().aaa());
+        e.puttingInMap("open",new ConnectWithOpen().aaa());
+        e.puttingInMap("load",new ConnectWithLoad().aaa());
+        e.puttingInMap("save",new ConnectWithSave().aaa());
         e.puttingInMap("help",new HelpCommand().aaa());
         e.puttingInMap("exit",new Exit().aaa());
         e.puttingInMap("saveas",new SaveAs().aaa());

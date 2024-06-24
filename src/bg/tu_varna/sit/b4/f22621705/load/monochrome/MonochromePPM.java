@@ -8,11 +8,12 @@ import java.io.IOException;
 public class MonochromePPM implements Monochrome{
 
     @Override
-    public void turnMonochrome(String fileName) throws IOException {
+    public StringBuilder turnMonochrome(String fileName) throws IOException {
         OpenPPM openPPM=new OpenPPM();
         Grayscale grayscale=new Grayscale();
         grayscale.turnGrayscale(fileName);
         MonochromePGM monochromePGM=new MonochromePGM();
         monochromePGM.turnMonochrome(fileName);
+        return null;
     }
 }

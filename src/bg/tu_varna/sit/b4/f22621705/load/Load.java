@@ -2,14 +2,14 @@ package bg.tu_varna.sit.b4.f22621705.load;
 
 import bg.tu_varna.sit.b4.f22621705.LoadCommand;
 import bg.tu_varna.sit.b4.f22621705.Menu;
-import bg.tu_varna.sit.b4.f22621705.load.add.ZZ;
-import bg.tu_varna.sit.b4.f22621705.load.grayscale.GG;
-import bg.tu_varna.sit.b4.f22621705.load.monochrome.KK;
-import bg.tu_varna.sit.b4.f22621705.load.negative.HH;
-import bg.tu_varna.sit.b4.f22621705.load.rotate.FF;
-import bg.tu_varna.sit.b4.f22621705.load.session_info.PP;
+import bg.tu_varna.sit.b4.f22621705.load.add.ConnectWithAdd;
+import bg.tu_varna.sit.b4.f22621705.load.grayscale.ConnectWithGrayscale;
+import bg.tu_varna.sit.b4.f22621705.load.monochrome.ConnectWithMonochrome;
+import bg.tu_varna.sit.b4.f22621705.load.negative.ConnectWithNegative;
+import bg.tu_varna.sit.b4.f22621705.load.rotate.RotationConnection;
+import bg.tu_varna.sit.b4.f22621705.load.session_info.SessionConnection;
 import bg.tu_varna.sit.b4.f22621705.load.switchh.LoadSwitch;
-import bg.tu_varna.sit.b4.f22621705.load.undo.XX;
+import bg.tu_varna.sit.b4.f22621705.load.undo.ConnectUndo;
 
 import java.io.IOException;
 import java.util.*;
@@ -33,29 +33,29 @@ public class Load {
         }else this.session = session;
     }
 
-    private EE ee;
+    private ConnectWithLoadCommands ee;
 
-    public EE getEe() {
+    public ConnectWithLoadCommands getEe() {
         return ee;
     }
 
-    public void setEe(EE ee) {
+    public void setEe(ConnectWithLoadCommands ee) {
         this.ee = ee;
     }
 
     public void loadMapping(){
-        getEe().putLoad("negative",new HH().aAA());
-        getEe().putLoad("rotate",new FF().aAA());
-        getEe().putLoad("grayscale",new GG().aAA());
-        getEe().putLoad("monochrome",new KK().aAA());
-        getEe().putLoad("undo",new XX().aAA());
-        getEe().putLoad("add",new ZZ().aAA());
-        getEe().putLoad("session_info",new PP().aAA());
+        getEe().putLoad("negative",new ConnectWithNegative().aAA());
+        getEe().putLoad("rotate",new RotationConnection().aAA());
+        getEe().putLoad("grayscale",new ConnectWithGrayscale().aAA());
+        getEe().putLoad("monochrome",new ConnectWithMonochrome().aAA());
+        getEe().putLoad("undo",new ConnectUndo().aAA());
+        getEe().putLoad("add",new ConnectWithAdd().aAA());
+        getEe().putLoad("session_info",new SessionConnection().aAA());
         getEe().putLoad("switch",new LoadSwitch().aAA());
     }
 
     public Menu exe(String fileName,Session session) throws IOException {
-        setEe(new FF());
+        setEe(new RotationConnection());
         loadMapping();
         //session=new Session();
         System.out.println("Session with ID:");

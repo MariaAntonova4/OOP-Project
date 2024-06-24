@@ -1,6 +1,6 @@
 package bg.tu_varna.sit.b4.f22621705.load.add;
 
-import bg.tu_varna.sit.b4.f22621705.load.AA;
+import bg.tu_varna.sit.b4.f22621705.load.LoadCommands;
 import bg.tu_varna.sit.b4.f22621705.load.ListOfImages;
 import bg.tu_varna.sit.b4.f22621705.load.Load;
 import bg.tu_varna.sit.b4.f22621705.load.Session;
@@ -8,7 +8,7 @@ import bg.tu_varna.sit.b4.f22621705.load.Session;
 import java.io.IOException;
 import java.util.*;
 
-public class SS implements AA {
+public class Add implements LoadCommands {
     private Load load;
 
     private Map<Integer, Set<String>> session=new HashMap<>();
@@ -38,7 +38,7 @@ public class SS implements AA {
             getSession().put(getMapNumber(),listOfImages.getImagesInSession());}
     }
     @Override
-    public AA executeLoad(Session session) throws IOException {
+    public LoadCommands executeLoad(Session session) throws IOException {
 
             listOfImages=new ListOfImages();
 

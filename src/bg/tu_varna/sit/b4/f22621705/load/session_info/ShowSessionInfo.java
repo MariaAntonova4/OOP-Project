@@ -1,20 +1,19 @@
 package bg.tu_varna.sit.b4.f22621705.load.session_info;
 
-import bg.tu_varna.sit.b4.f22621705.load.AA;
+import bg.tu_varna.sit.b4.f22621705.load.LoadCommands;
 import bg.tu_varna.sit.b4.f22621705.load.Load;
 import bg.tu_varna.sit.b4.f22621705.load.Session;
 
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-public class RR implements AA {
+public class ShowSessionInfo implements LoadCommands {
     private Load load;
 
     private StringBuilder sessionInfo=new StringBuilder();
     @Override
-    public AA executeLoad(Session session) throws IOException {
+    public LoadCommands executeLoad(Session session) throws IOException {
         //load=new Load();
         //Session session1=new Session();
 
