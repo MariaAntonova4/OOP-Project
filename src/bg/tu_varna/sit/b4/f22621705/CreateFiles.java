@@ -15,7 +15,7 @@ public class CreateFiles {
         this.e = e;
     }
 
-    public void putInMap(){
+    public void putInMap() throws CommandException {
         e.puttingInMap("open",new ConnectWithOpen().aaa());
         e.puttingInMap("load",new ConnectWithLoad().aaa());
         e.puttingInMap("save",new ConnectWithSave().aaa());

@@ -46,7 +46,6 @@ public class Add implements LoadCommands {
 
 
         String fileName;
-        System.out.println("Please enter the name of the file which you want to load: ");
         Scanner scanner=new Scanner(System.in);
         fileName=scanner.nextLine();
         for(Map.Entry<Integer, Set<String>>entry:entries){

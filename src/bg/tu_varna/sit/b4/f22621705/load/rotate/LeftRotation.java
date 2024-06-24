@@ -41,19 +41,36 @@ public class LeftRotation {
                 StringBuilder newData=new StringBuilder();
 
                 fileOpen.cleanFormat().reverse();
-
-                for (int j=(newWidth-1);j>0;j--){
+                if(newWidth>newHeight){
+                    for (int j=(newWidth-1);j>0;j--){
                     newData.append(fileOpen.cleanFormat().charAt(j));
                     for (int i=1;i<newHeight;i++){
                         newData.append(fileOpen.cleanFormat().charAt((j+(newWidth))*i));
                     }
                     newData.append("\n");
                 }
-                newData.append(fileOpen.cleanFormat().charAt(0));
-                for (int i=1;i<newHeight;i++){
-                    newData.append(fileOpen.cleanFormat().charAt((newWidth)*i));
+                    newData.append(fileOpen.cleanFormat().charAt(0));
+                    for (int i=1;i<newHeight;i++){
+                        newData.append(fileOpen.cleanFormat().charAt((newWidth)*i));
+                    }
+                    newData.append("\n");}
+                else{
+                    int k=newHeight*newWidth;
+                    int m=newWidth-1;
+                    for (int j=(k-newWidth);m>0;m--){
+                        newData.append(fileOpen.cleanFormat().charAt(j));
+                        for (int i=1;i<newHeight;i++){
+                            newData.append(fileOpen.cleanFormat().charAt((k-(newWidth))-newWidth*i));
+                        }
+                        newData.append("\n");
+                    }
+                    newData.append(fileOpen.cleanFormat().charAt(k-1));
+                    for (int i=1;i<newHeight;i++){
+                        newData.append(fileOpen.cleanFormat().charAt((k-1)-(newWidth*i)));
+                    }
+                    newData.append("\n");
                 }
-                newData.append("\n");
+
                 fileOpen.cleanFormat().reverse();
                 System.out.println(newData);return newData;}
 

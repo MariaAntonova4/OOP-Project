@@ -14,6 +14,9 @@ public abstract class MapClass {
         return session;
     }
 
+    public MapClass() throws CommandException{
+    }
+
     public void setSession(Session session) {
         if (session==null){
             this.session=new Session();
@@ -39,13 +42,11 @@ public abstract class MapClass {
             if (getMapABC().containsKey(string)) {
                 if (Objects.equals(element.getKey(), string)) {
                     return element.getValue();
-                }else {throw new CommandException("There is no such command");}
-            }
+                }
+            }else {throw new CommandException("There is no such command");}
         }return null;}
 
     public Menu commands(String string) throws IOException, CommandException {
-       // goToCommand(string);
-        //session=new Session();
         setSession(session);
         return goToCommand(string).execute(session);
     }

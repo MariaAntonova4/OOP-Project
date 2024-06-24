@@ -38,22 +38,39 @@ public class RightRotation {
         saveInFile.setWidth(newWidth);
         saveInFile.setFormat(str);
         StringBuilder newData=new StringBuilder();
-
-
-
-
-        for (int j=(newWidth-1);j>0;j--){
+        if(newWidth>newHeight){
+            for (int j=(newWidth-1);j>0;j--){
             newData.append(fileOpen.cleanFormat().charAt(j));
             for (int i=1;i<newHeight;i++){
                 newData.append(fileOpen.cleanFormat().charAt((j+(newWidth))*i));
             }
             newData.append("\n");
         }
-        newData.append(fileOpen.cleanFormat().charAt(0));
-        for (int i=1;i<newHeight;i++){
-            newData.append(fileOpen.cleanFormat().charAt((newWidth)*i));
+            newData.append(fileOpen.cleanFormat().charAt(0));
+            for (int i=1;i<newHeight;i++){
+                newData.append(fileOpen.cleanFormat().charAt((newWidth)*i));
+            }
+            newData.append("\n");
+            System.out.println(newData);}
+        else{
+            int k=newHeight*newWidth;
+            int m=newWidth-1;
+            for (int j=(newWidth-1);m>0;m--){
+                newData.append(fileOpen.cleanFormat().charAt(j));
+                for (int i=1;i<newHeight;i++){
+                    newData.append(fileOpen.cleanFormat().charAt(j+newWidth*i));
+                }
+                newData.append("\n");
+            }
+            newData.append(fileOpen.cleanFormat().charAt(0));
+            for (int i=1;i<newHeight;i++){
+                newData.append(fileOpen.cleanFormat().charAt(0+(newWidth*i)));
+            }
+            newData.append("\n");
+
         }
-        newData.append("\n");
+
+
         System.out.println(newData);
     return newData;
         }
