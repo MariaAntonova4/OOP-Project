@@ -33,13 +33,13 @@ public abstract class MapClass {
         mapABC.put(string,a);
     }
 
-    public Menu goToCommand(String string){
+    public Menu goToCommand(String string) throws CommandException {
 
         for (Map.Entry<String, Menu> element : mapABC.entrySet()) {
             if (getMapABC().containsKey(string)) {
                 if (Objects.equals(element.getKey(), string)) {
                     return element.getValue();
-                }
+                }else {throw new CommandException("There is no such command");}
             }
         }return null;}
 
