@@ -9,6 +9,13 @@ import java.util.Map;
 import java.util.Set;
 
 public class MonochromeFilter implements LoadCommands {
+    /**
+     *
+     * @param session the session with the files in it
+     * @return
+     * @throws IOException
+     * the function checks the format of the file and calls the needed function in new class
+     */
     @Override
     public LoadCommands executeLoad(Session session) throws IOException {
         Set<Map.Entry<Integer, Set<String>>> entries = session.getSession().entrySet();

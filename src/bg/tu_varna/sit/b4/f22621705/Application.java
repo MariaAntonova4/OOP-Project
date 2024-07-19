@@ -1,9 +1,7 @@
 package bg.tu_varna.sit.b4.f22621705;
 
-import bg.tu_varna.sit.b4.f22621705.load.rotate.LeftRotation;
-import bg.tu_varna.sit.b4.f22621705.open.OpenPBM;
-import bg.tu_varna.sit.b4.f22621705.open.OpenPGM;
-import bg.tu_varna.sit.b4.f22621705.open.OpenPPM;
+
+import bg.tu_varna.sit.b4.f22621705.menu.*;
 
 import java.io.*;
 import java.util.*;
@@ -15,9 +13,10 @@ public class Application {
             CreateFiles m=new CreateFiles();
             m.setE(mapClass);
             m.putInMap();
-            mapClass=new ConnectWithSave();
+            /*mapClass=new ConnectWithSave();
             m.setE(mapClass);
-            m.putInMap();
+            m.putInMap();*/
+
 
             try{
             Scanner scanner=new Scanner(System.in);

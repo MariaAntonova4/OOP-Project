@@ -1,11 +1,9 @@
 package bg.tu_varna.sit.b4.f22621705.open;
 
-import bg.tu_varna.sit.b4.f22621705.Menu;
-import bg.tu_varna.sit.b4.f22621705.load.Load;
+import bg.tu_varna.sit.b4.f22621705.menu.Menu;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.*;
 
 public class OpenPPM extends CheckFile implements FileOpen{
       private StringBuilder magicNumber=new StringBuilder();

@@ -1,6 +1,5 @@
-package bg.tu_varna.sit.b4.f22621705;
+package bg.tu_varna.sit.b4.f22621705.menu;
 
-//import bg.tu_varna.sit.b4.f22621705.additionalClasses.Map1;
 
 import bg.tu_varna.sit.b4.f22621705.exit.Exit;
 import bg.tu_varna.sit.b4.f22621705.help.HelpCommand;
@@ -15,6 +14,10 @@ public class CreateFiles {
         this.e = e;
     }
 
+    /**
+     *
+     * @throws CommandException if there is no such command
+     */
     public void putInMap() throws CommandException {
         e.puttingInMap("open",new ConnectWithOpen().aaa());
         e.puttingInMap("load",new ConnectWithLoad().aaa());

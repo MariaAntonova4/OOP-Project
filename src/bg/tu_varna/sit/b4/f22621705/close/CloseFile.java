@@ -11,6 +11,12 @@ import java.util.Map;
 import java.util.Set;
 
 public class CloseFile {
+    /**
+     *
+     * @param session session with the stored files
+     * @throws IOException
+     * The function closes the files
+     */
     public void closeFile(Session session) throws IOException {
             Set<Map.Entry<Integer, Set<String>>> entries = session.getSession().entrySet();
 

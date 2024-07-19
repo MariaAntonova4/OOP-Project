@@ -1,6 +1,6 @@
 package bg.tu_varna.sit.b4.f22621705.saveAs;
 
-import bg.tu_varna.sit.b4.f22621705.Menu;
+import bg.tu_varna.sit.b4.f22621705.menu.Menu;
 import bg.tu_varna.sit.b4.f22621705.open.OpenPGM;
 
 import java.io.File;

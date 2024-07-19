@@ -1,7 +1,6 @@
 package bg.tu_varna.sit.b4.f22621705.load;
 
-import bg.tu_varna.sit.b4.f22621705.LoadCommand;
-import bg.tu_varna.sit.b4.f22621705.Menu;
+import bg.tu_varna.sit.b4.f22621705.menu.Menu;
 import bg.tu_varna.sit.b4.f22621705.load.add.ConnectWithAdd;
 import bg.tu_varna.sit.b4.f22621705.load.grayscale.ConnectWithGrayscale;
 import bg.tu_varna.sit.b4.f22621705.load.monochrome.ConnectWithMonochrome;
@@ -29,7 +28,7 @@ public class Load {
 
     public void setSession(Session session) {
         if (session==null){
-            session=new Session();
+            this.session=new Session();
         }else this.session = session;
     }
 
@@ -43,6 +42,9 @@ public class Load {
         this.ee = ee;
     }
 
+    /**
+     * adds the commands of the load command
+     */
     public void loadMapping(){
         getEe().putLoad("negative",new ConnectWithNegative().aAA());
         getEe().putLoad("rotate",new RotationConnection().aAA());
@@ -54,10 +56,17 @@ public class Load {
         getEe().putLoad("switch",new LoadSwitch().aAA());
     }
 
+    /**
+     *
+     * @param fileName the name of the file
+     * @param session the session in witch the file is put
+     * @return
+     * @throws IOException
+     */
     public Menu exe(String fileName,Session session) throws IOException {
         setEe(new RotationConnection());
         loadMapping();
-        //session=new Session();
+
         System.out.println("Session with ID:");
         Scanner scannerNum=new Scanner(System.in);
         int mapNum= Integer.parseInt(scannerNum.next());
@@ -71,11 +80,10 @@ public class Load {
 
         while(ee.commandExist(commandName)){
         ee.commands(commandName,session);
-           // System.out.println("Please write the LOAD command you want to be executed: ");
+
             commandName=scanner.next();
         }
-        LoadCommand loadCommand=new LoadCommand();
-       // loadCommand.setSession(session);
+
       return null;
     }
 }

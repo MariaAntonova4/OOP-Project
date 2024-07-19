@@ -40,7 +40,7 @@ public class RightRoatatePPM {
             for (int j=(newWidth-1);j>0;j--){
                 newData.append(fileOpen.cleanFormat().charAt(j));
                 for (int i=1;i<newHeight*3;i++){
-                    newData.append(fileOpen.cleanFormat().charAt((j+(newWidth))*i));
+                    newData.append(fileOpen.cleanFormat().charAt((j+(newWidth*i))));
                 }
                 newData.append("\n");
             }

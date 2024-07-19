@@ -1,4 +1,4 @@
-package bg.tu_varna.sit.b4.f22621705;
+package bg.tu_varna.sit.b4.f22621705.menu;
 
 import bg.tu_varna.sit.b4.f22621705.load.Session;
 
@@ -36,6 +36,12 @@ public abstract class MapClass {
         mapABC.put(string,a);
     }
 
+    /**
+     *
+     * @param string command
+     * @return returns the command if there is any
+     * @throws CommandException
+     */
     public Menu goToCommand(String string) throws CommandException {
 
         for (Map.Entry<String, Menu> element : mapABC.entrySet()) {
@@ -46,6 +52,13 @@ public abstract class MapClass {
             }else {throw new CommandException("There is no such command");}
         }return null;}
 
+    /**
+     *
+     * @param string The command written
+     * @return returns the execute function of the wanted command
+     * @throws IOException
+     * @throws CommandException
+     */
     public Menu commands(String string) throws IOException, CommandException {
         setSession(session);
         return goToCommand(string).execute(session);

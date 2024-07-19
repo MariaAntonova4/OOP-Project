@@ -31,12 +31,13 @@ public class Add implements LoadCommands {
         this.mapNumber = mapNumber;
     }
 
-    public void addInSession(Map<Integer, Set<String>> session,String fileName) throws IOException {
-        listOfImages.addImageInSession(fileName);
-        listOfImages.setImagesInSession(listOfImages.getImagesInSession());
-        if (listOfImages.checkImageInSession(fileName)){
-            getSession().put(getMapNumber(),listOfImages.getImagesInSession());}
-    }
+    /**
+     *
+     * @param session the session with the needed files
+     * @return
+     * @throws IOException
+     * The function adds new file in the session's set for files
+     */
     @Override
     public LoadCommands executeLoad(Session session) throws IOException {
 

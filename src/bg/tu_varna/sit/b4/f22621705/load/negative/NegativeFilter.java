@@ -9,7 +9,13 @@ import java.util.Map;
 import java.util.Set;
 
 public class NegativeFilter implements LoadCommands {
-
+    /**
+     *
+     * @param session the session in which the files are put
+     * @return
+     * @throws IOException
+     * the function checks for the format of the file and calls the needed function in new class
+     */
     @Override
     public LoadCommands executeLoad(Session session) throws IOException {
         Set<Map.Entry<Integer, Set<String>>> entries = session.getSession().entrySet();

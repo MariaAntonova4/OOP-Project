@@ -1,6 +1,6 @@
 package bg.tu_varna.sit.b4.f22621705.save;
 
-import bg.tu_varna.sit.b4.f22621705.Menu;
+import bg.tu_varna.sit.b4.f22621705.menu.Menu;
 import bg.tu_varna.sit.b4.f22621705.load.LoadCommands;
 import bg.tu_varna.sit.b4.f22621705.load.ConnectWithLoadCommands;
 import bg.tu_varna.sit.b4.f22621705.load.Session;
@@ -35,12 +35,17 @@ public class SaveInFile{
         this.session = session;
     }
 
+    /**
+     *
+     * @param session the session with the files
+     * @return
+     * @throws IOException
+     * The function checks the format of the file and calls save method for the file format
+     */
     public Menu saveFile(Session session) throws IOException {
         Iterator<String>iterator=session.getCommandHistory().iterator();
         while (iterator.hasNext()){
             String s= iterator.next();
-            //setEe(new FF());
-            //ee.commands(s,session);
 
             Set<Map.Entry<Integer, Set<String>>> entries = session.getSession().entrySet();
 
@@ -53,10 +58,10 @@ public class SaveInFile{
         }
         else if (str.contains(".pgm")) {
             SaveInPGMFile saveInPGMFile=new SaveInPGMFile();
-           // saveInPGMFile.saveFile(str,aa.result());
+            saveInPGMFile.saveFile(str,session.saveData(str));
         } else if (str.contains(".ppm")) {
             SaveInPPMFile saveInPPMFile=new SaveInPPMFile();
-            //saveInPPMFile.saveFile(str,aa.result());
+            saveInPPMFile.saveFile(str,session.saveData(str));
         }}}
         return null;
     }

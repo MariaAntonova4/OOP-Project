@@ -12,6 +12,12 @@ public class Session {
         if (newData.isEmpty()){setNewData(new HashMap<>());}
         return newData;
     }
+
+    /**
+     *
+     * @param fileName the name of the file
+     * @return the modified data
+     */
     public StringBuilder saveData(String fileName){
         Set<Map.Entry<String, StringBuilder>>entries = getNewData().entrySet();
 
@@ -33,6 +39,10 @@ public class Session {
         return commandHistory;
     }
 
+    /**
+     *
+     * @param commandName the name of the command which was executed
+     */
     public void addInHistory(String commandName){
         commandHistory.add(commandName);
     }
@@ -55,11 +65,23 @@ public class Session {
             setSessionNumber(entry.getKey());
         }
     }
+
+    /**
+     *
+     * @param sessionNumber the unique number which will be written in the map of sessions
+     * @param fileName the file name which will be written in the map of sessions
+     */
         public void createSession(int sessionNumber,String fileName){
         listOfImages=new ListOfImages();
         listOfImages.addImageInSession(fileName);
             session.put(sessionNumber,listOfImages.getImagesInSession());
         }
+
+    /**
+     *
+     * @param fileName the name of the file which was modified
+     * @param stringBuilder the new data which was modified
+     */
     public void addNewData(String fileName,StringBuilder stringBuilder){
         getNewData();
 

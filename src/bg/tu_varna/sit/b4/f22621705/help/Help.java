@@ -1,12 +1,16 @@
 package bg.tu_varna.sit.b4.f22621705.help;
 
-import bg.tu_varna.sit.b4.f22621705.Menu;
+import bg.tu_varna.sit.b4.f22621705.menu.Menu;
 import bg.tu_varna.sit.b4.f22621705.load.Session;
 
 import java.io.IOException;
 
 public class Help implements Menu {
     private StringBuilder stringBuilder=new StringBuilder();
+
+    /**
+     * The function stores the information about the menu in StringBuilder
+     */
     public void addHelp(){
         stringBuilder.append("> help\n" +
                 "The following commands are supported:\n" +
@@ -18,6 +22,13 @@ public class Help implements Menu {
                 "exit exists the program\n");
     }
 
+    /**
+     *
+     * @param session the session with all the files
+     * @return
+     * @throws IOException
+     * The function calls the function addHelp which adds the information in StringBuilder and prints it
+     */
     @Override
     public Menu execute(Session session) throws IOException {
         addHelp();

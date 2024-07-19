@@ -13,6 +13,11 @@ public abstract class ConnectWithLoadCommands {
         loaaad.put(command,aa);
     }
 
+    /**
+     *
+     * @param commandName the name of the command
+     * @return true if the command exists and false if it doesn't
+     */
     public boolean commandExist(String commandName){
         for (Map.Entry<String, LoadCommands> element : loaaad.entrySet()) {
             if (loaaad.containsKey(commandName)) {
@@ -23,6 +28,12 @@ public abstract class ConnectWithLoadCommands {
         }
         return false;
     }
+
+    /**
+     *
+     * @param string the name of the command
+     * @return returns the function which has to be executed of the command
+     */
     public LoadCommands goToCommand(String string){
 
         for (Map.Entry<String, LoadCommands> element : loaaad.entrySet()) {

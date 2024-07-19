@@ -1,7 +1,7 @@
 package bg.tu_varna.sit.b4.f22621705.open;
 
 import java.io.*;
-import bg.tu_varna.sit.b4.f22621705.Menu;
+import bg.tu_varna.sit.b4.f22621705.menu.Menu;
 
 public class CheckFile {
     private File file;

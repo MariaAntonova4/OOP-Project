@@ -1,11 +1,7 @@
 package bg.tu_varna.sit.b4.f22621705.saveAs;
-import bg.tu_varna.sit.b4.f22621705.Menu;
+import bg.tu_varna.sit.b4.f22621705.menu.Menu;
 
 import bg.tu_varna.sit.b4.f22621705.load.Session;
-
-import bg.tu_varna.sit.b4.f22621705.save.SaveInPBMFile;
-import bg.tu_varna.sit.b4.f22621705.save.SaveInPGMFile;
-import bg.tu_varna.sit.b4.f22621705.save.SaveInPPMFile;
 
 import java.io.IOException;
 import java.util.Iterator;

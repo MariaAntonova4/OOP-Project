@@ -1,6 +1,6 @@
 package bg.tu_varna.sit.b4.f22621705.open;
 
-import bg.tu_varna.sit.b4.f22621705.Menu;
+import bg.tu_varna.sit.b4.f22621705.menu.Menu;
 
 import java.io.*;
 

@@ -9,13 +9,15 @@ import java.util.Map;
 import java.util.Set;
 
 public class ShowSessionInfo implements LoadCommands {
-    private Load load;
-
-    private StringBuilder sessionInfo=new StringBuilder();
+    /**
+     *
+     * @param session gets the session in which are the files
+     * @return
+     * @throws IOException
+     */
     @Override
     public LoadCommands executeLoad(Session session) throws IOException {
-        //load=new Load();
-        //Session session1=new Session();
+
 
         session.addInHistory("session info");
         System.out.println(session.getCommandHistory());

@@ -1,8 +1,7 @@
-package bg.tu_varna.sit.b4.f22621705;
+package bg.tu_varna.sit.b4.f22621705.menu;
 
 import bg.tu_varna.sit.b4.f22621705.load.Session;
 import bg.tu_varna.sit.b4.f22621705.open.CheckFile;
-import bg.tu_varna.sit.b4.f22621705.open.FileOpen;
 
 import java.io.IOException;
 import java.util.Scanner;

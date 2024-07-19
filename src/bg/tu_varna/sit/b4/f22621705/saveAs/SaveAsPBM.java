@@ -1,10 +1,8 @@
 package bg.tu_varna.sit.b4.f22621705.saveAs;
 
 import java.io.*;
-import bg.tu_varna.sit.b4.f22621705.Menu;
+import bg.tu_varna.sit.b4.f22621705.menu.Menu;
 import bg.tu_varna.sit.b4.f22621705.open.OpenPBM;
-
-import static bg.tu_varna.sit.b4.f22621705.save.SaveFile.filePath;
 
 public class SaveAsPBM {
     private StringBuilder format=new StringBuilder();

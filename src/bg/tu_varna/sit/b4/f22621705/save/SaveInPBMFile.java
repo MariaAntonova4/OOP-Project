@@ -1,9 +1,8 @@
 package bg.tu_varna.sit.b4.f22621705.save;
-import bg.tu_varna.sit.b4.f22621705.Menu;
+import bg.tu_varna.sit.b4.f22621705.menu.Menu;
 import bg.tu_varna.sit.b4.f22621705.open.OpenPBM;
 
 import java.io.*;
-import java.util.Scanner;
 
 import static bg.tu_varna.sit.b4.f22621705.save.SaveFile.filePath;
 
