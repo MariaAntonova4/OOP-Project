@@ -5,7 +5,7 @@ import java.util.List;
 public interface NetpbmFiles {
     public String getMagicNumber();
 
-    public void setMagicNumber(String magicNumber);
+    public void setMagicNumber(char magicNumber);
     public int getMaximumValue();
 
     public void setMaximumValue(int maximumValue);

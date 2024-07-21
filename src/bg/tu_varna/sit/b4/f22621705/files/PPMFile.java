@@ -3,26 +3,26 @@ package bg.tu_varna.sit.b4.f22621705.files;
 import java.util.*;
 
 public class PPMFile implements NetpbmFiles{
-    private String magicNumber;
+    private String magicNumber="P";
     private int maximumValue;
     private int width;
     private int height;
-    private List<Pixel> pixels;
-
+    private List<Pixel> pixels=new ArrayList<>();
+/*
     public PPMFile(String magicNumber, int maximumValue, int width, int height, List<Pixel> pixels) {
         this.magicNumber = magicNumber;
         this.maximumValue = maximumValue;
         this.width = width;
         this.height = height;
         this.pixels = pixels;
-    }
+    }*/
 
     public String getMagicNumber() {
         return magicNumber;
     }
 
-    public void setMagicNumber(String magicNumber) {
-        this.magicNumber = magicNumber;
+    public void setMagicNumber(char magicNumber1) {
+        this.magicNumber = magicNumber+magicNumber1;
     }
 
     public int getMaximumValue() {
@@ -50,6 +50,14 @@ public class PPMFile implements NetpbmFiles{
     }
 
     public List<Pixel> getPixels() {
+        if (!this.pixels.isEmpty()){
+            Iterator<Pixel>iterator=this.pixels.iterator();
+            while (iterator.hasNext()){
+                Pixel i=(Pixel) iterator.next();
+
+                System.out.println(i.getNumber());
+            }
+        }
         return pixels;
     }
 

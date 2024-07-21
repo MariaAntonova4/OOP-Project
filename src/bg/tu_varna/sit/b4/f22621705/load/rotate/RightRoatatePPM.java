@@ -15,7 +15,7 @@ public class RightRoatatePPM {
 
     public FileOpen checkOpening(String fileName){
         if (fileName.contains(".pbm")){
-            return new OpenPBM();
+            return null;//new OpenPBM()
         } else if (fileName.contains(".pgm")) {
             return new OpenPGM();
         }

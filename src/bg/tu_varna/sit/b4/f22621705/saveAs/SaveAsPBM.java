@@ -48,12 +48,12 @@ public class SaveAsPBM {
         FileOutputStream fileWriter=new FileOutputStream(file);
         OpenPBM openPBM=new OpenPBM();
         openPBM.readFile(fileName);
-        fileWriter.write(openPBM.getMagicNumber().charAt(0));
+        /*fileWriter.write(openPBM.getMagicNumber().charAt(0));
         fileWriter.write(openPBM.getMagicNumber().charAt(1));
         fileWriter.write('\n');
         fileWriter.write(openPBM.getHeight());
         fileWriter.write(" ".getBytes());
-        fileWriter.write(openPBM.getWidth());
+        fileWriter.write(openPBM.getWidth());*/
         fileWriter.write('\n');
         int dataLength=1;
         while(dataLength<stringBuilder.length()){
