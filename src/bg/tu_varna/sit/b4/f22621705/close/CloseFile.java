@@ -18,7 +18,7 @@ public class CloseFile {
      * The function closes the files
      */
     public void closeFile(Session session) throws IOException {
-            Set<Map.Entry<Integer, Set<String>>> entries = session.getSession().entrySet();
+           /* Set<Map.Entry<Integer, Set<String>>> entries = session.getSession().entrySet();
 
             for(Map.Entry<Integer, Set<String>>entry:entries){
                 Iterator<String>iterator2=entry.getValue().iterator();
@@ -26,6 +26,6 @@ public class CloseFile {
                 FileReader fileReader=new FileReader(str);
                 fileReader.close();
                 System.out.println("Successfully closed "+str);
-    }
+    }*/
     }
 }

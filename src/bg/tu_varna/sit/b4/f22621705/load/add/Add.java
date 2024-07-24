@@ -42,7 +42,7 @@ public class Add implements LoadCommands {
     public LoadCommands executeLoad(Session session) throws IOException {
 
             listOfImages=new ListOfImages();
-
+/*
         Set<Map.Entry<Integer, Set<String>>> entries = session.getSession().entrySet();
 
 
@@ -54,7 +54,7 @@ public class Add implements LoadCommands {
             listOfImages.setImagesInSession(entry.getValue());
             listOfImages.addImageInSession(fileName);
 
-        }session.addInHistory("add");
+        }session.addInHistory("add");*/
         return null;}
 
 }

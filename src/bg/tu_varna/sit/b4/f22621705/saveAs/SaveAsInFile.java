@@ -1,4 +1,5 @@
 package bg.tu_varna.sit.b4.f22621705.saveAs;
+import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles;
 import bg.tu_varna.sit.b4.f22621705.menu.Menu;
 
 import bg.tu_varna.sit.b4.f22621705.load.Session;
@@ -13,12 +14,12 @@ public class SaveAsInFile {
         private Session session;
 
 
-        public SaveAsInFile(Session session) {
+       /* public SaveAsInFile(Session session) {
             this.session = session;
-        }
+        }*/
 
-        public Menu saveAsFile(Session session,String fileDirector) throws IOException {
-            Iterator<String>iterator=session.getCommandHistory().iterator();
+        public Menu saveAsFile(String fileDirector) throws IOException {
+        /*    Iterator<String>iterator=session.getCommandHistory().iterator();
             while (iterator.hasNext()){
                 String s= iterator.next();
                 //setEe(new FF());
@@ -39,7 +40,7 @@ public class SaveAsInFile {
                     } else if (str.contains(".ppm")) {
                         SaveAsPPM savePPMFile=new SaveAsPPM();
                         savePPMFile.saveAsFile(str,session.saveData(str),fileDirector);
-                    }}}
+                    }}}*/
             return null;
         }
 

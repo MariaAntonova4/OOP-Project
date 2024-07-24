@@ -19,7 +19,7 @@ public class GrayscaleFilter implements LoadCommands {
     @Override
     public LoadCommands executeLoad(Session session) throws IOException {
 
-
+/*
         Set<Map.Entry<Integer, Set<String>>> entries = session.getSession().entrySet();
 
         for(Map.Entry<Integer, Set<String>>entry:entries){
@@ -30,7 +30,7 @@ public class GrayscaleFilter implements LoadCommands {
                     session.addNewData(s,new Grayscale().turnGrayscale(s));
 
                 }
-            }
+            }*/
         return null;}
     }
 

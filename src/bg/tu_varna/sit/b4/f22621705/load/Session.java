@@ -1,9 +1,11 @@
 package bg.tu_varna.sit.b4.f22621705.load;
 
+import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles;
+
 import java.util.*;
 
 public class Session {
-    private Map<Integer, Set<String>>session=new HashMap<>();
+    private Map<Integer, Set<NetpbmFiles>>session=new HashMap<>();
     private Map<String,StringBuilder>newData=new HashMap<>();
     private ListOfImages listOfImages;
     private int sessionNumber;
@@ -51,27 +53,27 @@ public class Session {
         this.sessionNumber = sessionNumber;
     }
 
-    public Map<Integer, Set<String>> getSession() {
+    public Map<Integer, Set<NetpbmFiles>> getSession() {
         return session;
     }
 
-    public void setSession(Map<Integer, Set<String>> session) {
+    public void setSession(Map<Integer, Set<NetpbmFiles>> session) {
         this.session = session;
     }
-    public void getSessionNumber(){
+   /* public void getSessionNumber(){
         Set<Map.Entry<Integer, Set<String>>> entries = session.entrySet();
 
         for(Map.Entry<Integer, Set<String>>entry:entries){
             setSessionNumber(entry.getKey());
         }
-    }
+    }*/
 
     /**
      *
      * @param sessionNumber the unique number which will be written in the map of sessions
      * @param fileName the file name which will be written in the map of sessions
      */
-        public void createSession(int sessionNumber,String fileName){
+        public void createSession(int sessionNumber, NetpbmFiles fileName){
         listOfImages=new ListOfImages();
         listOfImages.addImageInSession(fileName);
             session.put(sessionNumber,listOfImages.getImagesInSession());

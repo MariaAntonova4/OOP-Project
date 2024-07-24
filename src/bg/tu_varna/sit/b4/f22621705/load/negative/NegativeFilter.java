@@ -1,5 +1,6 @@
 package bg.tu_varna.sit.b4.f22621705.load.negative;
 
+import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles;
 import bg.tu_varna.sit.b4.f22621705.load.LoadCommands;
 import bg.tu_varna.sit.b4.f22621705.load.Session;
 
@@ -18,21 +19,22 @@ public class NegativeFilter implements LoadCommands {
      */
     @Override
     public LoadCommands executeLoad(Session session) throws IOException {
-        Set<Map.Entry<Integer, Set<String>>> entries = session.getSession().entrySet();
+       Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = session.getSession().entrySet();
 
 
-        for(Map.Entry<Integer, Set<String>>entry:entries){
-            Iterator<String> iterator=entry.getValue().iterator();
+        for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
+            Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
 
-            String s=iterator.next();
-            if (s.contains(".pbm")){
-                session.addNewData(s, new NegativePBM().turnPBMnegative(s));
+            NetpbmFiles s=iterator.next();
+            if (s.getFileName().contains(".pbm")){
+                new NegativePBM().turnPBMnegative(s);
+                //session.addNewData(s, new NegativePBM().turnPBMnegative(s));
                }
-            else if(s.contains(".pgm")){
-                session.addNewData(s,new NegativePGM().turnPGMnegative(s));
+            else if(s.getFileName().contains(".pgm")){
+               // session.addNewData(s,new NegativePGM().turnPGMnegative(s));
                 }
-            else if (s.contains(".ppm")) {
-                session.addNewData(s,new NegativePPM().turnPPMnegative(s));
+            else if (s.getFileName().contains(".ppm")) {
+                //session.addNewData(s,new NegativePPM().turnPPMnegative(s));
                 }
 
         }

@@ -79,7 +79,7 @@ public class OpenPPM extends CheckFile implements FileOpen{
       }
       @Override
       public Menu readFile(String fileName) throws IOException {
-         int numbers;
+        /* int numbers;
          char nums;
          checkIfFileExists(fileName);
          if (isFlag()==true){
@@ -122,7 +122,7 @@ public class OpenPPM extends CheckFile implements FileOpen{
             System.out.println(getData());
 
          }
-
+*/
          return null;
       }
    }

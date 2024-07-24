@@ -78,7 +78,7 @@ public class OpenPGM extends CheckFile implements FileOpen{
     }
     @Override
     public Menu readFile(String fileName) throws IOException {
-        int numbers;
+        /*int numbers;
         char nums;
         checkIfFileExists(fileName);
         if (isFlag()==true){
@@ -121,7 +121,7 @@ public class OpenPGM extends CheckFile implements FileOpen{
                 System.out.println(getData());
 
             }
-
+*/
         return null;
     }
 }

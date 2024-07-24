@@ -1,5 +1,6 @@
 package bg.tu_varna.sit.b4.f22621705.load.monochrome;
 
+import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles;
 import bg.tu_varna.sit.b4.f22621705.load.LoadCommands;
 import bg.tu_varna.sit.b4.f22621705.load.Session;
 
@@ -18,18 +19,18 @@ public class MonochromeFilter implements LoadCommands {
      */
     @Override
     public LoadCommands executeLoad(Session session) throws IOException {
-        Set<Map.Entry<Integer, Set<String>>> entries = session.getSession().entrySet();
+        Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = session.getSession().entrySet();
 
 
-        for(Map.Entry<Integer, Set<String>>entry:entries){
-            Iterator<String> iterator=entry.getValue().iterator();
+        for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
+            Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
 
-            String s=iterator.next();
-            if(s.contains(".pgm")){
-                session.addNewData(s,new MonochromePGM().turnMonochrome(s));
+            NetpbmFiles s=iterator.next();
+            if(s.getFileName().contains(".pgm")){
+                session.addNewData("",new MonochromePGM().turnMonochrome(""));
             }
-            else if (s.contains(".ppm")) {
-                session.addNewData(s,new MonochromePPM().turnMonochrome(s));
+            else if (s.getFileName().contains(".ppm")) {
+                session.addNewData("",new MonochromePPM().turnMonochrome(""));
             }
 
         }

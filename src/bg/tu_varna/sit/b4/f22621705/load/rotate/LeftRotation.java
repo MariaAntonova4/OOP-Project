@@ -1,9 +1,6 @@
 package bg.tu_varna.sit.b4.f22621705.load.rotate;
 
-import bg.tu_varna.sit.b4.f22621705.load.ListOfImages;
-import bg.tu_varna.sit.b4.f22621705.load.Load;
 import bg.tu_varna.sit.b4.f22621705.open.FileOpen;
-import bg.tu_varna.sit.b4.f22621705.open.OpenPBM;
 import bg.tu_varna.sit.b4.f22621705.open.OpenPGM;
 import bg.tu_varna.sit.b4.f22621705.open.OpenPPM;
 import bg.tu_varna.sit.b4.f22621705.save.SaveInPBMFile;

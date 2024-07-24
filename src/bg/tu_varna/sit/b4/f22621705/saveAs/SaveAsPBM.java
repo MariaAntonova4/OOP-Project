@@ -2,7 +2,7 @@ package bg.tu_varna.sit.b4.f22621705.saveAs;
 
 import java.io.*;
 import bg.tu_varna.sit.b4.f22621705.menu.Menu;
-import bg.tu_varna.sit.b4.f22621705.open.OpenPBM;
+import bg.tu_varna.sit.b4.f22621705.open.OpenedFiles;
 
 public class SaveAsPBM {
     private StringBuilder format=new StringBuilder();
@@ -46,8 +46,8 @@ public class SaveAsPBM {
     public Menu saveAsFile(String fileName,StringBuilder stringBuilder,String fileDirector) throws IOException {
         File file=new File(fileDirector+fileName);
         FileOutputStream fileWriter=new FileOutputStream(file);
-        OpenPBM openPBM=new OpenPBM();
-        openPBM.readFile(fileName);
+        OpenedFiles openPBM=new OpenedFiles();
+        //openPBM.readFile(fileName);
         /*fileWriter.write(openPBM.getMagicNumber().charAt(0));
         fileWriter.write(openPBM.getMagicNumber().charAt(1));
         fileWriter.write('\n');

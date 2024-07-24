@@ -25,7 +25,7 @@ public class ChooseDirection implements LoadCommands {
      */
     @Override
     public LoadCommands executeLoad(Session session) throws IOException {
-        Scanner scanner=new Scanner(System.in);
+       /* Scanner scanner=new Scanner(System.in);
         String string;
         System.out.println("Please write the direction: ");
         string=scanner.next();
@@ -59,7 +59,7 @@ public class ChooseDirection implements LoadCommands {
                 }
             }
 
-        }
+        }*/
         return null;  }
 
 

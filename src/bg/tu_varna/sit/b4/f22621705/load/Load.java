@@ -9,6 +9,7 @@ import bg.tu_varna.sit.b4.f22621705.load.rotate.RotationConnection;
 import bg.tu_varna.sit.b4.f22621705.load.session_info.SessionConnection;
 import bg.tu_varna.sit.b4.f22621705.load.switchh.LoadSwitch;
 import bg.tu_varna.sit.b4.f22621705.load.undo.ConnectUndo;
+import bg.tu_varna.sit.b4.f22621705.open.OpenedFiles;
 
 import java.io.IOException;
 import java.util.*;
@@ -63,14 +64,14 @@ public class Load {
      * @return
      * @throws IOException
      */
-    public Menu exe(String fileName,Session session) throws IOException {
+    public Menu exe(String fileName, OpenedFiles openedFiles) throws IOException {
         setEe(new RotationConnection());
         loadMapping();
-
+        setSession(session);
         System.out.println("Session with ID:");
         Scanner scannerNum=new Scanner(System.in);
         int mapNum= Integer.parseInt(scannerNum.next());
-        session.createSession(mapNum,fileName);
+        session.createSession(mapNum,openedFiles.NamesOfOpenedFiles(fileName));
         System.out.println("Image "+fileName+" added");
         Scanner scanner=new Scanner(System.in);
         String commandName;

@@ -7,17 +7,8 @@ import bg.tu_varna.sit.b4.f22621705.menu.Menu;
 
 public class CheckFile {
     private File file;
-    private NetpbmFiles newFile;
+    private OpenedFiles openedFiles;
     private Pixel pixel;
-    private boolean flag;
-
-    public boolean isFlag() {
-        return flag;
-    }
-
-    public void setFlag(boolean flag) {
-        this.flag = flag;
-    }
 
     public void setFile(String fileName) {
         this.file = new File("C:\\Users\\Asus\\Desktop\\OOP-PROJECT\\OOP-Project\\Files\\"+fileName);
@@ -27,41 +18,42 @@ public class CheckFile {
         return file;
     }
 
-        public Menu checkIfFileExists(String fileName) throws IOException {
+        public Menu checkIfFileExists(OpenedFiles openedFiles1,NetpbmFiles netpbmFiles,String fileName) throws IOException {
 
             setFile(fileName);
             if (file.exists())
             {
                // System.out.println("> open"+file.getPath());
                 if(fileName.contains(".pbm")){
-                    newFile=new PBMFile();
+                    netpbmFiles=new PBMFile();
                 } else if (fileName.contains(".pgm")) {
-                    newFile=new PGMFile();
+                    netpbmFiles=new PGMFile();
                 } else if (fileName.contains(".ppm")) {
-                    newFile=new PPMFile();
+                    netpbmFiles=new PPMFile();
                 }else {
                     System.out.println("There is NOT a created file");
                 }
+                netpbmFiles.setFileName(fileName);
                 FileReader reader=new FileReader(getFile());
                 int numbers=(char)reader.read();
                 numbers=Character.getNumericValue(numbers);
-                newFile.setMagicNumber((char) reader.read());
+                netpbmFiles.setMagicNumber((char) reader.read());
                 reader.read();
                 reader.read();
 
                 numbers=(char)reader.read();
                 numbers=Character.getNumericValue(numbers);
-                newFile.setWidth(numbers);
+                netpbmFiles.setWidth(numbers);
                 reader.read();
                 numbers=(char)reader.read();
                 numbers=Character.getNumericValue(numbers);
-                newFile.setHeight(numbers);
+                netpbmFiles.setHeight(numbers);
                 reader.read();
                 reader.read();
                 if (!fileName.contains(".pbm")){
                 numbers=(char)reader.read();
                 numbers=Character.getNumericValue(numbers);
-                newFile.setMaximumValue(numbers);
+                netpbmFiles.setMaximumValue(numbers);
             }
                 while (numbers!=65535){
                     numbers=(char)reader.read();
@@ -69,14 +61,14 @@ public class CheckFile {
                     if (numbers>47&&numbers<58){
                     numbers=Character.getNumericValue(numbers);
                     pixel=new Pixel(numbers);
-                    newFile.setData(pixel);}
+                    netpbmFiles.setData(pixel);}
                     //reader.read();
                 }
-                System.out.println(newFile.getPixels());
-                System.out.println(newFile.getMaximumValue());;
+                System.out.println(netpbmFiles.getPixels());
+                System.out.println(netpbmFiles.getMaximumValue());;
 
                 System.out.println("Successfully opened "+fileName);
-                setFlag(true);
+
             }
             else{
                 System.out.println("There is no such file");
@@ -84,6 +76,7 @@ public class CheckFile {
                 FileWriter fileWriter=new FileWriter(getFile());
                 fileWriter.close();
             }
+            openedFiles1.opened(netpbmFiles);
             return null;
         }
 }

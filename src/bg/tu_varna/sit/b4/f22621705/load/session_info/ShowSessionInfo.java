@@ -18,7 +18,7 @@ public class ShowSessionInfo implements LoadCommands {
     @Override
     public LoadCommands executeLoad(Session session) throws IOException {
 
-
+/*
         session.addInHistory("session info");
         System.out.println(session.getCommandHistory());
 
@@ -28,7 +28,7 @@ public class ShowSessionInfo implements LoadCommands {
             System.out.println(entry.getKey());
             System.out.println(entry.getValue());
         }
-
+*/
         return null;
     }
 }

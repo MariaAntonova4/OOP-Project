@@ -3,6 +3,9 @@ package bg.tu_varna.sit.b4.f22621705.files;
 import java.util.List;
 
 public interface NetpbmFiles {
+    public String getFileName();
+    public void setFileName(String fileName);
+
     public String getMagicNumber();
 
     public void setMagicNumber(char magicNumber);

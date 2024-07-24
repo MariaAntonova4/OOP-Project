@@ -1,6 +1,8 @@
 package bg.tu_varna.sit.b4.f22621705.menu;
 
+import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles;
 import bg.tu_varna.sit.b4.f22621705.load.Session;
+import bg.tu_varna.sit.b4.f22621705.open.OpenedFiles;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -8,19 +10,19 @@ import java.util.Map;
 import java.util.Objects;
 
 public abstract class MapClass {
-    private Session session;
+    private OpenedFiles openedFiles;
 
-    public Session getSession() {
+    /*public Session getSession() {
         return session;
-    }
+    }*/
 
     public MapClass() throws CommandException{
     }
 
-    public void setSession(Session session) {
-        if (session==null){
-            this.session=new Session();
-        }else this.session = session;
+    public void setSession(OpenedFiles openedFiles) {
+        if (openedFiles==null){
+            this.openedFiles=new OpenedFiles();
+        }else this.openedFiles = openedFiles;
     }
     private Map<String, Menu> mapABC=new HashMap<>();
 
@@ -60,12 +62,12 @@ public abstract class MapClass {
      * @throws CommandException
      */
     public Menu commands(String string) throws IOException, CommandException {
-        setSession(session);
-        return goToCommand(string).execute(session);
+        setSession(openedFiles);
+        return goToCommand(string).execute(openedFiles);
     }
     public void aa() throws IOException {
         Menu a=aaa();
-        a.execute(session);
+        a.execute(openedFiles);
     }
     public abstract Menu aaa ();
 }

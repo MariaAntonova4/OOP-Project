@@ -3,12 +3,23 @@ package bg.tu_varna.sit.b4.f22621705.files;
 import java.util.*;
 
 public class PGMFile implements NetpbmFiles{
+    private String fileName;
     private String magicNumber="P";
     private int maximumValue;
     private int width;
     private int height;
     private List<Pixel> pixels=new ArrayList<>();
-/*
+
+    @Override
+    public String getFileName() {
+        return fileName;
+    }
+
+    @Override
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+    /*
     public PGMFile(String magicNumber, int maximumValue, int width, int height, List<Pixel> pixels) {
         this.magicNumber = magicNumber;
         this.maximumValue = maximumValue;

@@ -1,6 +1,6 @@
 package bg.tu_varna.sit.b4.f22621705.save;
 import bg.tu_varna.sit.b4.f22621705.menu.Menu;
-import bg.tu_varna.sit.b4.f22621705.open.OpenPBM;
+import bg.tu_varna.sit.b4.f22621705.open.OpenedFiles;
 
 import java.io.*;
 
@@ -48,8 +48,8 @@ public class SaveInPBMFile {
     public Menu saveFile(String fileName,StringBuilder stringBuilder) throws IOException {
         File file=new File(filePath+fileName);
         FileOutputStream fileWriter=new FileOutputStream(file);
-        OpenPBM openPBM=new OpenPBM();
-        openPBM.readFile(fileName);
+        OpenedFiles openPBM=new OpenedFiles();
+        //openPBM.readFile(fileName);
         /*fileWriter.write(openPBM.getMagicNumber().charAt(0));
         fileWriter.write(openPBM.getMagicNumber().charAt(1));
         fileWriter.write('\n');

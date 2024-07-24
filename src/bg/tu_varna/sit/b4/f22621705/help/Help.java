@@ -1,7 +1,9 @@
 package bg.tu_varna.sit.b4.f22621705.help;
 
+import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles;
 import bg.tu_varna.sit.b4.f22621705.menu.Menu;
 import bg.tu_varna.sit.b4.f22621705.load.Session;
+import bg.tu_varna.sit.b4.f22621705.open.OpenedFiles;
 
 import java.io.IOException;
 
@@ -30,7 +32,7 @@ public class Help implements Menu {
      * The function calls the function addHelp which adds the information in StringBuilder and prints it
      */
     @Override
-    public Menu execute(Session session) throws IOException {
+    public Menu execute(OpenedFiles openedFiles) throws IOException {
         addHelp();
         System.out.println(stringBuilder);
         return null;

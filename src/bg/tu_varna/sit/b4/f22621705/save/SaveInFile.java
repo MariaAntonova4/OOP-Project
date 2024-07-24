@@ -1,5 +1,6 @@
 package bg.tu_varna.sit.b4.f22621705.save;
 
+import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles;
 import bg.tu_varna.sit.b4.f22621705.menu.Menu;
 import bg.tu_varna.sit.b4.f22621705.load.LoadCommands;
 import bg.tu_varna.sit.b4.f22621705.load.ConnectWithLoadCommands;
@@ -31,9 +32,9 @@ public class SaveInFile{
         this.ee = ee;
     }
 
-    public SaveInFile(Session session) {
+   /* public SaveInFile(Session session) {
         this.session = session;
-    }
+    }*/
 
     /**
      *
@@ -42,8 +43,8 @@ public class SaveInFile{
      * @throws IOException
      * The function checks the format of the file and calls save method for the file format
      */
-    public Menu saveFile(Session session) throws IOException {
-        Iterator<String>iterator=session.getCommandHistory().iterator();
+    public Menu saveFile() throws IOException {
+        /*Iterator<String>iterator=session.getCommandHistory().iterator();
         while (iterator.hasNext()){
             String s= iterator.next();
 
@@ -62,7 +63,7 @@ public class SaveInFile{
         } else if (str.contains(".ppm")) {
             SaveInPPMFile saveInPPMFile=new SaveInPPMFile();
             saveInPPMFile.saveFile(str,session.saveData(str));
-        }}}
+        }}}*/
         return null;
     }
 }
