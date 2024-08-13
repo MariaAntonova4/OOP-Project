@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class SaveAsCommand implements Menu{
     @Override
-    public Menu execute(OpenedFiles openedFiles) throws IOException {
+    public Menu execute(OpenedFiles openedFiles,Session session) throws IOException {
         String str;
         Scanner scanner=new Scanner(System.in);
         str=scanner.nextLine();

@@ -1,6 +1,8 @@
 package bg.tu_varna.sit.b4.f22621705.load.negative;
 
 import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles;
+import bg.tu_varna.sit.b4.f22621705.files.Pixel;
+import bg.tu_varna.sit.b4.f22621705.files.Row;
 import bg.tu_varna.sit.b4.f22621705.load.LoadCommands;
 import bg.tu_varna.sit.b4.f22621705.load.Session;
 
@@ -20,22 +22,33 @@ public class NegativeFilter implements LoadCommands {
     @Override
     public LoadCommands executeLoad(Session session) throws IOException {
        Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = session.getSession().entrySet();
-
+        System.out.println("This is the negative picture:");
 
         for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
             Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
 
             NetpbmFiles s=iterator.next();
-            if (s.getFileName().contains(".pbm")){
-                new NegativePBM().turnPBMnegative(s);
-                //session.addNewData(s, new NegativePBM().turnPBMnegative(s));
-               }
-            else if(s.getFileName().contains(".pgm")){
-               // session.addNewData(s,new NegativePGM().turnPGMnegative(s));
+
+            int max=s.getMaximumValue();
+
+            if (!s.showRows().isEmpty()){
+                Iterator<Row>iterator2=s.showRows().iterator();
+                while (iterator2.hasNext()){
+                    Row i=(Row) iterator2.next();
+
+                    if (!i.getPixelsList().isEmpty()){
+                        Iterator<Pixel> iterators=i.getPixelsList().iterator();
+                        while (iterators.hasNext()){
+                            Pixel b=(Pixel) iterators.next();
+                            if (b.getNumber()==0){
+                                b.setNumber(max);
+                            }else b.setNumber(max-b.getNumber());
+                        }}
+                    System.out.println(i.getPixelsList());
                 }
-            else if (s.getFileName().contains(".ppm")) {
-                //session.addNewData(s,new NegativePPM().turnPPMnegative(s));
-                }
+            }
+
+
 
         }
         session.addInHistory("negative");

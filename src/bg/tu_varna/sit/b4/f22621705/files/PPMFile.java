@@ -8,7 +8,8 @@ public class PPMFile implements NetpbmFiles{
     private int maximumValue;
     private int width;
     private int height;
-    private List<Pixel> pixels=new ArrayList<>();
+    private Row row;
+    private List<Row>rows=new ArrayList<>();
 
     @Override
     public String getFileName() {
@@ -19,14 +20,6 @@ public class PPMFile implements NetpbmFiles{
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
-    /*
-    public PPMFile(String magicNumber, int maximumValue, int width, int height, List<Pixel> pixels) {
-        this.magicNumber = magicNumber;
-        this.maximumValue = maximumValue;
-        this.width = width;
-        this.height = height;
-        this.pixels = pixels;
-    }*/
 
     public String getMagicNumber() {
         return magicNumber;
@@ -60,22 +53,11 @@ public class PPMFile implements NetpbmFiles{
         this.height = height;
     }
 
-    public List<Pixel> getPixels() {
-        if (!this.pixels.isEmpty()){
-            Iterator<Pixel>iterator=this.pixels.iterator();
-            while (iterator.hasNext()){
-                Pixel i=(Pixel) iterator.next();
-
-                System.out.println(i.getNumber());
-            }
-        }
-        return pixels;
+    public void addRow(Row row){
+        rows.add(row);
     }
-
-    public void setPixels(List<Pixel> pixels) {
-        this.pixels = pixels;
-    }
-    public void setData(Pixel pixel){
-        pixels.add(pixel);
+    @Override
+    public List<Row> showRows() {
+        return null;
     }
 }

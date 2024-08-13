@@ -1,7 +1,7 @@
 package bg.tu_varna.sit.b4.f22621705.load.monochrome;
 
 import bg.tu_varna.sit.b4.f22621705.load.grayscale.Grayscale;
-import bg.tu_varna.sit.b4.f22621705.open.OpenPPM;
+import bg.tu_varna.sit.b4.f22621705.oldClasses.OpenPPM;
 
 import java.io.IOException;
 

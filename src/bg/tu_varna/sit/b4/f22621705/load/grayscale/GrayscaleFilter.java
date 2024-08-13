@@ -1,5 +1,7 @@
 package bg.tu_varna.sit.b4.f22621705.load.grayscale;
 
+import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles;
+import bg.tu_varna.sit.b4.f22621705.files.Pixel;
 import bg.tu_varna.sit.b4.f22621705.load.LoadCommands;
 import bg.tu_varna.sit.b4.f22621705.load.Session;
 
@@ -19,18 +21,47 @@ public class GrayscaleFilter implements LoadCommands {
     @Override
     public LoadCommands executeLoad(Session session) throws IOException {
 
-/*
-        Set<Map.Entry<Integer, Set<String>>> entries = session.getSession().entrySet();
 
-        for(Map.Entry<Integer, Set<String>>entry:entries){
-            Iterator<String> iterator=entry.getValue().iterator();
-                String s=iterator.next();
+        Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = session.getSession().entrySet();
 
-                if (s.contains(".ppm")){
-                    session.addNewData(s,new Grayscale().turnGrayscale(s));
+        for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
+            Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
+                NetpbmFiles s=iterator.next();
 
+          /*  if (!s.getPixels().isEmpty()){
+                Iterator<Pixel> iterators=s.getPixels().iterator();
+                while (iterators.hasNext()){
+                    Pixel b=(Pixel) iterators.next();
+                    if (b.getNumber()==0){
+                        b.setNumber(max);
+                    }else b.setNumber(max-b.getNumber());
+                }}
+
+
+            if (isRedFlag()==true){
+                    i= (int) (i*0.21);
+                    grayscale.append(" ")
+                            .append(i);
+                    if (openPPM.getData().charAt(dataLength+1)==' '){
+                        setRedFlag(false);
+                        setGreenFlag(true);}
+                } else if (isGreenFlag()==true) {
+                    i= (int) (i*0.71);
+                    grayscale.append(" ")
+                            .append(i);
+                    if (openPPM.getData().charAt(dataLength+1)==' '){
+                        setRedFlag(false);
+                        setGreenFlag(false);}
+                }else{
+                    i= (int) (i*0.07);
+                    grayscale.append(" ")
+                            .append(i);
                 }
-            }*/
+            }dataLength++;
+        }
+
+    }*/
+            }
         return null;}
     }
 

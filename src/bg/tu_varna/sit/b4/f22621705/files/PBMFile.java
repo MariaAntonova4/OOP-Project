@@ -8,7 +8,19 @@ public class PBMFile implements NetpbmFiles{
     private static int maximumValue=1;
     private int width;
     private int height;
-    private List<Pixel> pixels=new ArrayList<>();
+    private List<Row>rows=new ArrayList<>();
+
+    public List<Row> showRows(){
+        if (!this.rows.isEmpty()){
+            Iterator<Row>iterator=this.rows.iterator();
+            while (iterator.hasNext()){
+                Row i=(Row) iterator.next();
+
+                System.out.println(i.getPixelsList());
+            }
+        }
+        return rows;
+    }
 
     public String getFileName() {
         return fileName;
@@ -18,14 +30,6 @@ public class PBMFile implements NetpbmFiles{
         this.fileName = fileName;
     }
 
-    /*
-        public PBMFile(String magicNumber, int width, int height, List<Pixel> pixels) {
-            this.magicNumber = magicNumber;
-            this.width = width;
-            this.height = height;
-            this.pixels = pixels;
-        }
-    */
     public String getMagicNumber() {
         return magicNumber;
     }
@@ -56,22 +60,7 @@ public class PBMFile implements NetpbmFiles{
         this.height = height;
     }
 
-    public List<Pixel> getPixels() {
-        if (!this.pixels.isEmpty()){
-            Iterator<Pixel>iterator=this.pixels.iterator();
-            while (iterator.hasNext()){
-                Pixel i=(Pixel) iterator.next();
-
-                System.out.println(i.getNumber());
-            }
-        }
-        return pixels;
-    }
-
-    public void setPixels(List<Pixel> pixels) {
-        this.pixels = pixels;
-    }
-    public void setData(Pixel pixel){
-        pixels.add(pixel);
+    public void addRow(Row row){
+        rows.add(row);
     }
 }

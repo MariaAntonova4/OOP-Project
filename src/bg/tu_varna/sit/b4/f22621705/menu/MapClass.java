@@ -11,10 +11,13 @@ import java.util.Objects;
 
 public abstract class MapClass {
     private OpenedFiles openedFiles;
+    private Session session;
 
-    /*public Session getSession() {
-        return session;
-    }*/
+    public void getSession2(Session session) {
+        if (session==null){
+            this.session=new Session();
+        }else this.session=session;
+    }
 
     public MapClass() throws CommandException{
     }
@@ -63,11 +66,12 @@ public abstract class MapClass {
      */
     public Menu commands(String string) throws IOException, CommandException {
         setSession(openedFiles);
-        return goToCommand(string).execute(openedFiles);
+        getSession2(session);
+        return goToCommand(string).execute(openedFiles,session);
     }
     public void aa() throws IOException {
         Menu a=aaa();
-        a.execute(openedFiles);
+        a.execute(openedFiles,session);
     }
     public abstract Menu aaa ();
 }

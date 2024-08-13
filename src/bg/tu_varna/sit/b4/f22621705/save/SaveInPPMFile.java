@@ -1,7 +1,7 @@
 package bg.tu_varna.sit.b4.f22621705.save;
 
 import bg.tu_varna.sit.b4.f22621705.menu.Menu;
-import bg.tu_varna.sit.b4.f22621705.open.OpenPPM;
+import bg.tu_varna.sit.b4.f22621705.oldClasses.OpenPPM;
 
 import java.io.File;
 import java.io.FileOutputStream;

@@ -11,8 +11,9 @@ import java.util.Scanner;
 public class Open implements Menu {
     private NetpbmFiles netpbmFiles;
 
+
     @Override
-    public Menu execute(OpenedFiles openedFiles) throws IOException {
+    public Menu execute(OpenedFiles openedFiles,Session session) throws IOException {
             String fileName;
             //System.out.println("Please enter the name of the file which you want to open: ");
             Scanner scanner=new Scanner(System.in);

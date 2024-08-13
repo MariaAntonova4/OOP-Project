@@ -5,11 +5,16 @@ import bg.tu_varna.sit.b4.f22621705.menu.Menu;
 import bg.tu_varna.sit.b4.f22621705.load.LoadCommands;
 import bg.tu_varna.sit.b4.f22621705.load.ConnectWithLoadCommands;
 import bg.tu_varna.sit.b4.f22621705.load.Session;
+import bg.tu_varna.sit.b4.f22621705.open.OpenedFiles;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+
+import static bg.tu_varna.sit.b4.f22621705.save.SaveFile.filePath;
 
 public class SaveInFile{
     private Session session;
@@ -43,7 +48,7 @@ public class SaveInFile{
      * @throws IOException
      * The function checks the format of the file and calls save method for the file format
      */
-    public Menu saveFile() throws IOException {
+    public Menu saveFile(OpenedFiles openedFiles) throws IOException {
         /*Iterator<String>iterator=session.getCommandHistory().iterator();
         while (iterator.hasNext()){
             String s= iterator.next();
@@ -64,6 +69,30 @@ public class SaveInFile{
             SaveInPPMFile saveInPPMFile=new SaveInPPMFile();
             saveInPPMFile.saveFile(str,session.saveData(str));
         }}}*/
+
+        File file=new File(filePath);
+        FileOutputStream fileWriter=new FileOutputStream(file);
+
+        /*
+        fileWriter.write(openPBM.getMagicNumber().charAt(0));
+        fileWriter.write(openPBM.getMagicNumber().charAt(1));
+        fileWriter.write('\n');
+        fileWriter.write(openPBM.getHeight());
+        fileWriter.write(" ".getBytes());
+        fileWriter.write(openPBM.getWidth());*/
+        fileWriter.write('\n');
+        int dataLength=1;
+       /* while(dataLength<stringBuilder.length()){
+            if (stringBuilder.charAt(dataLength)=='\n'){
+                fileWriter.write('\n');}else {
+                fileWriter.write(stringBuilder.charAt(dataLength));
+            }
+            dataLength++;
+        }
+        System.out.println("Successfully saved "+fileName);
+        fileWriter.close();*/
+
+        System.out.println("Success!:)");
         return null;
     }
 }

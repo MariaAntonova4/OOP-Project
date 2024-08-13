@@ -1,4 +1,4 @@
-package bg.tu_varna.sit.b4.f22621705.open;
+package bg.tu_varna.sit.b4.f22621705.oldClasses;
 import bg.tu_varna.sit.b4.f22621705.menu.Menu;
 
 import java.io.FileInputStream;

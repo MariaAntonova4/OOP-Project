@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class LoadCommand implements Menu {
-    private Session session;
+    private Session session=new Session();
 
     public Session getSession() {
         return session;
@@ -20,7 +20,7 @@ public class LoadCommand implements Menu {
     }
 
     @Override
-    public Menu execute(OpenedFiles openedFiles) throws IOException {
+    public Menu execute(OpenedFiles openedFiles,Session session2) throws IOException {
         String fileName;
         Scanner scanner=new Scanner(System.in);
         fileName=scanner.nextLine();

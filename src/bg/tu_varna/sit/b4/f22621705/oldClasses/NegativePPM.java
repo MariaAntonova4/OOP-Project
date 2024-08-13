@@ -1,6 +1,6 @@
-package bg.tu_varna.sit.b4.f22621705.load.negative;
+package bg.tu_varna.sit.b4.f22621705.oldClasses;
 
-import bg.tu_varna.sit.b4.f22621705.open.OpenPGM;
+import bg.tu_varna.sit.b4.f22621705.oldClasses.OpenPGM;
 
 import java.io.IOException;
 

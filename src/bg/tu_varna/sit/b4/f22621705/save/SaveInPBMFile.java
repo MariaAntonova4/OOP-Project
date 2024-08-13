@@ -46,27 +46,7 @@ public class SaveInPBMFile {
     }
 
     public Menu saveFile(String fileName,StringBuilder stringBuilder) throws IOException {
-        File file=new File(filePath+fileName);
-        FileOutputStream fileWriter=new FileOutputStream(file);
-        OpenedFiles openPBM=new OpenedFiles();
-        //openPBM.readFile(fileName);
-        /*fileWriter.write(openPBM.getMagicNumber().charAt(0));
-        fileWriter.write(openPBM.getMagicNumber().charAt(1));
-        fileWriter.write('\n');
-        fileWriter.write(openPBM.getHeight());
-        fileWriter.write(" ".getBytes());
-        fileWriter.write(openPBM.getWidth());*/
-        fileWriter.write('\n');
-        int dataLength=1;
-        while(dataLength<stringBuilder.length()){
-            if (stringBuilder.charAt(dataLength)=='\n'){
-                fileWriter.write('\n');}else {
-                fileWriter.write(stringBuilder.charAt(dataLength));
-            }
-            dataLength++;
-        }
-        System.out.println("Successfully saved "+fileName);
-        fileWriter.close();
+
         return null;
         }
     }

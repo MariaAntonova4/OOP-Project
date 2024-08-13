@@ -1,6 +1,6 @@
 package bg.tu_varna.sit.b4.f22621705.load.grayscale;
 
-import bg.tu_varna.sit.b4.f22621705.open.OpenPPM;
+import bg.tu_varna.sit.b4.f22621705.oldClasses.OpenPPM;
 
 import java.io.IOException;
 
@@ -41,35 +41,12 @@ public class Grayscale {
                     dataLength++;
                     setRedFlag(true);
                 }
-                else{
-                        if (dataLength+1==openPPM.getData().length()){
-                            jj++;
-                            break;}
-                        if(openPPM.getData().charAt(dataLength)>47&&openPPM.getData().charAt(dataLength)<58){
-                            i=Character.getNumericValue(openPPM.getData().charAt(dataLength));
-                            if (isRedFlag()==true){
-                                i= (int) (i*0.21);
-                                grayscale.append(" ")
-                                        .append(i);
-                                if (openPPM.getData().charAt(dataLength+1)==' '){
-                                    setRedFlag(false);
-                                setGreenFlag(true);}
-                            } else if (isGreenFlag()==true) {
-                                i= (int) (i*0.71);
-                                grayscale.append(" ")
-                                        .append(i);
-                                if (openPPM.getData().charAt(dataLength+1)==' '){
-                                    setRedFlag(false);
-                                    setGreenFlag(false);}
-                            }else{
-                                i= (int) (i*0.07);
-                                grayscale.append(" ")
-                                        .append(i);
-                            }
-                        }dataLength++;
+                else {
+                    if (dataLength + 1 == openPPM.getData().length()) {
+                        jj++;
+                        break;
+                    }
                 }
-
-        }
         System.out.println(grayscale);
-            return grayscale;
-    }}
+
+    }return grayscale;}}

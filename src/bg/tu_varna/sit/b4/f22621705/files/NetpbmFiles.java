@@ -3,25 +3,16 @@ package bg.tu_varna.sit.b4.f22621705.files;
 import java.util.List;
 
 public interface NetpbmFiles {
-    public String getFileName();
-    public void setFileName(String fileName);
-
-    public String getMagicNumber();
-
-    public void setMagicNumber(char magicNumber);
-    public int getMaximumValue();
-
-    public void setMaximumValue(int maximumValue);
-    public int getWidth();
-
-    public void setWidth(int width);
-
-    public int getHeight();
-
-    public void setHeight(int height);
-
-    public List<Pixel> getPixels();
-
-    public void setPixels(List<Pixel> pixels);
-    public void setData(Pixel pixel);
+    String getFileName();
+    void setFileName(String fileName);
+    String getMagicNumber();
+    void setMagicNumber(char magicNumber);
+    int getMaximumValue();
+    void setMaximumValue(int maximumValue);
+    int getWidth();
+    void setWidth(int width);
+    int getHeight();
+    void setHeight(int height);
+    void addRow(Row row);
+    List<Row> showRows();
 }

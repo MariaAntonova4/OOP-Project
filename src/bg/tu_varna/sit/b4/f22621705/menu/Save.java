@@ -22,8 +22,8 @@ public class Save implements Menu {
     }
 
     @Override
-    public Menu execute(OpenedFiles openedFiles) throws IOException {
+    public Menu execute(OpenedFiles openedFiles,Session session2) throws IOException {
 
-        return new SaveInFile().saveFile();
+        return new SaveInFile().saveFile(openedFiles);
     }
 }
