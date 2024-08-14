@@ -27,10 +27,10 @@ public class MonochromeFilter implements LoadCommands {
 
             NetpbmFiles s=iterator.next();
             if(s.getFileName().contains(".pgm")){
-                session.addNewData("",new MonochromePGM().turnMonochrome(""));
+                //session.addNewData("",new MonochromePGM().turnMonochrome(""));
             }
             else if (s.getFileName().contains(".ppm")) {
-                session.addNewData("",new MonochromePPM().turnMonochrome(""));
+               // session.addNewData("",new MonochromePPM().turnMonochrome(""));
             }
 
         }

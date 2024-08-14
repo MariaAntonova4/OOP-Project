@@ -6,34 +6,8 @@ import java.util.*;
 
 public class Session {
     private Map<Integer, Set<NetpbmFiles>>session=new HashMap<>();
-    private Map<String,StringBuilder>newData=new HashMap<>();
     private ListOfImages listOfImages;
     private int sessionNumber;
-
-    public Map<String, StringBuilder> getNewData() {
-        if (newData.isEmpty()){setNewData(new HashMap<>());}
-        return newData;
-    }
-
-    /**
-     *
-     * @param fileName the name of the file
-     * @return the modified data
-     */
-    public StringBuilder saveData(String fileName){
-        Set<Map.Entry<String, StringBuilder>>entries = getNewData().entrySet();
-
-        for(Map.Entry<String,StringBuilder>entry:entries){
-            if (entry.getKey().equals(fileName)){
-                return entry.getValue();}
-        }
-
-        return null;
-    }
-    public void setNewData(Map<String, StringBuilder> newData) {
-
-        this.newData = newData;
-    }
 
     private List<String>commandHistory=new ArrayList<>();
 
@@ -78,15 +52,4 @@ public class Session {
         listOfImages.addImageInSession(fileName);
             session.put(sessionNumber,listOfImages.getImagesInSession());
         }
-
-    /**
-     *
-     * @param fileName the name of the file which was modified
-     * @param stringBuilder the new data which was modified
-     */
-    public void addNewData(String fileName,StringBuilder stringBuilder){
-        getNewData();
-
-        newData.put(fileName,stringBuilder);
-    }
 }

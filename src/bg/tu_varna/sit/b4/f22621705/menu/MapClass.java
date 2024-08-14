@@ -8,10 +8,12 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Scanner;
 
 public abstract class MapClass {
     private OpenedFiles openedFiles;
     private Session session;
+    private CreateFiles createFiles=new CreateFiles();
 
     public void getSession2(Session session) {
         if (session==null){
@@ -64,14 +66,22 @@ public abstract class MapClass {
      * @throws IOException
      * @throws CommandException
      */
-    public Menu commands(String string) throws IOException, CommandException {
+    public Menu commands() throws IOException, CommandException {
         setSession(openedFiles);
         getSession2(session);
-        return goToCommand(string).execute(openedFiles,session);
+        createFiles.setE(this);
+        createFiles.putInMap(openedFiles,session);
+        Scanner scanner=new Scanner(System.in);
+        String commandName="";
+        while(!Objects.equals(commandName, "exit")){
+            System.out.println(">"+commandName);
+            commandName=scanner.next();
+            goToCommand(commandName).execute();}
+        return null;
     }
     public void aa() throws IOException {
         Menu a=aaa();
-        a.execute(openedFiles,session);
+        a.execute();
     }
     public abstract Menu aaa ();
 }

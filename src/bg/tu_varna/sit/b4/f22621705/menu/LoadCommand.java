@@ -9,8 +9,12 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class LoadCommand implements Menu {
-    private Session session=new Session();
-
+    private Session session;
+    private OpenedFiles openedFiles;
+    public LoadCommand(OpenedFiles openedFiles,Session session) {
+        this.openedFiles = openedFiles;
+        this.session=session;
+    }
     public Session getSession() {
         return session;
     }
@@ -20,10 +24,13 @@ public class LoadCommand implements Menu {
     }
 
     @Override
-    public Menu execute(OpenedFiles openedFiles,Session session2) throws IOException {
+    public Menu execute() throws IOException {
         String fileName;
         Scanner scanner=new Scanner(System.in);
         fileName=scanner.nextLine();
-        return new Load(session).exe(fileName,openedFiles);
+        if (openedFiles.CheckNamesOfOpenedFiles(fileName)){
+            return new Load(session).exe(fileName,openedFiles);
+        }
+        return null;
     }
 }

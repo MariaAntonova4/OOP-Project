@@ -32,7 +32,7 @@ public class Help implements Menu {
      * The function calls the function addHelp which adds the information in StringBuilder and prints it
      */
     @Override
-    public Menu execute(OpenedFiles openedFiles,Session session) throws IOException {
+    public Menu execute() throws IOException {
         addHelp();
         System.out.println(stringBuilder);
         return null;

@@ -26,13 +26,6 @@ public class Load {
         return session;
     }
 
-
-    public void setSession(Session session) {
-        if (session==null){
-            this.session=new Session();
-        }else this.session = session;
-    }
-
     private ConnectWithLoadCommands ee;
 
     public ConnectWithLoadCommands getEe() {
@@ -67,7 +60,6 @@ public class Load {
     public Menu exe(String fileName, OpenedFiles openedFiles) throws IOException {
         setEe(new RotationConnection());
         loadMapping();
-        setSession(session);
         System.out.println("Session with ID:");
         Scanner scannerNum=new Scanner(System.in);
         int mapNum= Integer.parseInt(scannerNum.next());

@@ -1,10 +1,7 @@
-package bg.tu_varna.sit.b4.f22621705.save;
+package bg.tu_varna.sit.b4.f22621705.oldClasses;
 import bg.tu_varna.sit.b4.f22621705.menu.Menu;
-import bg.tu_varna.sit.b4.f22621705.open.OpenedFiles;
 
 import java.io.*;
-
-import static bg.tu_varna.sit.b4.f22621705.save.SaveFile.filePath;
 
 public class SaveInPBMFile {
     private StringBuilder format=new StringBuilder();

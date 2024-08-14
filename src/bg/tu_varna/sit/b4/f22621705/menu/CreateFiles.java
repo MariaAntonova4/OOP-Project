@@ -3,9 +3,12 @@ package bg.tu_varna.sit.b4.f22621705.menu;
 
 import bg.tu_varna.sit.b4.f22621705.exit.Exit;
 import bg.tu_varna.sit.b4.f22621705.help.HelpCommand;
+import bg.tu_varna.sit.b4.f22621705.load.Session;
+import bg.tu_varna.sit.b4.f22621705.open.OpenedFiles;
 
 public class CreateFiles {
     private MapClass e;
+
     public MapClass getE() {
         return e;
     }
@@ -18,10 +21,10 @@ public class CreateFiles {
      *
      * @throws CommandException if there is no such command
      */
-    public void putInMap() throws CommandException {
-        e.puttingInMap("open",new ConnectWithOpen().aaa());
-        e.puttingInMap("load",new ConnectWithLoad().aaa());
-        e.puttingInMap("save",new ConnectWithSave().aaa());
+    public void putInMap(OpenedFiles openedFiles,Session session) throws CommandException {
+        e.puttingInMap("open",new ConnectWithOpen(openedFiles).aaa());
+        e.puttingInMap("load",new ConnectWithLoad(openedFiles,session).aaa());
+        e.puttingInMap("save",new ConnectWithSave(session).aaa());
         e.puttingInMap("help",new HelpCommand().aaa());
         e.puttingInMap("exit",new Exit().aaa());
         e.puttingInMap("saveas",new SaveAs().aaa());

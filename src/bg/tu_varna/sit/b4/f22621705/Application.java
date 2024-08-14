@@ -1,6 +1,7 @@
 package bg.tu_varna.sit.b4.f22621705;
 
 
+import bg.tu_varna.sit.b4.f22621705.help.HelpCommand;
 import bg.tu_varna.sit.b4.f22621705.menu.*;
 
 import java.io.*;
@@ -9,27 +10,12 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) throws IOException, CommandException {
-        MapClass mapClass= new ConnectWithLoad();
-            CreateFiles m=new CreateFiles();
-            m.setE(mapClass);
-            m.putInMap();
-            /*mapClass=new ConnectWithSave();
-            m.setE(mapClass);
-            m.putInMap();*/
-
-
+        MapClass mapClass= new HelpCommand();
             try{
-            Scanner scanner=new Scanner(System.in);
-            String commandName="";
-            while(!Objects.equals(commandName, "exit")){
-                System.out.println(">"+commandName);
-                commandName=scanner.next();
-                mapClass.commands(commandName);}
+                mapClass.commands();
 
         }catch (CommandException e)
         {
             System.out.println(e.getMessage());
         }
-
-
 }}

@@ -3,7 +3,7 @@ package bg.tu_varna.sit.b4.f22621705.load.rotate;
 import bg.tu_varna.sit.b4.f22621705.oldClasses.FileOpen;
 import bg.tu_varna.sit.b4.f22621705.oldClasses.OpenPGM;
 import bg.tu_varna.sit.b4.f22621705.oldClasses.OpenPPM;
-import bg.tu_varna.sit.b4.f22621705.save.SaveInPBMFile;
+import bg.tu_varna.sit.b4.f22621705.oldClasses.SaveInPBMFile;
 
 import java.io.IOException;
 

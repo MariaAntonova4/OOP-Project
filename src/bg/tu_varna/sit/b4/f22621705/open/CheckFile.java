@@ -11,6 +11,10 @@ public class CheckFile {
     private Pixel pixel;
     private Row row;
 
+    public CheckFile(OpenedFiles openedFiles) {
+        this.openedFiles = openedFiles;
+    }
+
     public void setRow(Row row) {
         if (row==null){
             this.row=new Row();
@@ -35,7 +39,7 @@ public class CheckFile {
         return file;
     }
 
-        public Menu checkIfFileExists(OpenedFiles openedFiles1,NetpbmFiles netpbmFiles,String fileName) throws IOException {
+        public Menu checkIfFileExists(NetpbmFiles netpbmFiles,String fileName) throws IOException {
 
             setFile(fileName);
             if (file.exists())
@@ -96,7 +100,7 @@ public class CheckFile {
                 FileWriter fileWriter=new FileWriter(getFile());
                 fileWriter.close();
             }
-            openedFiles1.opened(netpbmFiles);
+            openedFiles.opened(netpbmFiles);
             return null;
         }
 }

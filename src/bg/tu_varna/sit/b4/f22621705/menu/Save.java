@@ -11,19 +11,13 @@ import java.io.IOException;
 public class Save implements Menu {
     private Session session;
 
-    public Session getSession() {
-        return session;
-    }
-
-    public void setSession(Session session) {
-        if (session==null){
-            this.session=new Session();
-        }else this.session = session;
+    public Save(Session session) {
+        this.session = session;
     }
 
     @Override
-    public Menu execute(OpenedFiles openedFiles,Session session2) throws IOException {
+    public Menu execute() throws IOException {
 
-        return new SaveInFile().saveFile(openedFiles);
+        return new SaveInFile().saveFile(session);
     }
 }

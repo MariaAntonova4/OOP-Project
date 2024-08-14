@@ -10,16 +10,20 @@ import java.util.Scanner;
 
 public class Open implements Menu {
     private NetpbmFiles netpbmFiles;
+    private OpenedFiles openedFiles;
 
+    public Open(OpenedFiles openedFiles) {
+        this.openedFiles = openedFiles;
+    }
 
     @Override
-    public Menu execute(OpenedFiles openedFiles,Session session) throws IOException {
+    public Menu execute() throws IOException {
             String fileName;
             //System.out.println("Please enter the name of the file which you want to open: ");
             Scanner scanner=new Scanner(System.in);
             fileName=scanner.nextLine();
 
-            return new CheckFile().checkIfFileExists(openedFiles,netpbmFiles,fileName);
+            return new CheckFile(openedFiles).checkIfFileExists(netpbmFiles,fileName);
         }
     }
 

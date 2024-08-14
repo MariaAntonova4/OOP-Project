@@ -31,4 +31,16 @@ public class OpenedFiles {
             }}
         return null;
     }
+
+    public boolean CheckNamesOfOpenedFiles(String fileName){
+        if (!this.getOpenedFiles().isEmpty()){
+            Iterator<NetpbmFiles> iterator=this.getOpenedFiles().iterator();
+            while (iterator.hasNext()){
+                NetpbmFiles b=(NetpbmFiles) iterator.next();
+                if (Objects.equals(b.getFileName(), fileName)){
+                    return true;}
+
+            }}
+        return false;
+    }
 }

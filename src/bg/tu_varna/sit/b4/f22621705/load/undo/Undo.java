@@ -10,11 +10,11 @@ import java.util.Set;
 public class Undo implements LoadCommands {
     @Override
     public LoadCommands executeLoad(Session session) throws IOException {
-        Set<Map.Entry<String,StringBuilder>> entries = session.getNewData().entrySet();
+       // Set<Map.Entry<String,StringBuilder>> entries = session.getNewData().entrySet();
 
-        for(Map.Entry<String,StringBuilder>entry:entries){
+       // for(Map.Entry<String,StringBuilder>entry:entries){
             //entries.remove(entry.getValue());
-        }
+        //}
         return null;
     }
 }

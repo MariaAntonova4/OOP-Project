@@ -1,23 +1,17 @@
 package bg.tu_varna.sit.b4.f22621705.save;
 
-import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles;
 import bg.tu_varna.sit.b4.f22621705.menu.Menu;
 import bg.tu_varna.sit.b4.f22621705.load.LoadCommands;
 import bg.tu_varna.sit.b4.f22621705.load.ConnectWithLoadCommands;
 import bg.tu_varna.sit.b4.f22621705.load.Session;
-import bg.tu_varna.sit.b4.f22621705.open.OpenedFiles;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 
-import static bg.tu_varna.sit.b4.f22621705.save.SaveFile.filePath;
+import static bg.tu_varna.sit.b4.f22621705.oldClasses.SaveFile.filePath;
 
 public class SaveInFile{
-    private Session session;
     private ConnectWithLoadCommands ee;
     private LoadCommands aa;
 
@@ -48,7 +42,8 @@ public class SaveInFile{
      * @throws IOException
      * The function checks the format of the file and calls save method for the file format
      */
-    public Menu saveFile(OpenedFiles openedFiles) throws IOException {
+    public Menu saveFile(Session session) throws IOException {
+       // session.
         /*Iterator<String>iterator=session.getCommandHistory().iterator();
         while (iterator.hasNext()){
             String s= iterator.next();
@@ -68,11 +63,11 @@ public class SaveInFile{
         } else if (str.contains(".ppm")) {
             SaveInPPMFile saveInPPMFile=new SaveInPPMFile();
             saveInPPMFile.saveFile(str,session.saveData(str));
-        }}}*/
+        }}}
 
         File file=new File(filePath);
         FileOutputStream fileWriter=new FileOutputStream(file);
-
+*/
         /*
         fileWriter.write(openPBM.getMagicNumber().charAt(0));
         fileWriter.write(openPBM.getMagicNumber().charAt(1));
@@ -80,7 +75,7 @@ public class SaveInFile{
         fileWriter.write(openPBM.getHeight());
         fileWriter.write(" ".getBytes());
         fileWriter.write(openPBM.getWidth());*/
-        fileWriter.write('\n');
+      //  fileWriter.write('\n');
         int dataLength=1;
        /* while(dataLength<stringBuilder.length()){
             if (stringBuilder.charAt(dataLength)=='\n'){

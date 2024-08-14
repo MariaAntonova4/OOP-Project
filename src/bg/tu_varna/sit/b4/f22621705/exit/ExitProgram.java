@@ -16,7 +16,7 @@ public class ExitProgram implements Menu {
      * The function prints message for the client to show them that they are leaving the program
      */
     @Override
-    public Menu execute(OpenedFiles openedFiles,Session session) throws IOException {
+    public Menu execute() throws IOException {
         System.out.println("> exit\n" +
                 "        Exiting the program...");
 
