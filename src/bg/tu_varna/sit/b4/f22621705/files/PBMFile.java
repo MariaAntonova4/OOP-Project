@@ -15,7 +15,6 @@ public class PBMFile implements NetpbmFiles{
             Iterator<Row>iterator=this.rows.iterator();
             while (iterator.hasNext()){
                 Row i=(Row) iterator.next();
-
                 System.out.println(i.getPixelsList());
             }
         }
