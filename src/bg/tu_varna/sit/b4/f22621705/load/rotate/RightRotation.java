@@ -1,11 +1,15 @@
 package bg.tu_varna.sit.b4.f22621705.load.rotate;
 
+import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles;
+import bg.tu_varna.sit.b4.f22621705.files.Pixel;
+import bg.tu_varna.sit.b4.f22621705.files.Row;
 import bg.tu_varna.sit.b4.f22621705.oldClasses.FileOpen;
 import bg.tu_varna.sit.b4.f22621705.oldClasses.OpenPGM;
 import bg.tu_varna.sit.b4.f22621705.oldClasses.OpenPPM;
 import bg.tu_varna.sit.b4.f22621705.oldClasses.SaveInPBMFile;
 
 import java.io.IOException;
+import java.util.*;
 
 public class RightRotation {
     private SaveInPBMFile saveInFile;
@@ -21,54 +25,31 @@ public class RightRotation {
         return new OpenPPM();
     }
 
-    public StringBuilder rotateRight(String fileName) throws IOException {
+    public void rotateRight(String fileName) throws IOException {
+        Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = session.getSession().entrySet();
 
-        FileOpen fileOpen=checkOpening(fileName);
-
-
-        fileOpen.readFile(fileName);
-        newHeight=fileOpen.getHeight();
-        newWidth=fileOpen.getWidth();
-        StringBuilder str=fileOpen.cleanFormat();
-        saveInFile=new SaveInPBMFile();
-        saveInFile.setHeight(newHeight);
-        saveInFile.setWidth(newWidth);
-        saveInFile.setFormat(str);
-        StringBuilder newData=new StringBuilder();
-        if(newWidth>newHeight){
-            for (int j=(newWidth-1);j>0;j--){
-            newData.append(fileOpen.cleanFormat().charAt(j));
-            for (int i=1;i<newHeight;i++){
-                newData.append(fileOpen.cleanFormat().charAt((j+(newWidth))*i));
-            }
-            newData.append("\n");
-        }
-            newData.append(fileOpen.cleanFormat().charAt(0));
-            for (int i=1;i<newHeight;i++){
-                newData.append(fileOpen.cleanFormat().charAt((newWidth)*i));
-            }
-            newData.append("\n");
-            System.out.println(newData);}
-        else{
-            int k=newHeight*newWidth;
-            int m=newWidth-1;
-            for (int j=(newWidth-1);m>0;m--){
-                newData.append(fileOpen.cleanFormat().charAt(j));
-                for (int i=1;i<newHeight;i++){
-                    newData.append(fileOpen.cleanFormat().charAt(j+newWidth*i));
+        for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
+            Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
+            NetpbmFiles s=iterator.next();
+            List<Row> newRowList=new ArrayList<>();
+            while (!s.showRows().isEmpty()){
+                Iterator<Row>iterator2=s.showRows().iterator();
+                Row newRow=new Row();
+                while (iterator2.hasNext()){
+                    Row i=(Row) iterator2.next();
+                    if (!i.getPixelsList().isEmpty()){
+                        Iterator<Pixel> iterators=i.getPixelsList().iterator();
+                        Pixel b=(Pixel) iterators.next();
+                        newRow.putInRow(b);
+                        i.deleteNumber(b);
+                    }else {s.getRows().clear();
+                        break;
+                    }
                 }
-                newData.append("\n");
-            }
-            newData.append(fileOpen.cleanFormat().charAt(0));
-            for (int i=1;i<newHeight;i++){
-                newData.append(fileOpen.cleanFormat().charAt(0+(newWidth*i)));
-            }
-            newData.append("\n");
+
+                newRowList.add(newRow);
+                //s.deleteRow(i);
+            }s.setRows(newRowList);
 
         }
-
-
-        System.out.println(newData);
-    return newData;
-        }
-    }
+    }}

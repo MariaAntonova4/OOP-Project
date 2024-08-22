@@ -21,6 +21,11 @@ public class PBMFile implements NetpbmFiles{
         return rows;
     }
 
+    @Override
+    public void deleteRow(Row row) {
+        this.rows.remove(row);
+    }
+
     public String getFileName() {
         return fileName;
     }
@@ -61,5 +66,13 @@ public class PBMFile implements NetpbmFiles{
 
     public void addRow(Row row){
         rows.add(row);
+    }
+
+    public List<Row> getRows() {
+        return rows;
+    }
+
+    public void setRows(List<Row> rows) {
+        this.rows = rows;
     }
 }

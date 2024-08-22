@@ -29,4 +29,5 @@ public class Row {
     public void putInRow(Pixel pixels){
         pixelsList.add(pixels);
     }
+    public void deleteNumber(Pixel pixel){pixelsList.remove(pixel);}
 }

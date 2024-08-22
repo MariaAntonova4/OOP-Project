@@ -10,6 +10,7 @@ import bg.tu_varna.sit.b4.f22621705.load.Session;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
@@ -53,13 +54,13 @@ public class SaveInFile{
             for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
                 Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
                 NetpbmFiles netpbmFiles=iterator.next();
-                File file=new File("C:\\Users\\Asus\\Desktop\\OOP-PROJECT\\OOP-Project\\Files"+netpbmFiles.getFileName());
+                File file=new File("C:\\Users\\Asus\\Desktop\\OOP-PROJECT\\OOP-Project\\Files\\"+netpbmFiles.getFileName());
                 FileOutputStream fileWriter=new FileOutputStream(file);
                 fileWriter.write(netpbmFiles.getMagicNumber().getBytes());
                 fileWriter.write('\n');
-                fileWriter.write(netpbmFiles.getHeight());
-                fileWriter.write(" ".getBytes());
-                fileWriter.write(netpbmFiles.getWidth());
+                fileWriter.write(String.valueOf(netpbmFiles.getHeight()).getBytes());
+                fileWriter.write(' ');
+                fileWriter.write(netpbmFiles.getWidth()+'0');
                 fileWriter.write('\n');
                 if (!netpbmFiles.getFileName().contains(".pbm")){
                     fileWriter.write(netpbmFiles.getMaximumValue());
@@ -71,7 +72,7 @@ public class SaveInFile{
                     Iterator<Pixel>iterator4=r.getPixelsList().iterator();
                     while (iterator4.hasNext()){
                         Pixel p=(Pixel)iterator4.next();
-                        fileWriter.write(p.getNumber());
+                        fileWriter.write(p.getNumber()+'0');
                         fileWriter.write(' ');
                     }
                     fileWriter.write('\n');

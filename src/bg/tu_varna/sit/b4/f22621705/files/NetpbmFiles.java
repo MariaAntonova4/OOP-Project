@@ -15,4 +15,7 @@ public interface NetpbmFiles {
     void setHeight(int height);
     void addRow(Row row);
     List<Row> showRows();
+    void deleteRow(Row row);
+    void setRows(List<Row> rows);
+    List<Row> getRows();
 }

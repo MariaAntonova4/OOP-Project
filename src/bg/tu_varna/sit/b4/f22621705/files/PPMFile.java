@@ -60,4 +60,17 @@ public class PPMFile implements NetpbmFiles{
     public List<Row> showRows() {
         return null;
     }
+    @Override
+    public void deleteRow(Row row) {
+        this.rows.remove(row);
+    }
+
+    public List<Row> getRows() {
+        return rows;
+    }
+
+    @Override
+    public void setRows(List<Row> rows) {
+        this.rows = rows;
+    }
 }

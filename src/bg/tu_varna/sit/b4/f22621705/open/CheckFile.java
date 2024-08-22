@@ -56,21 +56,39 @@ public class CheckFile {
                 }
                 netpbmFiles.setFileName(fileName);
                 FileReader reader=new FileReader(getFile());
+
+
                 int numbers=(char)reader.read();
+                while (!(numbers >47) &&(numbers<58)){
+                    numbers=(char)reader.read();
+                }
                 numbers=Character.getNumericValue(numbers);
                 netpbmFiles.setMagicNumber((char) reader.read());
-                reader.read();
-                reader.read();
+
+
 
                 numbers=(char)reader.read();
+                while (!(numbers >47) &&(numbers<58)){
+                    numbers=(char)reader.read();
+                }
+               // numbers=(char)reader.read();
                 numbers=Character.getNumericValue(numbers);
                 netpbmFiles.setWidth(numbers);
-                reader.read();
+
+
+
+                //reader.read();
                 numbers=(char)reader.read();
+                while (!(numbers >47) &&(numbers<58)){
+                    numbers=(char)reader.read();
+                }
                 numbers=Character.getNumericValue(numbers);
                 netpbmFiles.setHeight(numbers);
-                reader.read();
-                reader.read();
+
+
+
+                //reader.read();
+                //reader.read();
                 if (!fileName.contains(".pbm")){
                 numbers=(char)reader.read();
                 numbers=Character.getNumericValue(numbers);

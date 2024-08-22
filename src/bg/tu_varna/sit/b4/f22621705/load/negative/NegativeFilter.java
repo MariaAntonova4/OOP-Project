@@ -47,9 +47,6 @@ public class NegativeFilter implements LoadCommands {
                     System.out.println(i.getPixelsList());
                 }
             }
-
-
-
         }
         session.addInHistory("negative");
         return null;
