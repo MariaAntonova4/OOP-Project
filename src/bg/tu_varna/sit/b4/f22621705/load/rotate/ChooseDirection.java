@@ -32,22 +32,18 @@ public class ChooseDirection implements LoadCommands {
         String string;
         System.out.println("Please write the direction: ");
         string=scanner.next();
-
-
-
-
-                /*if (string.equals(direction.getDirection())){
+        if (string.equals(direction.getDirection())){
                     session.addInHistory("rotate left");
-                    session.addNewData(s,new LeftRotatePPM().rotateLeft(s));
+                    new LeftRotation().rotateLeft(session);
 
                 }
                 else{
                     session.addInHistory("rotate right");
-                    session.addNewData(s,new RightRoatatePPM().rotateRight(s));
-                }*/
+                    new RightRotation().rotateRight(session);
+                }return null;
             }
 
-        return null;
+
         }
-         }
+
 

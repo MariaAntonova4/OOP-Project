@@ -1,4 +1,4 @@
-package bg.tu_varna.sit.b4.f22621705.load.rotate;
+package bg.tu_varna.sit.b4.f22621705.oldClasses;
 
 import bg.tu_varna.sit.b4.f22621705.oldClasses.FileOpen;
 import bg.tu_varna.sit.b4.f22621705.oldClasses.OpenPGM;

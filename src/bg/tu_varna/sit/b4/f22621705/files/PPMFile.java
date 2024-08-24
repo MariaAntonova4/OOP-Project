@@ -8,8 +8,19 @@ public class PPMFile implements NetpbmFiles{
     private int maximumValue;
     private int width;
     private int height;
-    private Row row;
+    private ColorRow colorRow;
     private List<Row>rows=new ArrayList<>();
+
+    public ColorRow getColorRow() {
+        return colorRow;
+    }
+
+    public void setColorRow(ColorRow colorRow) {
+        if (colorRow==null){
+            this.colorRow=new ColorRow();
+        }
+        else this.colorRow = colorRow;
+    }
 
     @Override
     public String getFileName() {
@@ -54,7 +65,9 @@ public class PPMFile implements NetpbmFiles{
     }
 
     public void addRow(Row row){
+        setColorRow(colorRow);
         rows.add(row);
+        colorRow.colorRow(row);
     }
     @Override
     public List<Row> showRows() {

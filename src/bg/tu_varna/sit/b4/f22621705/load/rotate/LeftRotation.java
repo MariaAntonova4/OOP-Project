@@ -14,8 +14,7 @@ import java.util.*;
 
 public class LeftRotation {
     private SaveInPBMFile saveInFile;
-    private int newHeight;
-    private int newWidth;
+    private List<Row> newRowList=new ArrayList<>();
 
     public FileOpen checkOpening(String fileName){
         if (fileName.contains(".pbm")){
@@ -32,7 +31,7 @@ public class LeftRotation {
         for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
             Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
             NetpbmFiles s=iterator.next();
-            List<Row> newRowList=new ArrayList<>();
+
             while (!s.showRows().isEmpty()){
                 Iterator<Row>iterator2=s.showRows().iterator();
                 Row newRow=new Row();
@@ -40,17 +39,23 @@ public class LeftRotation {
                     Row i=(Row) iterator2.next();
                     if (!i.getPixelsList().isEmpty()){
                         Iterator<Pixel> iterators=i.getPixelsList().iterator();
-                        Pixel b=(Pixel) iterators.next();
-                        newRow.putInRow(b);
-                        i.deleteNumber(b);
+                        while (iterators.hasNext()){
+                            Pixel b=(Pixel) iterators.next();
+                            if (!iterators.hasNext()){
+                                newRow.putInRow(b);
+                                i.deleteNumber(b);
+                                break;}}
+
+
                     }else {s.getRows().clear();
                         break;
                     }
                 }
+                if (!newRow.getPixelsList().isEmpty()){newRowList.add(newRow);}
 
-                newRowList.add(newRow);
-                //s.deleteRow(i);
-            }s.setRows(newRowList);
+            }
+
+            s.setRows(newRowList);
 
         }}}
 
