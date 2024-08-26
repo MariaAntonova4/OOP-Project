@@ -15,22 +15,6 @@ public class CheckFile {
         this.openedFiles = openedFiles;
     }
 
-    public void setRow(Row row) {
-        if (row==null){
-            this.row=new Row();
-        }
-        else this.row = row;
-    }
-    public void createRows(Pixel pixels,NetpbmFiles netpbmFiles) {
-        setRow(row);
-        if (row.getPixelsList().size()<netpbmFiles.getWidth()){
-            row.putInRow(pixels);}
-        else {
-            netpbmFiles.addRow(row);
-            row=new Row();
-            row.putInRow(pixels);}
-    }
-
     public void setFile(String fileName) {
         this.file = new File("C:\\Users\\Asus\\Desktop\\OOP-PROJECT\\OOP-Project\\Files\\"+fileName);
     }
@@ -100,11 +84,11 @@ public class CheckFile {
                     if (numbers>47&&numbers<58){
                     numbers=Character.getNumericValue(numbers);
                     pixel=new Pixel(numbers);
-                    createRows(pixel,netpbmFiles);
+                    netpbmFiles.createRow(pixel);
                     //
                     }
                     //reader.read();
-                }netpbmFiles.addRow(row);
+                }netpbmFiles.addRow(netpbmFiles.getRow());
                 /*System.out.println(netpbmFiles.getPixels());
                 System.out.println(netpbmFiles.getMaximumValue());;
 */

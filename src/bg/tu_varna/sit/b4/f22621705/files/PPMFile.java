@@ -11,7 +11,7 @@ public class PPMFile implements NetpbmFiles{
     private ColorRow colorRow;
     private List<Row>rows=new ArrayList<>();
 
-    public ColorRow getColorRow() {
+    public Row getRow() {
         return colorRow;
     }
 
@@ -67,7 +67,7 @@ public class PPMFile implements NetpbmFiles{
     public void addRow(Row row){
         setColorRow(colorRow);
         rows.add(row);
-        colorRow.colorRow(row);
+        //colorRow.colorRow(row);
     }
     @Override
     public List<Row> showRows() {
@@ -82,8 +82,30 @@ public class PPMFile implements NetpbmFiles{
         return rows;
     }
 
+    public void setRow(Row row) {
+        if (row==null){
+            this.colorRow=new ColorRow();
+        }
+        else this.colorRow = colorRow;
+    }
+    @Override
+    public void createRow(Pixel pixels) {
+        setRow(colorRow);
+        ColorRow row;
+        if (colorRow.getPixelsList().size()<this.getWidth()){
+            row=colorRow.colorRow(this.getWidth(),pixels);
+            setColorRow(row);
+        }
+        else {
+           // colorRow.createColorRow();
+            this.addRow(colorRow);
+            colorRow=new ColorRow();
+            colorRow.putInRow(pixels);}
+    }
+
     @Override
     public void setRows(List<Row> rows) {
         this.rows = rows;
     }
+
 }

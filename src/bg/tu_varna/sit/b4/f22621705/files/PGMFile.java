@@ -77,9 +77,29 @@ public class PGMFile implements NetpbmFiles{
     public List<Row> getRows() {
         return rows;
     }
-
+    public void setRow(Row row) {
+        if (row==null){
+            this.row=new Row();
+        }
+        else this.row = row;
+    }
+    @Override
+    public void createRow(Pixel pixels) {
+        setRow(row);
+        if (row.getPixelsList().size()<this.getWidth()){
+            row.putInRow(pixels);}
+        else {
+            this.addRow(row);
+            row=new Row();
+            row.putInRow(pixels);}
+    }
     @Override
     public void setRows(List<Row> rows) {
         this.rows = rows;
+    }
+
+    @Override
+    public Row getRow() {
+        return row;
     }
 }

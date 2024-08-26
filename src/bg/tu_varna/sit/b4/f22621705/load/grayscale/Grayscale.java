@@ -1,6 +1,6 @@
 package bg.tu_varna.sit.b4.f22621705.load.grayscale;
 
-import bg.tu_varna.sit.b4.f22621705.oldClasses.OpenPPM;
+import bg.tu_varna.sit.b4.f22621705.files.BlueRow;
 
 import java.io.IOException;
 
@@ -26,9 +26,9 @@ public class Grayscale {
     }
 
     public StringBuilder turnGrayscale(String fileName) throws IOException {
-        int i=0;
+      /*  int i=0;
         double d=0;
-        OpenPPM openPPM=new OpenPPM();
+        BlueRow openPPM=new BlueRow();
         openPPM.readFile(fileName);
         System.out.println("Grayscale: ");
         int jj=0;
@@ -48,5 +48,5 @@ public class Grayscale {
                     }
                 }
         System.out.println(grayscale);
-
-    }return grayscale;}}
+*/
+        return null;}}

@@ -6,25 +6,13 @@ import bg.tu_varna.sit.b4.f22621705.files.Row;
 import bg.tu_varna.sit.b4.f22621705.load.Session;
 import bg.tu_varna.sit.b4.f22621705.oldClasses.FileOpen;
 import bg.tu_varna.sit.b4.f22621705.oldClasses.OpenPGM;
-import bg.tu_varna.sit.b4.f22621705.oldClasses.OpenPPM;
+import bg.tu_varna.sit.b4.f22621705.files.BlueRow;
 import bg.tu_varna.sit.b4.f22621705.oldClasses.SaveInPBMFile;
 
 import java.io.IOException;
 import java.util.*;
 
 public class RightRotation {
-    private SaveInPBMFile saveInFile;
-    private int newHeight;
-    private int newWidth;
-
-    public FileOpen checkOpening(String fileName){
-        if (fileName.contains(".pbm")){
-            return null;//new OpenPBM()
-        } else if (fileName.contains(".pgm")) {
-            return new OpenPGM();
-        }
-        return new OpenPPM();
-    }
 
     public void rotateRight(Session session) throws IOException {
         Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = session.getSession().entrySet();

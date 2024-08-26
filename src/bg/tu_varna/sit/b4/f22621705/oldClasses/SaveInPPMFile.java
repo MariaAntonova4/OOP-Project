@@ -1,5 +1,6 @@
 package bg.tu_varna.sit.b4.f22621705.oldClasses;
 
+import bg.tu_varna.sit.b4.f22621705.files.BlueRow;
 import bg.tu_varna.sit.b4.f22621705.menu.Menu;
 
 import java.io.File;
@@ -9,9 +10,9 @@ import java.io.IOException;
 public class SaveInPPMFile implements SaveFile{
     @Override
     public Menu saveFile(String fileName, StringBuilder stringBuilder) throws IOException {
-        File file=new File(filePath+fileName);
+        /*File file=new File(filePath+fileName);
         FileOutputStream fileWriter=new FileOutputStream(file);
-        OpenPPM openPPM=new OpenPPM();
+        BlueRow openPPM=new BlueRow();
         openPPM.readFile(fileName);
         fileWriter.write(openPPM.getMagicNumber().charAt(0));
         fileWriter.write(openPPM.getMagicNumber().charAt(1));
@@ -32,6 +33,7 @@ public class SaveInPPMFile implements SaveFile{
         } System.out.println("> save\n" +
                 "Successfully saved"+fileName);
         fileWriter.close();
+        return null;*/
         return null;
     }
 }
