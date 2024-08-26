@@ -1,12 +1,13 @@
 package bg.tu_varna.sit.b4.f22621705.load;
 
 import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles;
+import sun.nio.ch.Net;
 
 import java.util.*;
 
 public class Session {
     private Map<Integer, Set<NetpbmFiles>>session=new HashMap<>();
-    private ListOfImages listOfImages;
+    //private ListOfImages listOfImages;
     private int sessionNumber;
 
     private List<String>commandHistory=new ArrayList<>();
@@ -48,8 +49,10 @@ public class Session {
      * @param fileName the file name which will be written in the map of sessions
      */
         public void createSession(int sessionNumber, NetpbmFiles fileName){
-        listOfImages=new ListOfImages();
-        listOfImages.addImageInSession(fileName);
-            session.put(sessionNumber,listOfImages.getImagesInSession());
+        //listOfImages=new ListOfImages();
+        //listOfImages.addImageInSession(fileName);
+            Set<NetpbmFiles>images=new HashSet<>();
+            images.add(fileName);
+            session.put(sessionNumber,images);
         }
 }

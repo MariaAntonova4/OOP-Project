@@ -1,7 +1,9 @@
-package bg.tu_varna.sit.b4.f22621705.files;
+package bg.tu_varna.sit.b4.f22621705.oldClasses;
 
-public class ColorRow extends Row{
-    private ColorRow colorRow;
+import bg.tu_varna.sit.b4.f22621705.files.Row;
+
+public class ColorRow extends Row {
+   /* private ColorRow colorRow;
     public ColorRow(ColorRow colorRow) {
         this.colorRow = colorRow;
     }
@@ -35,5 +37,5 @@ public class ColorRow extends Row{
             colorRow.putInRow(pixel);
         }
         return null;
-    }
+    }*/
 }

@@ -1,13 +1,14 @@
-package bg.tu_varna.sit.b4.f22621705.load.monochrome;
+package bg.tu_varna.sit.b4.f22621705.oldClasses;
 
 
+import bg.tu_varna.sit.b4.f22621705.oldClasses.Monochrome;
 import bg.tu_varna.sit.b4.f22621705.oldClasses.OpenPGM;
 
 import java.io.IOException;
 
-public class MonochromePGM implements Monochrome{
+public class MonochromePGM {
     private StringBuilder monoPGM=new StringBuilder();
-    @Override
+
     public StringBuilder turnMonochrome(String fileName) throws IOException {
         OpenPGM openPGM=new OpenPGM();
         int i=0;

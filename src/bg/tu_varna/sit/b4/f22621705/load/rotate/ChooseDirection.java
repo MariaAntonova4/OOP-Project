@@ -1,12 +1,7 @@
 package bg.tu_varna.sit.b4.f22621705.load.rotate;
 
-import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles;
-import bg.tu_varna.sit.b4.f22621705.files.Pixel;
-import bg.tu_varna.sit.b4.f22621705.files.Row;
 import bg.tu_varna.sit.b4.f22621705.load.LoadCommands;
 import bg.tu_varna.sit.b4.f22621705.load.Session;
-import bg.tu_varna.sit.b4.f22621705.load.monochrome.MonochromePGM;
-import bg.tu_varna.sit.b4.f22621705.load.monochrome.MonochromePPM;
 
 import java.io.IOException;
 import java.util.*;

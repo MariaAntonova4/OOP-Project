@@ -1,6 +1,6 @@
 package bg.tu_varna.sit.b4.f22621705.load.monochrome;
 
-import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles;
+import bg.tu_varna.sit.b4.f22621705.files.*;
 import bg.tu_varna.sit.b4.f22621705.load.LoadCommands;
 import bg.tu_varna.sit.b4.f22621705.load.Session;
 
@@ -26,12 +26,27 @@ public class MonochromeFilter implements LoadCommands {
             Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
 
             NetpbmFiles s=iterator.next();
-            if(s.getFileName().contains(".pgm")){
-                //session.addNewData("",new MonochromePGM().turnMonochrome(""));
-            }
-            else if (s.getFileName().contains(".ppm")) {
-               // session.addNewData("",new MonochromePPM().turnMonochrome(""));
-            }
+            if (!s.getFileName().contains(".pbm")){
+                if (!s.showRows().isEmpty()){
+                    Iterator<Row> iterators=s.showRows().iterator();
+                    while (iterators.hasNext()){
+                        Row b=(Row) iterators.next();
+                        if (!b.getPixelsList().isEmpty()){
+
+                            Iterator<Pixel> iteratorPixel=b.getPixelsList().iterator();
+                            while (iteratorPixel.hasNext()){
+                                Pixel pixel=(Pixel) iteratorPixel.next();
+                                if (pixel.getNumber()<(s.getMaximumValue()/2)){
+                                    pixel.setNumber(0);
+                                }
+                                else {pixel.setNumber(s.getMaximumValue());}
+                            }
+                        }
+
+                    }
+                }
+
+    }
 
         }
         session.addInHistory("monochrome");

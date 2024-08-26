@@ -1,7 +1,6 @@
 package bg.tu_varna.sit.b4.f22621705.load.grayscale;
 
-import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles;
-import bg.tu_varna.sit.b4.f22621705.files.Pixel;
+import bg.tu_varna.sit.b4.f22621705.files.*;
 import bg.tu_varna.sit.b4.f22621705.load.LoadCommands;
 import bg.tu_varna.sit.b4.f22621705.load.Session;
 
@@ -27,41 +26,29 @@ public class GrayscaleFilter implements LoadCommands {
         for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
             Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
                 NetpbmFiles s=iterator.next();
-
-          /*  if (!s.getPixels().isEmpty()){
-                Iterator<Pixel> iterators=s.getPixels().iterator();
+            if (s.getFileName().contains(".ppm")){
+            if (!s.showRows().isEmpty()){
+                Iterator<Row> iterators=s.showRows().iterator();
                 while (iterators.hasNext()){
-                    Pixel b=(Pixel) iterators.next();
-                    if (b.getNumber()==0){
-                        b.setNumber(max);
-                    }else b.setNumber(max-b.getNumber());
-                }}
+                    Row b=(Row) iterators.next();
+                    if (!b.getPixelsList().isEmpty()){
 
-
-            if (isRedFlag()==true){
-                    i= (int) (i*0.21);
-                    grayscale.append(" ")
-                            .append(i);
-                    if (openPPM.getData().charAt(dataLength+1)==' '){
-                        setRedFlag(false);
-                        setGreenFlag(true);}
-                } else if (isGreenFlag()==true) {
-                    i= (int) (i*0.71);
-                    grayscale.append(" ")
-                            .append(i);
-                    if (openPPM.getData().charAt(dataLength+1)==' '){
-                        setRedFlag(false);
-                        setGreenFlag(false);}
-                }else{
-                    i= (int) (i*0.07);
-                    grayscale.append(" ")
-                            .append(i);
-                }
-            }dataLength++;
+                        Iterator<Pixel> iteratorPixel=b.getPixelsList().iterator();
+                        while (iteratorPixel.hasNext()){
+                            Pixel pixel=(Pixel) iteratorPixel.next();
+                            if (b instanceof RedRow){
+                                pixel.setNumber((int) (pixel.getNumber()*0.21));
+                            }
+                            else if(b instanceof GreenRow){
+                                pixel.setNumber((int)(pixel.getNumber()*0.71));
+                            } else if (b instanceof BlueRow) {
+                                pixel.setNumber((int)(pixel.getNumber()*0.07));
+                            }
+                        }
         }
 
-    }*/
-            }
-        return null;}
     }
+            }}
+        }return null;
+    }}
 

@@ -2,10 +2,7 @@ package bg.tu_varna.sit.b4.f22621705.files;
 
 import java.util.List;
 
-public class BlueRow extends ColorRow {
-    public BlueRow() {
-        super();
-    }
+public class BlueRow extends Row {
 
     @Override
     public List<Pixel> getPixelsList() {

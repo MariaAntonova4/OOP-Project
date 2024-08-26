@@ -61,7 +61,7 @@ public class CheckFile {
 
 
 
-                //reader.read();
+
                 numbers=(char)reader.read();
                 while (!(numbers >47) &&(numbers<58)){
                     numbers=(char)reader.read();
@@ -71,10 +71,13 @@ public class CheckFile {
 
 
 
-                //reader.read();
+                ////reader.read();
                 //reader.read();
                 if (!fileName.contains(".pbm")){
                 numbers=(char)reader.read();
+                while (!(numbers>47)&&(numbers<58)){
+                    numbers=(char)reader.read();
+                }
                 numbers=Character.getNumericValue(numbers);
                 netpbmFiles.setMaximumValue(numbers);
             }

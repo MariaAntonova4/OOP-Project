@@ -8,18 +8,11 @@ public class PPMFile implements NetpbmFiles{
     private int maximumValue;
     private int width;
     private int height;
-    private ColorRow colorRow;
+    private Row rowColor;
     private List<Row>rows=new ArrayList<>();
 
     public Row getRow() {
-        return colorRow;
-    }
-
-    public void setColorRow(ColorRow colorRow) {
-        if (colorRow==null){
-            this.colorRow=new ColorRow();
-        }
-        else this.colorRow = colorRow;
+        return rowColor;
     }
 
     @Override
@@ -65,13 +58,20 @@ public class PPMFile implements NetpbmFiles{
     }
 
     public void addRow(Row row){
-        setColorRow(colorRow);
+        //setRow(row);
         rows.add(row);
         //colorRow.colorRow(row);
     }
     @Override
     public List<Row> showRows() {
-        return null;
+        if (!this.rows.isEmpty()){
+            Iterator<Row>iterator=this.rows.iterator();
+            while (iterator.hasNext()){
+                Row i=(Row) iterator.next();
+                System.out.println(i.getPixelsList());
+            }
+        }
+        return rows;
     }
     @Override
     public void deleteRow(Row row) {
@@ -84,23 +84,32 @@ public class PPMFile implements NetpbmFiles{
 
     public void setRow(Row row) {
         if (row==null){
-            this.colorRow=new ColorRow();
+            this.rowColor=new RedRow();
         }
-        else this.colorRow = colorRow;
+        else{this.rowColor = rowColor;}
     }
     @Override
     public void createRow(Pixel pixels) {
-        setRow(colorRow);
-        ColorRow row;
-        if (colorRow.getPixelsList().size()<this.getWidth()){
-            row=colorRow.colorRow(this.getWidth(),pixels);
-            setColorRow(row);
+        setRow(rowColor);
+        //ColorRow row;row=
+        if (rowColor.getPixelsList().size()<this.getWidth()){
+            rowColor.putInRow(pixels);
+            //setColorRow(row);// .createColorRow();//
         }
-        else {
-           // colorRow.createColorRow();
-            this.addRow(colorRow);
-            colorRow=new ColorRow();
-            colorRow.putInRow(pixels);}
+        else if(rowColor instanceof RedRow){
+
+             addRow(rowColor);
+            rowColor=new GreenRow();
+            rowColor.putInRow(pixels);
+            } else if (rowColor instanceof GreenRow) {
+            addRow(rowColor);
+            rowColor=new BlueRow();
+            rowColor.putInRow(pixels);
+        }else if(rowColor instanceof BlueRow){
+            addRow(rowColor);
+            rowColor=new RedRow();
+            rowColor.putInRow(pixels);
+        }
     }
 
     @Override
