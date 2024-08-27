@@ -18,11 +18,12 @@ public class MonochromeFilter implements LoadCommands {
      * the function checks the format of the file and calls the needed function in new class
      */
     @Override
-    public LoadCommands executeLoad(Session session) throws IOException {
+    public LoadCommands executeLoad(Session session,int sessionNumber) throws IOException {
         Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = session.getSession().entrySet();
 
 
         for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
+            if (entry.getKey()==sessionNumber){
             Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
 
             NetpbmFiles s=iterator.next();
@@ -48,7 +49,7 @@ public class MonochromeFilter implements LoadCommands {
 
     }
 
-        }
+        }}
         session.addInHistory("monochrome");
         return null;
     }

@@ -14,10 +14,11 @@ import java.util.*;
 
 public class RightRotation {
 
-    public void rotateRight(Session session) throws IOException {
+    public void rotateRight(Session session,int sessionNumber) throws IOException {
         Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = session.getSession().entrySet();
 
         for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
+            if (entry.getKey()==sessionNumber){
             Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
             NetpbmFiles s=iterator.next();
             List<Row> newRowList=new ArrayList<>();
@@ -67,5 +68,5 @@ else {
                 //s.deleteRow(i);
             }s.setRows(newRowList);
 
-        }
+        }}
     }}

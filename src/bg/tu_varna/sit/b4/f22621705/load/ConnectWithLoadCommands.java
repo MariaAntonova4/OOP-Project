@@ -44,8 +44,8 @@ public abstract class ConnectWithLoadCommands {
             }
         }return null;}
 
-    public LoadCommands commands(String string, Session session) throws IOException {
-        return goToCommand(string).executeLoad(session);
+    public LoadCommands commands(String string, Session session,int sessionNumber) throws IOException {
+        return goToCommand(string).executeLoad(session,sessionNumber);
     }
 
 

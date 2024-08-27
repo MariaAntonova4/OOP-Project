@@ -20,11 +20,12 @@ public class NegativeFilter implements LoadCommands {
      * the function checks for the format of the file and calls the needed function in new class
      */
     @Override
-    public LoadCommands executeLoad(Session session) throws IOException {
+    public LoadCommands executeLoad(Session session,int sessionNumber) throws IOException {
        Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = session.getSession().entrySet();
         System.out.println("This is the negative picture:");
 
         for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
+            if (entry.getKey()==sessionNumber){
             Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
 
             NetpbmFiles s=iterator.next();
@@ -47,7 +48,7 @@ public class NegativeFilter implements LoadCommands {
                     System.out.println(i.getPixelsList());
                 }
             }
-        }
+        }}
         session.addInHistory("negative");
         return null;
 

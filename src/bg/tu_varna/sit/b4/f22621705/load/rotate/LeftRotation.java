@@ -17,10 +17,11 @@ public class LeftRotation {
     private List<Row> newRowList=new ArrayList<>();
 
 
-    public void rotateLeft(Session session) throws IOException {
+    public void rotateLeft(Session session,int sessionNumber) throws IOException {
         Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = session.getSession().entrySet();
 
         for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
+            if (entry.getKey()==sessionNumber){
             Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
             NetpbmFiles s=iterator.next();
 
@@ -49,7 +50,7 @@ public class LeftRotation {
 
             s.setRows(newRowList);
 
-        }}}
+        }}}}
 
 
 

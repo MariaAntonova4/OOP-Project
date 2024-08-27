@@ -12,6 +12,7 @@ public class ChooseDirection implements LoadCommands {
 
     public ChooseDirection() {
         this.direction = Direction.LEFT;
+        this.direction=Direction.RIGHT;
     }
 
     /**
@@ -22,19 +23,19 @@ public class ChooseDirection implements LoadCommands {
      * the function ask for the direction, checks the format of the file and calls new class with the function which has to be executed
      */
     @Override
-    public LoadCommands executeLoad(Session session) throws IOException {
+    public LoadCommands executeLoad(Session session,int sessionNumber) throws IOException {
         Scanner scanner=new Scanner(System.in);
         String string;
         System.out.println("Please write the direction: ");
         string=scanner.next();
         if (string.equals(direction.getDirection())){
                     session.addInHistory("rotate left");
-                    new LeftRotation().rotateLeft(session);
+                    new LeftRotation().rotateLeft(session,sessionNumber);
 
                 }
                 else{
                     session.addInHistory("rotate right");
-                    new RightRotation().rotateRight(session);
+                    new RightRotation().rotateRight(session,sessionNumber);
                 }return null;
             }
 

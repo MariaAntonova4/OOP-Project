@@ -27,6 +27,6 @@ public class CreateFiles {
         e.puttingInMap("save",new ConnectWithSave(session).aaa());
         e.puttingInMap("help",new HelpCommand().aaa());
         e.puttingInMap("exit",new Exit().aaa());
-        e.puttingInMap("saveas",new SaveAs().aaa());
+        e.puttingInMap("saveas",new SaveAs(session).aaa());
     }
 }

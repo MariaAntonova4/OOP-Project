@@ -9,12 +9,18 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class SaveAsCommand implements Menu{
+    private Session session;
+
+    public SaveAsCommand(Session session) {
+        this.session = session;
+    }
+
     @Override
     public Menu execute() throws IOException {
         String str;
         Scanner scanner=new Scanner(System.in);
         str=scanner.nextLine();
 
-        return new SaveAsInFile().saveAsFile(str);
+        return new SaveAsInFile(str).saveAsFile(session);
     }
 }

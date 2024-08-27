@@ -19,6 +19,7 @@ import java.util.Set;
 import static bg.tu_varna.sit.b4.f22621705.oldClasses.SaveFile.filePath;
 
 public class SaveInFile{
+    private static String filePath="C:\\Users\\Asus\\Desktop\\OOP-PROJECT\\OOP-Project\\Files\\";
     private ConnectWithLoadCommands ee;
     private LoadCommands aa;
 
@@ -54,7 +55,7 @@ public class SaveInFile{
             for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
                 Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
                 NetpbmFiles netpbmFiles=iterator.next();
-                File file=new File("C:\\Users\\Asus\\Desktop\\OOP-PROJECT\\OOP-Project\\Files\\"+netpbmFiles.getFileName());
+                File file=new File(filePath+netpbmFiles.getFileName());
                 FileOutputStream fileWriter=new FileOutputStream(file);
                 fileWriter.write(netpbmFiles.getMagicNumber().getBytes());
                 fileWriter.write('\n');

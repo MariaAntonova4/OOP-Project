@@ -1,5 +1,6 @@
 package bg.tu_varna.sit.b4.f22621705.load;
 
+import bg.tu_varna.sit.b4.f22621705.load.collage.ConnectWithCollage;
 import bg.tu_varna.sit.b4.f22621705.menu.Menu;
 import bg.tu_varna.sit.b4.f22621705.load.add.ConnectWithAdd;
 import bg.tu_varna.sit.b4.f22621705.load.grayscale.ConnectWithGrayscale;
@@ -39,15 +40,16 @@ public class Load {
     /**
      * adds the commands of the load command
      */
-    public void loadMapping(){
+    public void loadMapping(OpenedFiles openedFiles1){
         getEe().putLoad("negative",new ConnectWithNegative().aAA());
         getEe().putLoad("rotate",new RotationConnection().aAA());
         getEe().putLoad("grayscale",new ConnectWithGrayscale().aAA());
         getEe().putLoad("monochrome",new ConnectWithMonochrome().aAA());
         getEe().putLoad("undo",new ConnectUndo().aAA());
-        getEe().putLoad("add",new ConnectWithAdd().aAA());
+        getEe().putLoad("add",new ConnectWithAdd(openedFiles1).aAA());
         getEe().putLoad("session_info",new SessionConnection().aAA());
         getEe().putLoad("switch",new LoadSwitch().aAA());
+        getEe().putLoad("collage",new ConnectWithCollage(openedFiles1).aAA());
     }
 
     /**
@@ -59,7 +61,7 @@ public class Load {
      */
     public Menu exe(String fileName, OpenedFiles openedFiles) throws IOException {
         setEe(new RotationConnection());
-        loadMapping();
+        loadMapping(openedFiles);
         System.out.println("Session with ID:");
         Scanner scannerNum=new Scanner(System.in);
         int mapNum= Integer.parseInt(scannerNum.next());
@@ -72,7 +74,7 @@ public class Load {
         commandName=scanner.next();
 
         while(ee.commandExist(commandName)){
-        ee.commands(commandName,session);
+        ee.commands(commandName,session,mapNum);
 
             commandName=scanner.next();
         }
