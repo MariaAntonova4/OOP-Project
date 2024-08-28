@@ -2,7 +2,7 @@ package bg.tu_varna.sit.b4.f22621705.load.add;
 
 import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles;
 import bg.tu_varna.sit.b4.f22621705.load.LoadCommands;
-import bg.tu_varna.sit.b4.f22621705.load.ListOfImages;
+import bg.tu_varna.sit.b4.f22621705.oldClasses.ListOfImages;
 import bg.tu_varna.sit.b4.f22621705.load.Load;
 import bg.tu_varna.sit.b4.f22621705.load.Session;
 import bg.tu_varna.sit.b4.f22621705.open.OpenedFiles;
@@ -61,7 +61,7 @@ public class Add implements LoadCommands {
                 }
             }
 
-        }session.addInHistory("add");
+        }session.addInHistory(sessionNumber,"add");
         System.out.println("Image "+fileName+" added");
         return null;}
 

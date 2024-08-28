@@ -54,7 +54,7 @@ public class Collage implements LoadCommands {
 
                         if (firstFile.getWidth()==secondFile.getWidth()&&firstFile.getHeight()==secondFile.getHeight()){
                             if (stringDirection.equals(CollageDirection.HORIZONTAL.getCollageDirection())){
-                                session.addInHistory("collage horizontal");
+                                session.addInHistory(sessionNumber,"collage horizontal");
                             newFile=new HorizontalCollage().horizontalCollage(firstFile,secondFile,newFile);
                                 newFile.setFileName(newFileName);
                             for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
@@ -63,7 +63,7 @@ public class Collage implements LoadCommands {
                                     }}
                         }
                             else if(stringDirection.equals(CollageDirection.VERTICAL.getCollageDirection())){
-                                session.addInHistory("collage vertical");
+                                session.addInHistory(sessionNumber,"collage vertical");
                                 newFile=new VerticalCollage().verticalCollage(firstFile,secondFile,newFile);
                                 newFile.setFileName(newFileName);
                                 for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){

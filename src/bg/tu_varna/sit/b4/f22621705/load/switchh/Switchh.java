@@ -35,7 +35,7 @@ public class Switchh implements LoadCommands {
             else {
                 System.out.println("There is No such number");
             }
-        }session.addInHistory("switch");
+        }session.addInHistory(sessionNumber,"switch");
         return null;
     }
 

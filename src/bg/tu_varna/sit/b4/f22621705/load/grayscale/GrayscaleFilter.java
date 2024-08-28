@@ -51,5 +51,6 @@ public class GrayscaleFilter implements LoadCommands {
     }
             }}
         }
-    }return null;}}
+    }session.addInHistory(sessionNumber,"grayscale");
+        return null;}}
 

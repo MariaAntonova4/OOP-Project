@@ -10,9 +10,9 @@ public class Session {
     //private ListOfImages listOfImages;
     private int sessionNumber;
 
-    private List<String>commandHistory=new ArrayList<>();
+    private Map<Integer,List<String>>commandHistory=new HashMap<>();
 
-    public List<String> getCommandHistory() {
+    public Map<Integer,List<String>> getCommandHistory() {
         return commandHistory;
     }
 
@@ -20,8 +20,18 @@ public class Session {
      *
      * @param commandName the name of the command which was executed
      */
-    public void addInHistory(String commandName){
-        commandHistory.add(commandName);
+    public void addInHistory(int numberSession,String commandName){
+        Set<Map.Entry<Integer,List<String>>>entries=this.commandHistory.entrySet();
+        if (commandHistory.keySet().contains(numberSession)){
+        for (Map.Entry<Integer,List<String>>entry:entries){
+            if (entry.getKey()==numberSession){
+            entry.getValue().add(commandName);
+            }
+        }}else {
+            List<String>commands=new ArrayList<>();
+            commands.add(commandName);
+            commandHistory.put(numberSession,commands);
+        }
     }
 
     public void setSessionNumber(int sessionNumber) {

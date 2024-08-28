@@ -50,7 +50,7 @@ public class MonochromeFilter implements LoadCommands {
     }
 
         }}
-        session.addInHistory("monochrome");
+        session.addInHistory(sessionNumber,"monochrome");
         return null;
     }
 }

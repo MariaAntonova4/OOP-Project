@@ -11,7 +11,6 @@ public class ChooseDirection implements LoadCommands {
     private Direction direction;
 
     public ChooseDirection() {
-        this.direction = Direction.LEFT;
         this.direction=Direction.RIGHT;
     }
 
@@ -28,15 +27,18 @@ public class ChooseDirection implements LoadCommands {
         String string;
         System.out.println("Please write the direction: ");
         string=scanner.next();
-        if (string.equals(direction.getDirection())){
-                    session.addInHistory("rotate left");
+        if (string.equals(Direction.LEFT.getDirection())){
+                    session.addInHistory(sessionNumber,"rotate left");
                     new LeftRotation().rotateLeft(session,sessionNumber);
 
                 }
-                else{
-                    session.addInHistory("rotate right");
+                else if(string.equals(Direction.RIGHT.getDirection())){
+                    session.addInHistory(sessionNumber,"rotate right");
                     new RightRotation().rotateRight(session,sessionNumber);
-                }return null;
+                }else {
+            System.out.println("This is Not a Direction");
+        }
+                return null;
             }
 
 

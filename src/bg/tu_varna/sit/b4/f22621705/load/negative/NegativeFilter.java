@@ -49,7 +49,7 @@ public class NegativeFilter implements LoadCommands {
                 }
             }
         }}
-        session.addInHistory("negative");
+        session.addInHistory(sessionNumber,"negative");
         return null;
 
         }
