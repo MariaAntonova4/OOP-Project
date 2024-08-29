@@ -2,19 +2,17 @@ package bg.tu_varna.sit.b4.f22621705.open;
 
 import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+
 
 public class OpenedFiles {
-    private List<NetpbmFiles> openedFiles=new ArrayList<>();
+    private Set<NetpbmFiles> openedFiles=new HashSet<>();
 
-    public List<NetpbmFiles> getOpenedFiles() {
+    public Set<NetpbmFiles> getOpenedFiles() {
         return openedFiles;
     }
 
-    public void setOpenedFiles(List<NetpbmFiles> openedFiles) {
+    public void setOpenedFiles(Set<NetpbmFiles> openedFiles) {
         this.openedFiles = openedFiles;
     }
     public void opened(NetpbmFiles newFile){

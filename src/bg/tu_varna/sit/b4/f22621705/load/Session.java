@@ -15,6 +15,14 @@ public class Session {
     public Map<Integer,List<String>> getCommandHistory() {
         return commandHistory;
     }
+    public void addListOfFiles(int numberSession,Set<NetpbmFiles>newListOfFiles){
+        Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = this.getSession().entrySet();
+        for(Map.Entry<Integer,Set<NetpbmFiles>>entry:entries){
+            if (entry.getKey()==numberSession){
+                entry.setValue(newListOfFiles);
+            }
+        }
+    }
 
     /**
      *

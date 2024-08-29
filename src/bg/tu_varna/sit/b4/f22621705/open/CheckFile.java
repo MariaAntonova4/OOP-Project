@@ -97,7 +97,7 @@ public class CheckFile {
 */
                 System.out.println(netpbmFiles.showRows());
                 System.out.println("Successfully opened "+fileName);
-
+                openedFiles.opened(netpbmFiles);
             }
             else{
                 System.out.println("There is no such file");
@@ -105,7 +105,7 @@ public class CheckFile {
                 FileWriter fileWriter=new FileWriter(getFile());
                 fileWriter.close();
             }
-            openedFiles.opened(netpbmFiles);
+
             return null;
         }
 }

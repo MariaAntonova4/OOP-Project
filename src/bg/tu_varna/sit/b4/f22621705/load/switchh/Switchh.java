@@ -10,7 +10,20 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class Switchh implements LoadCommands {
+    private int sessionNumber;
     private Session newSession;
+
+    public Switchh(int sessionNumber) {
+        this.sessionNumber = sessionNumber;
+    }
+
+    public int getSessionNumber() {
+        return sessionNumber;
+    }
+
+    public void setSessionNumber(int sessionNumber) {
+        this.sessionNumber = sessionNumber;
+    }
 
     public Session getNewSession() {
         return newSession;
@@ -30,7 +43,8 @@ public class Switchh implements LoadCommands {
         newSessionNumber= Integer.parseInt(scanner.nextLine());
         for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
             if (entry.getKey()==newSessionNumber){
-                sessionNumber=newSessionNumber;
+                setSessionNumber(newSessionNumber);
+                break;
             }
             else {
                 System.out.println("There is No such number");

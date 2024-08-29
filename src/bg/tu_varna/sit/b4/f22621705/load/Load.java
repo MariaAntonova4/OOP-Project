@@ -17,10 +17,24 @@ import java.util.*;
 
 
 public class Load {
+    private int mapNum;
     private Session session;
 
     public Load(Session session) {
         this.session = session;
+    }
+
+    public int getMapNum() {
+        return mapNum;
+    }
+
+    public void setMapNum(int mapNum) {
+        if (mapNum==0){
+            System.out.println("Session with ID:");
+            Scanner scannerNum=new Scanner(System.in);
+            this.mapNum= Integer.parseInt(scannerNum.next());
+        }
+        else this.mapNum = mapNum;
     }
 
     public Session getSession() {
@@ -45,10 +59,10 @@ public class Load {
         getEe().putLoad("rotate",new RotationConnection().aAA());
         getEe().putLoad("grayscale",new ConnectWithGrayscale().aAA());
         getEe().putLoad("monochrome",new ConnectWithMonochrome().aAA());
-        getEe().putLoad("undo",new ConnectUndo().aAA());
+        getEe().putLoad("undo",new ConnectUndo(ee).aAA());
         getEe().putLoad("add",new ConnectWithAdd(openedFiles1).aAA());
         getEe().putLoad("session_info",new SessionConnection().aAA());
-        getEe().putLoad("switch",new LoadSwitch().aAA());
+        getEe().putLoad("switch",new LoadSwitch(mapNum).aAA());
         getEe().putLoad("collage",new ConnectWithCollage(openedFiles1).aAA());
     }
 
@@ -62,10 +76,8 @@ public class Load {
     public Menu exe(String fileName, OpenedFiles openedFiles) throws IOException {
         setEe(new RotationConnection());
         loadMapping(openedFiles);
-        System.out.println("Session with ID:");
-        Scanner scannerNum=new Scanner(System.in);
-        int mapNum= Integer.parseInt(scannerNum.next());
-        session.createSession(mapNum,openedFiles.NamesOfOpenedFiles(fileName));
+        setMapNum(mapNum);
+        session.createSession(getMapNum(),openedFiles.NamesOfOpenedFiles(fileName));
         System.out.println("Image "+fileName+" added");
         Scanner scanner=new Scanner(System.in);
         String commandName;
@@ -78,7 +90,7 @@ public class Load {
 
             commandName=scanner.next();
         }
-
+        this.mapNum=0;
       return null;
     }
 }

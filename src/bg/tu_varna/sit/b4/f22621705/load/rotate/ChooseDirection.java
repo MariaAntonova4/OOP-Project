@@ -7,8 +7,22 @@ import java.io.IOException;
 import java.util.*;
 
 public class ChooseDirection implements LoadCommands {
+    private String stringDirection;
 
     private Direction direction;
+
+    public String getStringDirection() {
+        return stringDirection;
+    }
+
+    public void setStringDirection(String stringDirection) {
+        if (stringDirection==null){
+            Scanner scanner=new Scanner(System.in);
+            System.out.println("Please write the direction: ");
+            this.stringDirection=scanner.next();
+        }
+        else this.stringDirection = stringDirection;
+    }
 
     public ChooseDirection() {
         this.direction=Direction.RIGHT;
@@ -23,21 +37,19 @@ public class ChooseDirection implements LoadCommands {
      */
     @Override
     public LoadCommands executeLoad(Session session,int sessionNumber) throws IOException {
-        Scanner scanner=new Scanner(System.in);
-        String string;
-        System.out.println("Please write the direction: ");
-        string=scanner.next();
-        if (string.equals(Direction.LEFT.getDirection())){
+        setStringDirection(stringDirection);
+        if (getStringDirection().equals(Direction.LEFT.getDirection())){
                     session.addInHistory(sessionNumber,"rotate left");
                     new LeftRotation().rotateLeft(session,sessionNumber);
 
                 }
-                else if(string.equals(Direction.RIGHT.getDirection())){
+                else if(getStringDirection().equals(Direction.RIGHT.getDirection())){
                     session.addInHistory(sessionNumber,"rotate right");
                     new RightRotation().rotateRight(session,sessionNumber);
                 }else {
             System.out.println("This is Not a Direction");
         }
+                this.stringDirection=null;
                 return null;
             }
 
