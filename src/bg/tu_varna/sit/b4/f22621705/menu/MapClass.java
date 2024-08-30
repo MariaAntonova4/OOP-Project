@@ -11,6 +11,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public abstract class MapClass {
+    private StringBuilder stringBuilder;
     private OpenedFiles openedFiles;
     private Session session;
     private CreateFiles createFiles=new CreateFiles();
@@ -43,6 +44,17 @@ public abstract class MapClass {
         mapABC.put(string,a);
     }
 
+    public StringBuilder getStringBuilder() {
+        return stringBuilder;
+    }
+
+    public void setStringBuilder(StringBuilder stringBuilder) {
+        if (stringBuilder==null){
+            this.stringBuilder=new StringBuilder();
+        }
+        else this.stringBuilder = stringBuilder;
+    }
+
     /**
      *
      * @param string command
@@ -59,6 +71,14 @@ public abstract class MapClass {
             }else {throw new CommandException("There is no such command");}
         }return null;}
 
+    public String takeCommand(StringBuilder stringBuilder){
+        if (stringBuilder.toString().contains("save as")){
+            return "save as";
+        } else if (stringBuilder.toString().contains(" ")) {
+            return stringBuilder.substring(0, stringBuilder.indexOf(" "));
+        }
+        else return stringBuilder.toString();
+    }
     /**
      *
      * @param string The command written
@@ -70,13 +90,18 @@ public abstract class MapClass {
         setSession(openedFiles);
         getSession2(session);
         createFiles.setE(this);
-        createFiles.putInMap(openedFiles,session);
+        setStringBuilder(stringBuilder);
+        createFiles.putInMap(openedFiles,session,getStringBuilder());
         Scanner scanner=new Scanner(System.in);
-        String commandName="";
-        while(!Objects.equals(commandName, "exit")){
-            System.out.println(">"+commandName);
-            commandName=scanner.next();
-            goToCommand(commandName).execute();}
+        scanner.useDelimiter("\n");
+
+        stringBuilder.append(scanner.next());
+        while(!Objects.equals(takeCommand(stringBuilder), "exit")){
+           // System.out.println(">"+commandName);
+            goToCommand(takeCommand(stringBuilder)).execute();
+            stringBuilder.delete(0, stringBuilder.length());
+            stringBuilder.append(scanner.next());
+            }
         return null;
     }
     public void aa() throws IOException {

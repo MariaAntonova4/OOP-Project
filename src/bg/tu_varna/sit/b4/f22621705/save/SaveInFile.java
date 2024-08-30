@@ -54,14 +54,15 @@ public class SaveInFile{
         Set<Map.Entry<Integer, Set<NetpbmFiles>>>entries=session.getSession().entrySet();
             for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
                 Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
+                while (iterator.hasNext()){
                 NetpbmFiles netpbmFiles=iterator.next();
                 File file=new File(filePath+netpbmFiles.getFileName());
                 FileOutputStream fileWriter=new FileOutputStream(file);
                 fileWriter.write(netpbmFiles.getMagicNumber().getBytes());
                 fileWriter.write('\n');
-                fileWriter.write(String.valueOf(netpbmFiles.getHeight()).getBytes());
+                fileWriter.write(String.valueOf(netpbmFiles.getWidth()).getBytes());
                 fileWriter.write(' ');
-                fileWriter.write(netpbmFiles.getWidth()+'0');
+                fileWriter.write(netpbmFiles.getHeight()+'0');
                 fileWriter.write('\n');
                 if (!netpbmFiles.getFileName().contains(".pbm")){
                     fileWriter.write(netpbmFiles.getMaximumValue());
@@ -80,7 +81,7 @@ public class SaveInFile{
                 }
                 System.out.println("Successfully saved "+netpbmFiles.getFileName());
                 fileWriter.close();
-       }
+       }}
         System.out.println("Success!:)");
         return null;
     }

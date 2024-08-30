@@ -12,13 +12,27 @@ import bg.tu_varna.sit.b4.f22621705.load.switchh.LoadSwitch;
 import bg.tu_varna.sit.b4.f22621705.load.undo.ConnectUndo;
 import bg.tu_varna.sit.b4.f22621705.open.OpenedFiles;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
 
 
 public class Load {
+    StringBuilder commandName;
     private int mapNum;
     private Session session;
+
+    public StringBuilder getCommandName() {
+        return commandName;
+    }
+
+    public void setCommandName(StringBuilder commandName) {
+        if (commandName==null){
+            this.commandName=new StringBuilder();
+        }
+       else this.commandName = commandName;
+    }
 
     public Load(Session session) {
         this.session = session;
@@ -48,24 +62,34 @@ public class Load {
     }
 
     public void setEe(ConnectWithLoadCommands ee) {
-        this.ee = ee;
+        if (ee==null){
+            this.ee=new ConnectWithNegative();
+        }
+        else this.ee = ee;
     }
 
     /**
      * adds the commands of the load command
      */
-    public void loadMapping(OpenedFiles openedFiles1){
+    public void loadMapping(OpenedFiles openedFiles1,int numberMap){
         getEe().putLoad("negative",new ConnectWithNegative().aAA());
-        getEe().putLoad("rotate",new RotationConnection().aAA());
+        getEe().putLoad("rotate",new RotationConnection(this.commandName).aAA());
         getEe().putLoad("grayscale",new ConnectWithGrayscale().aAA());
         getEe().putLoad("monochrome",new ConnectWithMonochrome().aAA());
-        getEe().putLoad("undo",new ConnectUndo(ee).aAA());
-        getEe().putLoad("add",new ConnectWithAdd(openedFiles1).aAA());
-        getEe().putLoad("session_info",new SessionConnection().aAA());
-        getEe().putLoad("switch",new LoadSwitch(mapNum).aAA());
-        getEe().putLoad("collage",new ConnectWithCollage(openedFiles1).aAA());
+        getEe().putLoad("undo",new ConnectUndo(this).aAA());
+        getEe().putLoad("add",new ConnectWithAdd(openedFiles1,this.commandName).aAA());
+        getEe().putLoad("session info",new SessionConnection().aAA());
+        getEe().putLoad("switch",new LoadSwitch(this).aAA());
+        getEe().putLoad("collage",new ConnectWithCollage(openedFiles1,this.commandName).aAA());
     }
-
+    public String takeCommand(StringBuilder stringBuilder){
+        if (stringBuilder.toString().contains("session info")){
+            return "session info";
+        } else if (stringBuilder.toString().contains(" ")) {
+            return stringBuilder.substring(0, stringBuilder.indexOf(" "));
+        }
+        else return stringBuilder.toString();
+    }
     /**
      *
      * @param fileName the name of the file
@@ -73,22 +97,34 @@ public class Load {
      * @return
      * @throws IOException
      */
-    public Menu exe(String fileName, OpenedFiles openedFiles) throws IOException {
-        setEe(new RotationConnection());
-        loadMapping(openedFiles);
+    public Menu exe(StringBuilder stringBuilder3, OpenedFiles openedFiles) throws IOException {
+        setEe(ee);
+        setCommandName(commandName);
         setMapNum(mapNum);
-        session.createSession(getMapNum(),openedFiles.NamesOfOpenedFiles(fileName));
-        System.out.println("Image "+fileName+" added");
+        loadMapping(openedFiles,getMapNum());
+
+
+        String[]fileNames=stringBuilder3.toString().split(" ");
+        for (String s:fileNames)
+        {
+            if (openedFiles.CheckNamesOfOpenedFiles(s)){
+                session.addFile(getMapNum(),openedFiles.NamesOfOpenedFiles(s));
+                System.out.println("Image "+s+" added");
+            }
+            else {return null;}
+        }
+
         Scanner scanner=new Scanner(System.in);
-        String commandName;
 
 
-        commandName=scanner.next();
+        scanner.useDelimiter("\n");
 
-        while(ee.commandExist(commandName)){
-        ee.commands(commandName,session,mapNum);
+        commandName.append(scanner.next());
 
-            commandName=scanner.next();
+        while(ee.commandExist(takeCommand(commandName))){
+        ee.commands(takeCommand(commandName),session,mapNum);
+            commandName.delete(0,getCommandName().length());
+            commandName.append(scanner.next());
         }
         this.mapNum=0;
       return null;

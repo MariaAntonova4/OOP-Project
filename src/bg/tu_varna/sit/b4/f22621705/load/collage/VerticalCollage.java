@@ -15,7 +15,7 @@ public class VerticalCollage {
         } else if (firstFile.getFileName().contains(".ppm")) {
             newFile=new PPMFile();
         }
-
+        newFile.setMagicNumber(firstFile.getMagicNumber().charAt(1));
         newFile.setWidth(firstFile.getWidth());
         newFile.setHeight(firstFile.getHeight()+secondFile.getHeight());
         if (!firstFile.showRows().isEmpty()){

@@ -8,7 +8,7 @@ import java.util.*;
 
 public class ChooseDirection implements LoadCommands {
     private String stringDirection;
-
+    private StringBuilder stringBuilder;
     private Direction direction;
 
     public String getStringDirection() {
@@ -17,15 +17,18 @@ public class ChooseDirection implements LoadCommands {
 
     public void setStringDirection(String stringDirection) {
         if (stringDirection==null){
-            Scanner scanner=new Scanner(System.in);
-            System.out.println("Please write the direction: ");
-            this.stringDirection=scanner.next();
+            this.stringDirection=getStringBuilder().substring((getStringBuilder().indexOf(" ")+1),getStringBuilder().length());
         }
         else this.stringDirection = stringDirection;
     }
 
-    public ChooseDirection() {
+    public ChooseDirection(StringBuilder stringBuilder) {
         this.direction=Direction.RIGHT;
+        this.stringBuilder=stringBuilder;
+    }
+
+    public StringBuilder getStringBuilder() {
+        return stringBuilder;
     }
 
     /**

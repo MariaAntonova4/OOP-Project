@@ -3,40 +3,80 @@ package bg.tu_varna.sit.b4.f22621705.load.collage;
 import bg.tu_varna.sit.b4.f22621705.files.*;
 import bg.tu_varna.sit.b4.f22621705.load.LoadCommands;
 import bg.tu_varna.sit.b4.f22621705.load.Session;
-import bg.tu_varna.sit.b4.f22621705.load.rotate.LeftRotation;
-import bg.tu_varna.sit.b4.f22621705.load.rotate.RightRotation;
 import bg.tu_varna.sit.b4.f22621705.open.OpenedFiles;
 
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
+
 
 public class Collage implements LoadCommands {
     private CollageDirection collageDirection;
     private OpenedFiles openedFiles;
+    private StringBuilder stringBuilder;
+    String newFileName;
+    String stringDirection;
+    String firstFileName;
+    String secondFileName;
 
-    public Collage(OpenedFiles openedFiles) {
+    public Collage(OpenedFiles openedFiles,StringBuilder stringBuilder) {
         this.collageDirection=CollageDirection.HORIZONTAL;
         this.openedFiles=openedFiles;
+        this.stringBuilder=stringBuilder;
     }
 
+    public String getNewFileName() {
+        return newFileName;
+    }
+
+    public void setNewFileName(String newFileName) {
+        this.newFileName = newFileName;
+    }
+
+    public String getStringDirection() {
+        return stringDirection;
+    }
+
+    public void setStringDirection(String stringDirection) {
+        this.stringDirection = stringDirection;
+    }
+
+    public String getFirstFileName() {
+        return firstFileName;
+    }
+
+    public void setFirstFileName(String firstFileName) {
+        this.firstFileName = firstFileName;
+    }
+
+    public String getSecondFileName() {
+        return secondFileName;
+    }
+
+    public void setSecondFileName(String secondFileName) {
+        this.secondFileName = secondFileName;
+    }
+
+    public StringBuilder getStringBuilder() {
+        return stringBuilder;
+    }
+
+    public void setData(){
+        getStringBuilder().delete(0, stringBuilder.indexOf(" ")+1);
+        setStringDirection(stringBuilder.substring(0,stringBuilder.indexOf(" ")));
+        getStringBuilder().delete(0, stringBuilder.indexOf(" ")+1);
+        setFirstFileName(stringBuilder.substring(0,stringBuilder.indexOf(" ")));
+        getStringBuilder().delete(0, stringBuilder.indexOf(" ")+1);
+        setSecondFileName(stringBuilder.substring(0,stringBuilder.indexOf(" ")));
+        getStringBuilder().delete(0, stringBuilder.indexOf(" ")+1);
+        setNewFileName(stringBuilder.toString());
+    }
     @Override
     public LoadCommands executeLoad(Session session, int sessionNumber) throws IOException {
         Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = session.getSession().entrySet();
-        Scanner scanner=new Scanner(System.in);
-        String stringDirection;
-        String firstFileName;
-        String secondFileName;
         NetpbmFiles newFile=null;
-        System.out.println("Please write the direction: ");
-        stringDirection=scanner.next();
-        firstFileName= scanner.next();
-        secondFileName=scanner.next();
-        String newFileName=scanner.next();
         NetpbmFiles firstFile=null;
         NetpbmFiles secondFile=null;
+        setData();
                     if (firstFileName.charAt(firstFileName.length()-3)==secondFileName.charAt(secondFileName.length()-3)&&firstFileName.charAt(firstFileName.length()-2)==secondFileName.charAt(secondFileName.length()-2)&&firstFileName.charAt(firstFileName.length()-1)==secondFileName.charAt(secondFileName.length()-1)){
                         for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
                             if (entry.getKey()==sessionNumber) {

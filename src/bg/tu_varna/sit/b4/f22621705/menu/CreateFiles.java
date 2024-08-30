@@ -21,12 +21,12 @@ public class CreateFiles {
      *
      * @throws CommandException if there is no such command
      */
-    public void putInMap(OpenedFiles openedFiles,Session session) throws CommandException {
+    public void putInMap(OpenedFiles openedFiles,Session session,StringBuilder stringBuilder) throws CommandException {
         e.puttingInMap("open",new ConnectWithOpen(openedFiles).aaa());
-        e.puttingInMap("load",new ConnectWithLoad(openedFiles,session).aaa());
+        e.puttingInMap("load",new ConnectWithLoad(openedFiles,session,stringBuilder).aaa());
         e.puttingInMap("save",new ConnectWithSave(session).aaa());
         e.puttingInMap("help",new HelpCommand().aaa());
         e.puttingInMap("exit",new Exit().aaa());
-        e.puttingInMap("saveas",new SaveAs(session).aaa());
+        e.puttingInMap("save as",new SaveAs(session).aaa());
     }
 }

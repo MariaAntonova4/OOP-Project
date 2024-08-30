@@ -12,10 +12,20 @@ import java.util.*;
 
 public class Add implements LoadCommands {
     private Load load;
+    private String fileName;
     private OpenedFiles openedFiles;
-
-    public Add(OpenedFiles openedFiles) {
+    private StringBuilder stringBuilder;
+    public Add(OpenedFiles openedFiles,StringBuilder stringBuilder) {
         this.openedFiles = openedFiles;
+        this.stringBuilder=stringBuilder;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
     private Map<Integer, Set<String>> session=new HashMap<>();
@@ -38,6 +48,16 @@ public class Add implements LoadCommands {
         this.mapNumber = mapNumber;
     }
 
+    public StringBuilder getStringBuilder() {
+        return stringBuilder;
+    }
+
+    public String fileName(String fileName){
+        if (fileName==null){
+            return getStringBuilder().substring((getStringBuilder().indexOf(" ")+1),getStringBuilder().length());
+        }
+        else return fileName;
+        }
     /**
      *
      * @param session the session with the needed files
@@ -50,19 +70,16 @@ public class Add implements LoadCommands {
 
         Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = session.getSession().entrySet();
 
-
-        String fileName;
-        Scanner scanner=new Scanner(System.in);
-        fileName=scanner.nextLine();
         for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
             if (entry.getKey()==sessionNumber){
-                if (openedFiles.CheckNamesOfOpenedFiles(fileName)){
-                    entry.getValue().add(openedFiles.NamesOfOpenedFiles(fileName));
+                if (openedFiles.CheckNamesOfOpenedFiles(fileName(fileName))){
+                    entry.getValue().add(openedFiles.NamesOfOpenedFiles(fileName(fileName)));
                 }
             }
 
         }session.addInHistory(sessionNumber,"add");
-        System.out.println("Image "+fileName+" added");
+        System.out.println("Image "+fileName(fileName)+" added");
+        fileName=null;
         return null;}
 
 }

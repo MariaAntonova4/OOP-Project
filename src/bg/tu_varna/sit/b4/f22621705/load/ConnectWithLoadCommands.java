@@ -7,11 +7,13 @@ import java.util.Objects;
 import java.util.Set;
 
 public abstract class ConnectWithLoadCommands {
+
     private Map<String, LoadCommands>loaaad=new HashMap<>();
 
     public void putLoad(String command, LoadCommands aa){
         loaaad.put(command,aa);
     }
+
 
     /**
      *

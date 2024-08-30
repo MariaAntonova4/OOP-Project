@@ -19,7 +19,7 @@ public class HorizontalCollage {
 
             newFile.setWidth(firstFile.getWidth()+secondFile.getWidth());
             newFile.setHeight(firstFile.getHeight());
-
+            newFile.setMagicNumber(firstFile.getMagicNumber().charAt(1));
             if (!firstFile.showRows().isEmpty()&&!secondFile.showRows().isEmpty()){
                 Iterator<Row> iterator2=firstFile.showRows().iterator();
                 Iterator<Row>secondIRow=secondFile.showRows().iterator();

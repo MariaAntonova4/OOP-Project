@@ -60,7 +60,16 @@ public class Session {
             setSessionNumber(entry.getKey());
         }
     }*/
-
+    public void addFile(int sessionNumber,NetpbmFiles newFile){
+        Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = session.entrySet();
+        if (session.keySet().contains(sessionNumber)) {
+        for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
+            if (entry.getKey()==sessionNumber){
+                    entry.getValue().add(newFile);
+            }
+        }}
+        else createSession(sessionNumber,newFile);
+    }
     /**
      *
      * @param sessionNumber the unique number which will be written in the map of sessions
