@@ -2,7 +2,7 @@ package bg.tu_varna.sit.b4.f22621705.load.add;
 
 import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles;
 import bg.tu_varna.sit.b4.f22621705.load.LoadCommands;
-import bg.tu_varna.sit.b4.f22621705.oldClasses.ListOfImages;
+import bg.tu_varna.sit.b4.f22621705.close.Close;
 import bg.tu_varna.sit.b4.f22621705.load.Load;
 import bg.tu_varna.sit.b4.f22621705.load.Session;
 import bg.tu_varna.sit.b4.f22621705.open.OpenedFiles;
@@ -30,7 +30,7 @@ public class Add implements LoadCommands {
 
     private Map<Integer, Set<String>> session=new HashMap<>();
     private int mapNumber;
-    private ListOfImages listOfImages;
+    private Close listOfImages;
 
     public Map<Integer, Set<String>> getSession() {
         return session;

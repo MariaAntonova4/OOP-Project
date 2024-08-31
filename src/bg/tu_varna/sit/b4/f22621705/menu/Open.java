@@ -11,17 +11,19 @@ import java.util.Scanner;
 public class Open implements Menu {
     private NetpbmFiles netpbmFiles;
     private OpenedFiles openedFiles;
+    private StringBuilder stringBuilder;
 
-    public Open(OpenedFiles openedFiles) {
+    public Open(OpenedFiles openedFiles,StringBuilder stringBuilder) {
         this.openedFiles = openedFiles;
+        this.stringBuilder=stringBuilder;
     }
 
     @Override
     public Menu execute() throws IOException {
-            String fileName;
+            String fileName=stringBuilder.substring(stringBuilder.indexOf(" ")+1,stringBuilder.length());
             //System.out.println("Please enter the name of the file which you want to open: ");
-            Scanner scanner=new Scanner(System.in);
-            fileName=scanner.nextLine();
+            //Scanner scanner=new Scanner(System.in);
+            //fileName=scanner.nextLine();
 
             return new CheckFile(openedFiles).checkIfFileExists(netpbmFiles,fileName);
         }

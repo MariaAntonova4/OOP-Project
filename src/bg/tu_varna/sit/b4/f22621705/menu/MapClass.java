@@ -16,19 +16,11 @@ public abstract class MapClass {
     private Session session;
     private CreateFiles createFiles=new CreateFiles();
 
-    public void getSession2(Session session) {
-        if (session==null){
-            this.session=new Session();
-        }else this.session=session;
+    public void setSession2(Session session) {
+         this.session=session;
     }
 
     public MapClass() throws CommandException{
-    }
-
-    public void setSession(OpenedFiles openedFiles) {
-        if (openedFiles==null){
-            this.openedFiles=new OpenedFiles();
-        }else this.openedFiles = openedFiles;
     }
     private Map<String, Menu> mapABC=new HashMap<>();
 
@@ -55,6 +47,18 @@ public abstract class MapClass {
         else this.stringBuilder = stringBuilder;
     }
 
+    public void setOpenedFiles(OpenedFiles openedFiles) {
+         this.openedFiles = openedFiles;
+    }
+
+    public OpenedFiles getOpenedFiles() {
+        return openedFiles;
+    }
+
+    public Session getSession() {
+        return session;
+    }
+
     /**
      *
      * @param string command
@@ -70,7 +74,9 @@ public abstract class MapClass {
                 }
             }else {throw new CommandException("There is no such command");}
         }return null;}
-
+    public void updateMenu() throws CommandException {
+        createFiles.putInMap(getOpenedFiles(),getSession(),getStringBuilder());
+    }
     public String takeCommand(StringBuilder stringBuilder){
         if (stringBuilder.toString().contains("save as")){
             return "save as";
@@ -87,11 +93,8 @@ public abstract class MapClass {
      * @throws CommandException
      */
     public Menu commands() throws IOException, CommandException {
-        setSession(openedFiles);
-        getSession2(session);
         createFiles.setE(this);
-        setStringBuilder(stringBuilder);
-        createFiles.putInMap(openedFiles,session,getStringBuilder());
+        updateMenu();
         Scanner scanner=new Scanner(System.in);
         scanner.useDelimiter("\n");
 
@@ -100,11 +103,12 @@ public abstract class MapClass {
            // System.out.println(">"+commandName);
             goToCommand(takeCommand(stringBuilder)).execute();
             stringBuilder.delete(0, stringBuilder.length());
+
             stringBuilder.append(scanner.next());
             }
         return null;
     }
-    public void aa() throws IOException {
+    public void aa() throws IOException, CommandException {
         Menu a=aaa();
         a.execute();
     }

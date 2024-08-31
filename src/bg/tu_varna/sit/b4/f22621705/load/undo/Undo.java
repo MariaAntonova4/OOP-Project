@@ -6,6 +6,7 @@ import bg.tu_varna.sit.b4.f22621705.load.Load;
 import bg.tu_varna.sit.b4.f22621705.load.LoadCommands;
 import bg.tu_varna.sit.b4.f22621705.load.Session;
 import bg.tu_varna.sit.b4.f22621705.load.add.Add;
+import bg.tu_varna.sit.b4.f22621705.load.collage.Collage;
 import bg.tu_varna.sit.b4.f22621705.load.rotate.ChooseDirection;
 import bg.tu_varna.sit.b4.f22621705.open.CheckFile;
 import bg.tu_varna.sit.b4.f22621705.open.OpenedFiles;
@@ -71,9 +72,12 @@ public class Undo implements LoadCommands {
                                         com.setFileName(array[1]);
                                         com.executeLoad(session,sessionNumber);
                                     } else if (array[0].equals("collage")) {
+                                        StringBuilder stringBuilderColl=new StringBuilder();
                                         for (String a:array){
-
+                                            stringBuilderColl.append(a);
                                         }
+                                        Collage com=new Collage(openedFiles,stringBuilderColl);
+                                        com.executeLoad(session, sessionNumber);
                                     }
 
                                 }

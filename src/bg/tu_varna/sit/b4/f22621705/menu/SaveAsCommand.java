@@ -10,16 +10,17 @@ import java.util.Scanner;
 
 public class SaveAsCommand implements Menu{
     private Session session;
-
-    public SaveAsCommand(Session session) {
+    private StringBuilder stringBuilder;
+    public SaveAsCommand(Session session,StringBuilder stringBuilder) {
         this.session = session;
+        this.stringBuilder=stringBuilder;
     }
 
     @Override
     public Menu execute() throws IOException {
-        String str;
-        Scanner scanner=new Scanner(System.in);
-        str=scanner.nextLine();
+        String str=stringBuilder.substring(stringBuilder.indexOf(" "), stringBuilder.length());
+        //Scanner scanner=new Scanner(System.in);
+        //str=scanner.nextLine();
 
         return new SaveAsInFile(str).saveAsFile(session);
     }

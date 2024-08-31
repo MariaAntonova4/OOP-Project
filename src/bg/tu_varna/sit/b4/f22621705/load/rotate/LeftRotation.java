@@ -24,7 +24,9 @@ public class LeftRotation {
             if (entry.getKey()==sessionNumber){
             Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
             NetpbmFiles s=iterator.next();
-
+            int newWidth=s.getWidth();
+            s.setWidth(s.getHeight());
+            s.setHeight(newWidth);
             while (!s.showRows().isEmpty()){
                 Iterator<Row>iterator2=s.showRows().iterator();
                 Row newRow=new Row();

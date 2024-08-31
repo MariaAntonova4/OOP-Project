@@ -61,14 +61,17 @@ public class Collage implements LoadCommands {
     }
 
     public void setData(){
-        getStringBuilder().delete(0, stringBuilder.indexOf(" ")+1);
-        setStringDirection(stringBuilder.substring(0,stringBuilder.indexOf(" ")));
-        getStringBuilder().delete(0, stringBuilder.indexOf(" ")+1);
-        setFirstFileName(stringBuilder.substring(0,stringBuilder.indexOf(" ")));
-        getStringBuilder().delete(0, stringBuilder.indexOf(" ")+1);
-        setSecondFileName(stringBuilder.substring(0,stringBuilder.indexOf(" ")));
-        getStringBuilder().delete(0, stringBuilder.indexOf(" ")+1);
-        setNewFileName(stringBuilder.toString());
+        String[]fileNames=stringBuilder.toString().split(" ");
+        for (String s:fileNames)
+        {
+            if (stringDirection==null){
+                setStringDirection(s);
+            }
+            else if(firstFileName==null){setFirstFileName(s);}
+            else if (secondFileName==null) {
+                setSecondFileName(s);
+            }else {setNewFileName(s);}
+        }
     }
     @Override
     public LoadCommands executeLoad(Session session, int sessionNumber) throws IOException {
@@ -77,7 +80,8 @@ public class Collage implements LoadCommands {
         NetpbmFiles firstFile=null;
         NetpbmFiles secondFile=null;
         setData();
-                    if (firstFileName.charAt(firstFileName.length()-3)==secondFileName.charAt(secondFileName.length()-3)&&firstFileName.charAt(firstFileName.length()-2)==secondFileName.charAt(secondFileName.length()-2)&&firstFileName.charAt(firstFileName.length()-1)==secondFileName.charAt(secondFileName.length()-1)){
+        //firstFileName.charAt(firstFileName.length()-3)==secondFileName.charAt(secondFileName.length()-3)&&firstFileName.charAt(firstFileName.length()-2)==secondFileName.charAt(secondFileName.length()-2)&&firstFileName.charAt(firstFileName.length()-1)==secondFileName.charAt(secondFileName.length()-1)
+                    if (firstFileName.substring(firstFileName.indexOf("."),firstFileName.length()).equals(secondFileName.substring(secondFileName.indexOf("."),secondFileName.length()))){
                         for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
                             if (entry.getKey()==sessionNumber) {
                                 Iterator<NetpbmFiles> iterator = entry.getValue().iterator();

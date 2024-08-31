@@ -7,5 +7,5 @@ import bg.tu_varna.sit.b4.f22621705.open.OpenedFiles;
 import java.io.IOException;
 
 public interface Menu {
-    Menu execute()throws IOException;
+    Menu execute() throws IOException, CommandException;
 }

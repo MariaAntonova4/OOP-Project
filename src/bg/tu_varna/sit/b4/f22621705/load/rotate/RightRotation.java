@@ -22,8 +22,9 @@ public class RightRotation {
             Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
             NetpbmFiles s=iterator.next();
             List<Row> newRowList=new ArrayList<>();
-
-
+            int newHeight=s.getWidth();
+            s.setWidth(s.getHeight());
+            s.setHeight(newHeight);
             while (!s.showRows().isEmpty()){
                 Iterator<Row>iterator2=s.showRows().iterator();
 

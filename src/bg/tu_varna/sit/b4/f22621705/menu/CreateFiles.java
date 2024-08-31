@@ -1,6 +1,7 @@
 package bg.tu_varna.sit.b4.f22621705.menu;
 
 
+import bg.tu_varna.sit.b4.f22621705.close.Close;
 import bg.tu_varna.sit.b4.f22621705.exit.Exit;
 import bg.tu_varna.sit.b4.f22621705.help.HelpCommand;
 import bg.tu_varna.sit.b4.f22621705.load.Session;
@@ -22,11 +23,12 @@ public class CreateFiles {
      * @throws CommandException if there is no such command
      */
     public void putInMap(OpenedFiles openedFiles,Session session,StringBuilder stringBuilder) throws CommandException {
-        e.puttingInMap("open",new ConnectWithOpen(openedFiles).aaa());
+        e.puttingInMap("open",new ConnectWithOpen(openedFiles,stringBuilder).aaa());
         e.puttingInMap("load",new ConnectWithLoad(openedFiles,session,stringBuilder).aaa());
         e.puttingInMap("save",new ConnectWithSave(session).aaa());
         e.puttingInMap("help",new HelpCommand().aaa());
         e.puttingInMap("exit",new Exit().aaa());
-        e.puttingInMap("save as",new SaveAs(session).aaa());
+        e.puttingInMap("save as",new SaveAs(session,stringBuilder).aaa());
+        e.puttingInMap("close",new Close(getE()).aaa());
     }
 }
