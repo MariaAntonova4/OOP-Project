@@ -20,6 +20,7 @@ public class RightRotation {
         for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
             if (entry.getKey()==sessionNumber){
             Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
+            while (iterator.hasNext()){
             NetpbmFiles s=iterator.next();
             List<Row> newRowList=new ArrayList<>();
             int newHeight=s.getWidth();
@@ -69,5 +70,6 @@ else {
                 //s.deleteRow(i);
             }s.setRows(newRowList);
 
+            }
         }}
     }}

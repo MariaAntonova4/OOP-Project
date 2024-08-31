@@ -26,7 +26,8 @@ public class VerticalCollage {
                     Iterator<Pixel> iterators=i.getPixelsList().iterator();
                     while (iterators.hasNext()){
                         Pixel b=(Pixel) iterators.next();
-                        newFile.createRow(b);
+                        Pixel newPixel=new Pixel(b.getNumber());
+                        newFile.createRow(newPixel);
                     }
                 }
             }}
@@ -38,7 +39,8 @@ public class VerticalCollage {
                     Iterator<Pixel> iteratorP=j.getPixelsList().iterator();
                     while (iteratorP.hasNext()){
                         Pixel a=(Pixel) iteratorP.next();
-                        newFile.createRow(a);
+                        Pixel newPix=new Pixel(a.getNumber());
+                        newFile.createRow(newPix);
                     }
             }
         }

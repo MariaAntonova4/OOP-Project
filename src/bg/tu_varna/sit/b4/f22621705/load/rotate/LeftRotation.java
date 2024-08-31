@@ -23,6 +23,7 @@ public class LeftRotation {
         for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
             if (entry.getKey()==sessionNumber){
             Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
+            while (iterator.hasNext()){
             NetpbmFiles s=iterator.next();
             int newWidth=s.getWidth();
             s.setWidth(s.getHeight());
@@ -51,7 +52,8 @@ public class LeftRotation {
             }
 
             s.setRows(newRowList);
-
+            newRowList=new ArrayList<>();
+            }
         }}}}
 
 

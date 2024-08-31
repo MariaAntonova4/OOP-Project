@@ -14,7 +14,7 @@ public class ConnectWithCollage extends ConnectWithLoadCommands {
     }
     @Override
     public LoadCommands aAA() {
-        stringBuilder.delete(0, stringBuilder.indexOf(" ")+1);
+
         return new Collage(openedFiles,stringBuilder);
     }
 }

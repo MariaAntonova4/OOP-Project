@@ -27,7 +27,7 @@ public class NegativeFilter implements LoadCommands {
         for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
             if (entry.getKey()==sessionNumber){
             Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
-
+            while (iterator.hasNext()){
             NetpbmFiles s=iterator.next();
 
             int max=s.getMaximumValue();
@@ -45,11 +45,9 @@ public class NegativeFilter implements LoadCommands {
                                 b.setNumber(max);
                             }else b.setNumber(max-b.getNumber());
                         }}
-                    System.out.println(i.getPixelsList());
                 }
-            }
-        }}
-        session.addInHistory(sessionNumber,"negative");
+            }}
+        }}session.addInHistory(sessionNumber,"negative");
         return null;
 
         }

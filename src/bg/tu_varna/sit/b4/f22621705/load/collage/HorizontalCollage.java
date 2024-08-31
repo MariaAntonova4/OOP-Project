@@ -30,14 +30,16 @@ public class HorizontalCollage {
                         Iterator<Pixel> iterators=i.getPixelsList().iterator();
                         while (iterators.hasNext()){
                             Pixel b=(Pixel) iterators.next();
-                            newFile.createRow(b);
+                            Pixel newPi=new Pixel(b.getNumber());
+                            newFile.createRow(newPi);
                         }
                     }
                     if (!j.getPixelsList().isEmpty()){
                         Iterator<Pixel> iteratorP=j.getPixelsList().iterator();
                         while (iteratorP.hasNext()){
                             Pixel a=(Pixel) iteratorP.next();
-                            newFile.createRow(a);
+                            Pixel newPixel=new Pixel(a.getNumber());
+                            newFile.createRow(newPixel);
                         }
                     }}
                 newFile.addRow(newFile.getRow());

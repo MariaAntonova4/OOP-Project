@@ -26,6 +26,7 @@ public class GrayscaleFilter implements LoadCommands {
         for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
             if (entry.getKey()==sessionNumber){
             Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
+            while (iterator.hasNext()){
                 NetpbmFiles s=iterator.next();
             if (s.getFileName().contains(".ppm")){
             if (!s.showRows().isEmpty()){
@@ -48,7 +49,7 @@ public class GrayscaleFilter implements LoadCommands {
                         }
         }
 
-    }
+    }}
             }}
         }
     }session.addInHistory(sessionNumber,"grayscale");

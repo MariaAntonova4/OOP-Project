@@ -73,14 +73,14 @@ public class Load {
      */
     public void loadMapping(OpenedFiles openedFiles1,int numberMap){
         getEe().putLoad("negative",new ConnectWithNegative().aAA());
-        getEe().putLoad("rotate",new RotationConnection(this.commandName).aAA());
+        getEe().putLoad("rotate",new RotationConnection(getCommandName()).aAA());
         getEe().putLoad("grayscale",new ConnectWithGrayscale().aAA());
         getEe().putLoad("monochrome",new ConnectWithMonochrome().aAA());
         getEe().putLoad("undo",new ConnectUndo(this).aAA());
-        getEe().putLoad("add",new ConnectWithAdd(openedFiles1,this.commandName).aAA());
+        getEe().putLoad("add",new ConnectWithAdd(openedFiles1,getCommandName()).aAA());
         getEe().putLoad("session info",new SessionConnection().aAA());
         getEe().putLoad("switch",new LoadSwitch(this).aAA());
-        getEe().putLoad("collage",new ConnectWithCollage(openedFiles1,this.commandName).aAA());
+        getEe().putLoad("collage",new ConnectWithCollage(openedFiles1,getCommandName()).aAA());
     }
     public String takeCommand(StringBuilder stringBuilder){
         if (stringBuilder.toString().contains("session info")){

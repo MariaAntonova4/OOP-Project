@@ -95,7 +95,7 @@ public class CheckFile {
                 /*System.out.println(netpbmFiles.getPixels());
                 System.out.println(netpbmFiles.getMaximumValue());;
 */
-                System.out.println(netpbmFiles.showRows());
+               // System.out.println(netpbmFiles.showRows());
                 System.out.println("Successfully opened "+fileName);
                 openedFiles.opened(netpbmFiles);
             }

@@ -61,6 +61,7 @@ public class Collage implements LoadCommands {
     }
 
     public void setData(){
+        stringBuilder.delete(0, stringBuilder.indexOf(" ")+1);
         String[]fileNames=stringBuilder.toString().split(" ");
         for (String s:fileNames)
         {
@@ -80,7 +81,6 @@ public class Collage implements LoadCommands {
         NetpbmFiles firstFile=null;
         NetpbmFiles secondFile=null;
         setData();
-        //firstFileName.charAt(firstFileName.length()-3)==secondFileName.charAt(secondFileName.length()-3)&&firstFileName.charAt(firstFileName.length()-2)==secondFileName.charAt(secondFileName.length()-2)&&firstFileName.charAt(firstFileName.length()-1)==secondFileName.charAt(secondFileName.length()-1)
                     if (firstFileName.substring(firstFileName.indexOf("."),firstFileName.length()).equals(secondFileName.substring(secondFileName.indexOf("."),secondFileName.length()))){
                         for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
                             if (entry.getKey()==sessionNumber) {
@@ -98,7 +98,7 @@ public class Collage implements LoadCommands {
 
                         if (firstFile.getWidth()==secondFile.getWidth()&&firstFile.getHeight()==secondFile.getHeight()){
                             if (stringDirection.equals(CollageDirection.HORIZONTAL.getCollageDirection())){
-                                session.addInHistory(sessionNumber,"collage horizontal");
+                                session.addInHistory(sessionNumber,"collage horizontal "+firstFileName+" "+secondFileName+" "+newFileName);
                             newFile=new HorizontalCollage().horizontalCollage(firstFile,secondFile,newFile);
                                 newFile.setFileName(newFileName);
                             for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
@@ -107,7 +107,7 @@ public class Collage implements LoadCommands {
                                     }}
                         }
                             else if(stringDirection.equals(CollageDirection.VERTICAL.getCollageDirection())){
-                                session.addInHistory(sessionNumber,"collage vertical");
+                                session.addInHistory(sessionNumber,"collage vertical "+firstFileName+" "+secondFileName+" "+newFileName);
                                 newFile=new VerticalCollage().verticalCollage(firstFile,secondFile,newFile);
                                 newFile.setFileName(newFileName);
                                 for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
@@ -120,6 +120,6 @@ public class Collage implements LoadCommands {
                     }}
 
                     else {
-                        System.out.println("Cannot make a collage from different types! (."+firstFileName.charAt(firstFileName.length()-3)+firstFileName.charAt(firstFileName.length()-2)+firstFileName.charAt(firstFileName.length()-1)+" and ."+secondFileName.charAt(secondFileName.length()-3)+secondFileName.charAt(secondFileName.length()-2)+secondFileName.charAt(secondFileName.length()-1)+")");
+                        System.out.println("Cannot make a collage from different types! (."+firstFileName.substring(firstFileName.indexOf("."),firstFileName.length())+" and ."+secondFileName.substring(secondFileName.indexOf("."),secondFileName.length())+")");
     }
 return null;}}

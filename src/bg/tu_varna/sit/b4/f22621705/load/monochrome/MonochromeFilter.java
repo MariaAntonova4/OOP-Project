@@ -25,7 +25,7 @@ public class MonochromeFilter implements LoadCommands {
         for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
             if (entry.getKey()==sessionNumber){
             Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
-
+            while (iterator.hasNext()){
             NetpbmFiles s=iterator.next();
             if (!s.getFileName().contains(".pbm")){
                 if (!s.showRows().isEmpty()){
@@ -48,7 +48,7 @@ public class MonochromeFilter implements LoadCommands {
                 }
 
     }
-
+            }
         }}
         session.addInHistory(sessionNumber,"monochrome");
         return null;

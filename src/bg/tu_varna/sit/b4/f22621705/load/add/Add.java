@@ -77,7 +77,7 @@ public class Add implements LoadCommands {
                 }
             }
 
-        }session.addInHistory(sessionNumber,"add");
+        }session.addInHistory(sessionNumber,"add "+fileName(fileName));
         System.out.println("Image "+fileName(fileName)+" added");
         fileName=null;
         return null;}
