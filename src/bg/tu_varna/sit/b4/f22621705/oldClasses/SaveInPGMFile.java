@@ -1,6 +1,7 @@
 package bg.tu_varna.sit.b4.f22621705.oldClasses;
 
 import bg.tu_varna.sit.b4.f22621705.menu.Menu;
+import bg.tu_varna.sit.b4.f22621705.menu.Commands;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -11,7 +12,7 @@ public class SaveInPGMFile implements SaveFile{
     public Menu saveFile(String fileName,StringBuilder stringBuilder) throws IOException {
         File file=new File(filePath+fileName);
         FileOutputStream fileWriter=new FileOutputStream(file);
-        OpenPGM openPGM=new OpenPGM();
+        /*Commands openPGM=new Commands();
         openPGM.readFile(fileName);
         fileWriter.write(openPGM.getMagicNumber().charAt(0));
         fileWriter.write(openPGM.getMagicNumber().charAt(1));
@@ -31,7 +32,7 @@ public class SaveInPGMFile implements SaveFile{
             dataLength++;
         } System.out.println("> save\n" +
                 "Successfully saved"+fileName);
-        fileWriter.close();
+        fileWriter.close();*/
         return null;
     }
 }

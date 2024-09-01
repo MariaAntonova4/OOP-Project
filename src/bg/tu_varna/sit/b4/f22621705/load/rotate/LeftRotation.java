@@ -4,9 +4,6 @@ import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles;
 import bg.tu_varna.sit.b4.f22621705.files.Pixel;
 import bg.tu_varna.sit.b4.f22621705.files.Row;
 import bg.tu_varna.sit.b4.f22621705.load.Session;
-import bg.tu_varna.sit.b4.f22621705.oldClasses.FileOpen;
-import bg.tu_varna.sit.b4.f22621705.oldClasses.OpenPGM;
-import bg.tu_varna.sit.b4.f22621705.files.BlueRow;
 import bg.tu_varna.sit.b4.f22621705.oldClasses.SaveInPBMFile;
 
 import java.io.IOException;

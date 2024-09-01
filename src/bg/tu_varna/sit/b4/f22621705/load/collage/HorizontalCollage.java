@@ -2,9 +2,7 @@ package bg.tu_varna.sit.b4.f22621705.load.collage;
 
 
 import bg.tu_varna.sit.b4.f22621705.files.*;
-import bg.tu_varna.sit.b4.f22621705.oldClasses.OpenPGM;
 
-import java.io.IOException;
 import java.util.Iterator;
 
 public class HorizontalCollage {

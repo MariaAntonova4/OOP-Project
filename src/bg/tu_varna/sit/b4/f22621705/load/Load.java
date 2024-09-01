@@ -22,7 +22,7 @@ public class Load {
     StringBuilder commandName;
     private int mapNum;
     private Session session;
-
+    private LoadCommand loadCommand;
     public StringBuilder getCommandName() {
         return commandName;
     }
@@ -36,6 +36,7 @@ public class Load {
 
     public Load(Session session) {
         this.session = session;
+        this.loadCommand=LoadCommand.SESSION_INFO;
     }
 
     public int getMapNum() {
@@ -72,15 +73,15 @@ public class Load {
      * adds the commands of the load command
      */
     public void loadMapping(OpenedFiles openedFiles1,int numberMap){
-        getEe().putLoad("negative",new ConnectWithNegative().aAA());
-        getEe().putLoad("rotate",new RotationConnection(getCommandName()).aAA());
-        getEe().putLoad("grayscale",new ConnectWithGrayscale().aAA());
-        getEe().putLoad("monochrome",new ConnectWithMonochrome().aAA());
-        getEe().putLoad("undo",new ConnectUndo(this).aAA());
-        getEe().putLoad("add",new ConnectWithAdd(openedFiles1,getCommandName()).aAA());
-        getEe().putLoad("session info",new SessionConnection().aAA());
-        getEe().putLoad("switch",new LoadSwitch(this).aAA());
-        getEe().putLoad("collage",new ConnectWithCollage(openedFiles1,getCommandName()).aAA());
+        getEe().putLoad(LoadCommand.NEGATIVE.getLoadCommand(), new ConnectWithNegative().aAA());
+        getEe().putLoad(LoadCommand.ROTATE.getLoadCommand(), new RotationConnection(getCommandName()).aAA());
+        getEe().putLoad(LoadCommand.GRAYSCALE.getLoadCommand(), new ConnectWithGrayscale().aAA());
+        getEe().putLoad(LoadCommand.MONOCHROME.getLoadCommand(), new ConnectWithMonochrome().aAA());
+        getEe().putLoad(LoadCommand.UNDO.getLoadCommand(), new ConnectUndo(this).aAA());
+        getEe().putLoad(LoadCommand.ADD.getLoadCommand(), new ConnectWithAdd(openedFiles1,getCommandName()).aAA());
+        getEe().putLoad(LoadCommand.SESSION_INFO.getLoadCommand(), new SessionConnection().aAA());
+        getEe().putLoad(LoadCommand.SWITCH.getLoadCommand(), new LoadSwitch(this).aAA());
+        getEe().putLoad(LoadCommand.COLLAGE.getLoadCommand(), new ConnectWithCollage(openedFiles1,getCommandName()).aAA());
     }
     public String takeCommand(StringBuilder stringBuilder){
         if (stringBuilder.toString().contains("session info")){
