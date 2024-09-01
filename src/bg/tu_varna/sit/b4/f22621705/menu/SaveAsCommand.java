@@ -18,10 +18,9 @@ public class SaveAsCommand implements Menu{
 
     @Override
     public Menu execute() throws IOException {
-        String str=stringBuilder.substring(stringBuilder.indexOf(" "), stringBuilder.length());
+        String str=stringBuilder.substring(8, stringBuilder.length());
         //Scanner scanner=new Scanner(System.in);
         //str=scanner.nextLine();
-
         return new SaveAsInFile(str).saveAsFile(session);
     }
 }

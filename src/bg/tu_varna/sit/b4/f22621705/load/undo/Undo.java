@@ -74,6 +74,10 @@ public class Undo implements LoadCommands {
                                     StringBuilder stringBuild=new StringBuilder();
                                     stringBuild.append(b);
                                     load.setCommandName(stringBuild);
+                                    if(b.contains("add ")){
+                                        NetpbmFiles netPbm=null;
+                                        checkFile.checkIfFileExists(netPbm,stringBuild.substring(stringBuild.indexOf(" ")+1,stringBuild.length()));
+                                    }
                                     load.loadMapping(openedFiles,sessionNumber);
                                     if(load.getEe().commandExist(load.takeCommand(stringBuild))){
                                         load.getEe().commands(load.takeCommand(stringBuild),session,sessionNumber);

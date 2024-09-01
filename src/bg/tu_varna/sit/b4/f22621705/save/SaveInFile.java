@@ -53,7 +53,7 @@ public class SaveInFile{
     public Menu saveFile(Session session) throws IOException {
         Set<Map.Entry<Integer, Set<NetpbmFiles>>>entries=session.getSession().entrySet();
             for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
-                Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
+                    Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
                 while (iterator.hasNext()){
                 NetpbmFiles netpbmFiles=iterator.next();
                 File file=new File(filePath+netpbmFiles.getFileName());

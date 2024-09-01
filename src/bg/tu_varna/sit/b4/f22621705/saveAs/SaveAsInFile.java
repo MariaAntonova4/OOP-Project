@@ -25,6 +25,7 @@ public class SaveAsInFile {
             Set<Map.Entry<Integer, Set<NetpbmFiles>>>entries=session.getSession().entrySet();
             for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
                 Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
+                while (iterator.hasNext()){
                 NetpbmFiles netpbmFiles=iterator.next();
                 File file=new File(filePath+netpbmFiles.getFileName());
                 FileOutputStream fileWriter=new FileOutputStream(file);
@@ -52,7 +53,7 @@ public class SaveAsInFile {
                 System.out.println("Successfully saved "+netpbmFiles.getFileName());
                 fileWriter.close();
             }
-            return null;
+            } return null;
         }
 
 }
