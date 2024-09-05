@@ -1,5 +1,5 @@
 package bg.tu_varna.sit.b4.f22621705.oldClasses;
-import bg.tu_varna.sit.b4.f22621705.menu.Menu;
+import bg.tu_varna.sit.b4.f22621705.menu.models.Menu;
 
 import java.io.FileInputStream;
 import java.io.IOException;

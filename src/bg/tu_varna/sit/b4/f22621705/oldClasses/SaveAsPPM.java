@@ -1,10 +1,7 @@
 package bg.tu_varna.sit.b4.f22621705.oldClasses;
 
-import bg.tu_varna.sit.b4.f22621705.menu.Menu;
-import bg.tu_varna.sit.b4.f22621705.files.BlueRow;
+import bg.tu_varna.sit.b4.f22621705.menu.models.Menu;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class SaveAsPPM {

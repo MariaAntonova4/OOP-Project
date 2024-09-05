@@ -1,8 +1,8 @@
 package bg.tu_varna.sit.b4.f22621705.oldClasses;
 
 import java.io.*;
-import bg.tu_varna.sit.b4.f22621705.menu.Menu;
-import bg.tu_varna.sit.b4.f22621705.open.OpenedFiles;
+import bg.tu_varna.sit.b4.f22621705.menu.models.Menu;
+import bg.tu_varna.sit.b4.f22621705.files.OpenedFiles;
 
 public class SaveAsPBM {
     private StringBuilder format=new StringBuilder();
