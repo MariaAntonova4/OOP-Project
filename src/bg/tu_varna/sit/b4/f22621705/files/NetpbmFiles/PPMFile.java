@@ -63,6 +63,11 @@ public class PPMFile implements NetpbmFiles{
         this.height = height;
     }
 
+    /**
+     *
+     * @param row the row that has to be added
+     *            Adds a new row in the list
+     */
     public void addRow(Row row){
         rows.add(row);
     }
@@ -71,12 +76,16 @@ public class PPMFile implements NetpbmFiles{
         if (!this.rows.isEmpty()){
             Iterator<Row>iterator=this.rows.iterator();
             while (iterator.hasNext()){
-                Row i=(Row) iterator.next();
-                System.out.println(i.getPixelsList());
+                Row row=(Row) iterator.next();
             }
         }
         return rows;
     }
+
+    /**
+     * Removes a row from the list
+     * @param row the row that has to be deleted
+     */
     @Override
     public void deleteRow(Row row) {
         this.rows.remove(row);
@@ -92,9 +101,21 @@ public class PPMFile implements NetpbmFiles{
         }
         else{this.rowColor = rowColor;}
     }
+
+    /**
+     *
+     * @param pixels the pixel that has to be added
+     *               thr method checks the row. If it's empty creates a Red Row. Puts the
+     *               pixel in the row. If the row is full checks which was the previous row.
+     *               If it's red creates a Green Row and adds the pixel in the row. If the
+     *               row was green creates a Blue Row and puts the pixel there. If the row
+     *               was blue creates a Red Row and puts the pixel.
+     *
+     */
     @Override
-    public void createRow(Pixel pixels) {
+    public void createRow(Pixel pixels) throws PixelException{
         setRow(rowColor);
+        if (pixels.getNumber()<=this.getMaximumValue()){
         if (rowColor.getPixelsList().size()<this.getWidth()){
             rowColor.putInRow(pixels);
         }
@@ -111,7 +132,8 @@ public class PPMFile implements NetpbmFiles{
             addRow(rowColor);
             rowColor=new RedRow();
             rowColor.putInRow(pixels);
-        }
+        }}
+        else {throw new PixelException("The number should not be below the maximum value");}
     }
 
     @Override

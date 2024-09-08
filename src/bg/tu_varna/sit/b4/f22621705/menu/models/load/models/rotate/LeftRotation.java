@@ -13,6 +13,17 @@ public class LeftRotation {
     private SaveInPBMFile saveInFile;
     private List<Row> newRowList=new ArrayList<>();
 
+    /**
+     *
+     * @param session the session
+     * @param sessionNumber the number of the current session
+     * @throws IOException
+     * the method the width and the height. Creates a new row in which the data has to be
+     * written. Finds the last pixeles of all rows and writes them in the new row. After
+     * putting the pixels are written in the new row they are deleted from the old one.
+     * After all pixels are written the new row is added in the file and a new one is
+     * created for the other pixels for the old rows. The algorithm repeates
+     */
 
     public void rotateLeft(Session session,int sessionNumber) throws IOException {
         Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = session.getSession().entrySet();
@@ -21,26 +32,26 @@ public class LeftRotation {
             if (entry.getKey()==sessionNumber){
             Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
             while (iterator.hasNext()){
-            NetpbmFiles s=iterator.next();
-            int newWidth=s.getWidth();
-            s.setWidth(s.getHeight());
-            s.setHeight(newWidth);
-            while (!s.showRows().isEmpty()){
-                Iterator<Row>iterator2=s.showRows().iterator();
+            NetpbmFiles netpbmFiles=iterator.next();
+            int newWidth=netpbmFiles.getWidth();
+            netpbmFiles.setWidth(netpbmFiles.getHeight());
+            netpbmFiles.setHeight(newWidth);
+            while (!netpbmFiles.showRows().isEmpty()){
+                Iterator<Row>rowIterator=netpbmFiles.showRows().iterator();
                 Row newRow=new Row();
-                while (iterator2.hasNext()){
-                    Row i=(Row) iterator2.next();
-                    if (!i.getPixelsList().isEmpty()){
-                        Iterator<Pixel> iterators=i.getPixelsList().iterator();
-                        while (iterators.hasNext()){
-                            Pixel b=(Pixel) iterators.next();
-                            if (!iterators.hasNext()){
-                                newRow.putInRow(b);
-                                i.deleteNumber(b);
+                while (rowIterator.hasNext()){
+                    Row row=(Row) rowIterator.next();
+                    if (!row.getPixelsList().isEmpty()){
+                        Iterator<Pixel> pixelIterator=row.getPixelsList().iterator();
+                        while (pixelIterator.hasNext()){
+                            Pixel pixel=(Pixel) pixelIterator.next();
+                            if (!pixelIterator.hasNext()){
+                                newRow.putInRow(pixel);
+                                row.deleteNumber(pixel);
                                 break;}}
 
 
-                    }else {s.getRows().clear();
+                    }else {netpbmFiles.getRows().clear();
                         break;
                     }
                 }
@@ -48,7 +59,7 @@ public class LeftRotation {
 
             }
 
-            s.setRows(newRowList);
+            netpbmFiles.setRows(newRowList);
             newRowList=new ArrayList<>();
             }
         }}}}

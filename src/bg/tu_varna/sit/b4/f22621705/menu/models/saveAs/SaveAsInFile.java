@@ -18,7 +18,16 @@ public class SaveAsInFile {
     public SaveAsInFile(String filePath) {
         this.filePath = filePath;
     }
-
+    /**
+     *
+     * @param session the session with the files
+     * @return
+     * @throws IOException
+     * The function sets the directorial and writes the data in the file such as maximum
+     * value, height, magic number...Then takes from every row every pixel and saves it in
+     * the original file. The numbers have to be converted in string format so that it
+     * can be written in the file
+     */
     public Menu saveAsFile(Session session) throws IOException {
             Set<Map.Entry<Integer, Set<NetpbmFiles>>>entries=session.getSession().entrySet();
             for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
@@ -37,13 +46,13 @@ public class SaveAsInFile {
                     fileWriter.write(netpbmFiles.getMaximumValue()+'0');
                     fileWriter.write('\n');
                 }
-                Iterator<Row>iterator3=netpbmFiles.showRows().iterator();
-                while(iterator3.hasNext()){
-                    Row r=(Row)iterator3.next();
-                    Iterator<Pixel>iterator4=r.getPixelsList().iterator();
-                    while (iterator4.hasNext()){
-                        Pixel p=(Pixel)iterator4.next();
-                        fileWriter.write(p.getNumber()+'0');
+                Iterator<Row>iteratorRow=netpbmFiles.showRows().iterator();
+                while(iteratorRow.hasNext()){
+                    Row row=(Row)iteratorRow.next();
+                    Iterator<Pixel>iteratorPixel=row.getPixelsList().iterator();
+                    while (iteratorPixel.hasNext()){
+                        Pixel pixel=(Pixel)iteratorPixel.next();
+                        fileWriter.write(pixel.getNumber()+'0');
                         fileWriter.write(' ');
                     }
                     fileWriter.write('\n');

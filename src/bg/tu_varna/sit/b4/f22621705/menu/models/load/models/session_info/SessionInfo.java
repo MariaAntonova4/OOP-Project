@@ -10,28 +10,25 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class ShowSessionInfo implements LoadMenu {
+public class SessionInfo implements LoadMenu {
     /**
      *
      * @param session gets the session in which are the files
-     * @return
+     * @param sessionNumber the number of the current session
      * @throws IOException
+     * finds the current's session history and prints it. Prints the number of the
+     * session number. Finds the session and prints all the images in it
      */
     @Override
     public LoadMenu executeLoad(Session session, int sessionNumber) throws IOException {
-
-
         session.addInHistory(sessionNumber,"session info");
-        //System.out.println(session.getCommandHistory());
         Set<Map.Entry<Integer,List<String>>>entrySet=session.getCommandHistory().entrySet();
         for (Map.Entry<Integer, List<String>>entry1:entrySet){
             if (entry1.getKey()==sessionNumber){
-
-                Iterator<String> iterator1=entry1.getValue().iterator();
-
-                while (iterator1.hasNext()){
-                    String s=iterator1.next();
-                    System.out.println(s);
+                Iterator<String> iteratorCommand=entry1.getValue().iterator();
+                while (iteratorCommand.hasNext()){
+                    String commandName=iteratorCommand.next();
+                    System.out.println(commandName);
                 }
             }
         }
@@ -43,8 +40,8 @@ public class ShowSessionInfo implements LoadMenu {
                 Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
                 System.out.println("Name of images in the session:");
                 while (iterator.hasNext()){
-                NetpbmFiles s=iterator.next();
-                System.out.println(s.getFileName());}
+                NetpbmFiles netpbmFiles=iterator.next();
+                System.out.println(netpbmFiles.getFileName());}
             }
         }
 

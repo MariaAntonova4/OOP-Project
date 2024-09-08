@@ -1,17 +1,25 @@
 package bg.tu_varna.sit.b4.f22621705.menu.models.load.models.collage;
 
 
-import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles.NetpbmFiles;
-import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles.PBMFile;
-import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles.PGMFile;
-import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles.PPMFile;
+import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles.*;
 import bg.tu_varna.sit.b4.f22621705.files.row.Pixel;
 import bg.tu_varna.sit.b4.f22621705.files.row.Row;
 
 import java.util.Iterator;
 
 public class HorizontalCollage {
-    public NetpbmFiles horizontalCollage(NetpbmFiles firstFile, NetpbmFiles secondFile, NetpbmFiles newFile){
+    /**
+     *
+     * @param firstFile the name of the first file that has to be added in the collage
+     * @param secondFile the name of the second file that has to be added in the collage
+     * @param newFile the name of the collage
+     * @return the new file
+     * the method creates a new file, writes the data such as width and height. Takes the first row
+     * of the first file, adds it to the new file. Takes the first row of the second file. Adds it to the
+     * new file. Repeats the algorithm with teh next rows. When all the data is added in the new
+     * file, the file is returned
+     */
+    public NetpbmFiles horizontalCollage(NetpbmFiles firstFile, NetpbmFiles secondFile, NetpbmFiles newFile)throws PixelException {
             if (firstFile.getFileName().contains(".pbm")){
                 newFile=new PBMFile();
             } else if (firstFile.getFileName().contains(".pgm")) {
@@ -24,25 +32,25 @@ public class HorizontalCollage {
             newFile.setHeight(firstFile.getHeight());
             newFile.setMagicNumber(firstFile.getMagicNumber().charAt(1));
             if (!firstFile.showRows().isEmpty()&&!secondFile.showRows().isEmpty()){
-                Iterator<Row> iterator2=firstFile.showRows().iterator();
+                Iterator<Row> firstIRow=firstFile.showRows().iterator();
                 Iterator<Row>secondIRow=secondFile.showRows().iterator();
-                while (iterator2.hasNext()&&secondIRow.hasNext()){
-                    Row i=(Row) iterator2.next();
-                    Row j=(Row)secondIRow.next();
-                    if (!i.getPixelsList().isEmpty()){
-                        Iterator<Pixel> iterators=i.getPixelsList().iterator();
-                        while (iterators.hasNext()){
-                            Pixel b=(Pixel) iterators.next();
-                            Pixel newPi=new Pixel(b.getNumber());
-                            newFile.createRow(newPi);
+                while (firstIRow.hasNext()&&secondIRow.hasNext()){
+                    Row firstRow=(Row) firstIRow.next();
+                    Row secondRow=(Row)secondIRow.next();
+                    if (!firstRow.getPixelsList().isEmpty()){
+                        Iterator<Pixel> iteratorFirstPixel=firstRow.getPixelsList().iterator();
+                        while (iteratorFirstPixel.hasNext()){
+                            Pixel firstPixel=(Pixel) iteratorFirstPixel.next();
+                            Pixel firstNewPixel=new Pixel(firstPixel.getNumber());
+                            newFile.createRow(firstNewPixel);
                         }
                     }
-                    if (!j.getPixelsList().isEmpty()){
-                        Iterator<Pixel> iteratorP=j.getPixelsList().iterator();
-                        while (iteratorP.hasNext()){
-                            Pixel a=(Pixel) iteratorP.next();
-                            Pixel newPixel=new Pixel(a.getNumber());
-                            newFile.createRow(newPixel);
+                    if (!secondRow.getPixelsList().isEmpty()){
+                        Iterator<Pixel> iteratorSecondPixel=secondRow.getPixelsList().iterator();
+                        while (iteratorSecondPixel.hasNext()){
+                            Pixel secondPixel=(Pixel) iteratorSecondPixel.next();
+                            Pixel secondNewPixel=new Pixel(secondPixel.getNumber());
+                            newFile.createRow(secondNewPixel);
                         }
                     }}
                 newFile.addRow(newFile.getRow());

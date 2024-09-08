@@ -14,17 +14,17 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-public class GrayscaleFilter implements LoadMenu {
+public class Grayscale implements LoadMenu {
     /**
      *
      * @param session the session in which are stored the files
      * @return
      * @throws IOException
-     * the function checks if the format is ppm and if it is calls the needed function which has to executed in new class
+     * the function finds the current session, takes all the PPM files and checks the
+     * color of the row. Depending on the row, the pixel is to a surten number
      */
     @Override
     public LoadMenu executeLoad(Session session, int sessionNumber) throws IOException {
-
 
         Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = session.getSession().entrySet();
 
@@ -32,31 +32,29 @@ public class GrayscaleFilter implements LoadMenu {
             if (entry.getKey()==sessionNumber){
             Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
             while (iterator.hasNext()){
-                NetpbmFiles s=iterator.next();
-            if (s.getFileName().contains(".ppm")){
-            if (!s.showRows().isEmpty()){
-                Iterator<Row> iterators=s.showRows().iterator();
-                while (iterators.hasNext()){
-                    Row b=(Row) iterators.next();
-                    if (!b.getPixelsList().isEmpty()){
+                NetpbmFiles netpbmFiles=iterator.next();
+            if (netpbmFiles.getFileName().contains(".ppm")){
+            if (!netpbmFiles.showRows().isEmpty()){
+                Iterator<Row> rowIterator=netpbmFiles.showRows().iterator();
+                while (rowIterator.hasNext()){
+                    Row row=(Row) rowIterator.next();
+                    if (!row.getPixelsList().isEmpty()){
 
-                        Iterator<Pixel> iteratorPixel=b.getPixelsList().iterator();
+                        Iterator<Pixel> iteratorPixel=row.getPixelsList().iterator();
                         while (iteratorPixel.hasNext()){
                             Pixel pixel=(Pixel) iteratorPixel.next();
-                            if (b instanceof RedRow){
+                            if (row instanceof RedRow){
                                 pixel.setNumber((int) (pixel.getNumber()*0.21));
                             }
-                            else if(b instanceof GreenRow){
+                            else if(row instanceof GreenRow){
                                 pixel.setNumber((int)(pixel.getNumber()*0.71));
-                            } else if (b instanceof BlueRow) {
+                            } else if (row instanceof BlueRow) {
                                 pixel.setNumber((int)(pixel.getNumber()*0.07));
                             }
-                        }
-        }
-
-    }}
+                        }}
+                }}
             }}
         }
+            System.out.println("The command grayscale is executed");
     }session.addInHistory(sessionNumber,"grayscale");
         return null;}}
-

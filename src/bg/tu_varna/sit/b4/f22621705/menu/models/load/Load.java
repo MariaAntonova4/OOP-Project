@@ -1,18 +1,21 @@
 package bg.tu_varna.sit.b4.f22621705.menu.models.load;
 
+import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles.PixelException;
 import bg.tu_varna.sit.b4.f22621705.files.Session;
-import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.ConnectWithCollage;
+import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.CollageLauncher;
 import bg.tu_varna.sit.b4.f22621705.menu.models.Menu;
-import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.ConnectWithAdd;
+import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.AddLauncher;
 import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.LoadMenuLauncher;
-import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.ConnectWithGrayscale;
-import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.ConnectWithMonochrome;
-import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.ConnectWithNegative;
-import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.RotationConnection;
-import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.SessionConnection;
-import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.LoadSwitch;
-import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.ConnectUndo;
+import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.GrayscaleLauncher;
+import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.MonochromeLauncher;
+import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.NegativeLauncher;
+import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.RotationLauncher;
+import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.SessionInfoLauncher;
+import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.SwitchLauncher;
+import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.UndoLauncher;
 import bg.tu_varna.sit.b4.f22621705.files.OpenedFiles;
+import bg.tu_varna.sit.b4.f22621705.menu.models.load.models.DirectionException;
+import bg.tu_varna.sit.b4.f22621705.menu.models.load.models.switchh.SwitchException;
 
 import java.io.IOException;
 import java.util.*;
@@ -23,6 +26,11 @@ public class Load {
     private int mapNum;
     private Session session;
     private LoadCommands loadCommand;
+    private LoadMenuLauncher loadMenuLauncher;
+    public Load(Session session) {
+        this.session = session;
+        this.loadCommand= LoadCommands.SESSION_INFO;
+    }
     public StringBuilder getCommandName() {
         return commandName;
     }
@@ -34,15 +42,16 @@ public class Load {
        else this.commandName = commandName;
     }
 
-    public Load(Session session) {
-        this.session = session;
-        this.loadCommand= LoadCommands.SESSION_INFO;
-    }
-
     public int getMapNum() {
         return mapNum;
     }
 
+    /**
+     *
+     * @param mapNum the new session number
+     *               if there is not a number, one is written. The information is taken from
+     *               the console.
+     */
     public void setMapNum(int mapNum) {
         if (mapNum==0){
             System.out.println("Session with ID:");
@@ -56,33 +65,40 @@ public class Load {
         return session;
     }
 
-    private LoadMenuLauncher ee;
-
-    public LoadMenuLauncher getEe() {
-        return ee;
+    public LoadMenuLauncher getLoadMenuLauncher() {
+        return loadMenuLauncher;
     }
 
-    public void setEe(LoadMenuLauncher ee) {
-        if (ee==null){
-            this.ee=new ConnectWithNegative();
+    public void setLoadMenuLauncher(LoadMenuLauncher loadMenuLauncher) {
+        if (loadMenuLauncher==null){
+            this.loadMenuLauncher=new NegativeLauncher();
         }
-        else this.ee = ee;
+        else this.loadMenuLauncher = loadMenuLauncher;
     }
 
     /**
-     * adds the commands of the load command
+     * adds the commands of the load menu
      */
     public void loadMapping(OpenedFiles openedFiles1,int numberMap){
-        getEe().putLoad(LoadCommands.NEGATIVE.getLoadCommand(), new ConnectWithNegative().aAA());
-        getEe().putLoad(LoadCommands.ROTATE.getLoadCommand(), new RotationConnection(getCommandName()).aAA());
-        getEe().putLoad(LoadCommands.GRAYSCALE.getLoadCommand(), new ConnectWithGrayscale().aAA());
-        getEe().putLoad(LoadCommands.MONOCHROME.getLoadCommand(), new ConnectWithMonochrome().aAA());
-        getEe().putLoad(LoadCommands.UNDO.getLoadCommand(), new ConnectUndo(this).aAA());
-        getEe().putLoad(LoadCommands.ADD.getLoadCommand(), new ConnectWithAdd(openedFiles1,getCommandName()).aAA());
-        getEe().putLoad(LoadCommands.SESSION_INFO.getLoadCommand(), new SessionConnection().aAA());
-        getEe().putLoad(LoadCommands.SWITCH.getLoadCommand(), new LoadSwitch(this).aAA());
-        getEe().putLoad(LoadCommands.COLLAGE.getLoadCommand(), new ConnectWithCollage(openedFiles1,getCommandName()).aAA());
+        getLoadMenuLauncher().putLoad(LoadCommands.NEGATIVE.getLoadCommand(), new NegativeLauncher().executeLoadCommand());
+        getLoadMenuLauncher().putLoad(LoadCommands.ROTATE.getLoadCommand(), new RotationLauncher(getCommandName()).executeLoadCommand());
+        getLoadMenuLauncher().putLoad(LoadCommands.GRAYSCALE.getLoadCommand(), new GrayscaleLauncher().executeLoadCommand());
+        getLoadMenuLauncher().putLoad(LoadCommands.MONOCHROME.getLoadCommand(), new MonochromeLauncher().executeLoadCommand());
+        getLoadMenuLauncher().putLoad(LoadCommands.UNDO.getLoadCommand(), new UndoLauncher(this).executeLoadCommand());
+        getLoadMenuLauncher().putLoad(LoadCommands.ADD.getLoadCommand(), new AddLauncher(openedFiles1,getCommandName()).executeLoadCommand());
+        getLoadMenuLauncher().putLoad(LoadCommands.SESSION_INFO.getLoadCommand(), new SessionInfoLauncher().executeLoadCommand());
+        getLoadMenuLauncher().putLoad(LoadCommands.SWITCH.getLoadCommand(), new SwitchLauncher(this,getCommandName()).executeLoadCommand());
+        getLoadMenuLauncher().putLoad(LoadCommands.COLLAGE.getLoadCommand(), new CollageLauncher(openedFiles1,getCommandName()).executeLoadCommand());
     }
+
+    /**
+     *
+     * @param stringBuilder of the commands and the additional data
+     * @return the command's name
+     * Checks if the commands name has more data. If there isn't the command's name is returned.
+     * If there is the first word is returned (the command's name). If the string builder is
+     * "session info" it is returned "session info"
+     */
     public String takeCommand(StringBuilder stringBuilder){
         if (stringBuilder.toString().contains("session info")){
             return "session info";
@@ -91,15 +107,22 @@ public class Load {
         }
         else return stringBuilder.toString();
     }
+
     /**
      *
-     * @param fileName the name of the file
-     * @param session the session in witch the file is put
+     * @param stringBuilder3- the command with the names of the files
+     * @param openedFiles set of all opened files
      * @return
      * @throws IOException
+     * the method writes a new map number and load all the commands from the other menu.
+     * Separates the name of the files and checks if they are open. If one of them is not
+     * the program returns in the main menu. The files are putted in the session. In the console
+     * is written new command. If the command exists it is called. After the execution of the
+     * command the stringBuilder is cleaned and a new command is written in it from the console.
+     * The method continues until the commands are in the menu.
      */
-    public Menu exe(StringBuilder stringBuilder3, OpenedFiles openedFiles) throws IOException {
-        setEe(ee);
+    public Menu exe(StringBuilder stringBuilder3, OpenedFiles openedFiles) throws IOException, PixelException, SwitchException, DirectionException {
+        setLoadMenuLauncher(loadMenuLauncher);
         setCommandName(commandName);
         setMapNum(mapNum);
         loadMapping(openedFiles,getMapNum());
@@ -122,8 +145,8 @@ public class Load {
 
         commandName.append(scanner.next());
 
-        while(ee.commandExist(takeCommand(commandName))){
-        ee.commands(takeCommand(commandName),session,mapNum);
+        while(loadMenuLauncher.commandExist(takeCommand(commandName))){
+        loadMenuLauncher.commands(takeCommand(commandName),session,mapNum);
             commandName.delete(0,getCommandName().length());
             commandName.append(scanner.next());
         }

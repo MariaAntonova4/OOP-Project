@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.util.*;
 
 public class Add implements LoadMenu {
-    private Load load;
     private String fileName;
     private OpenedFiles openedFiles;
     private StringBuilder stringBuilder;
@@ -29,8 +28,6 @@ public class Add implements LoadMenu {
     }
 
     private Map<Integer, Set<String>> session=new HashMap<>();
-    private int mapNumber;
-    private CloseLauncher listOfImages;
 
     public Map<Integer, Set<String>> getSession() {
         return session;
@@ -38,14 +35,6 @@ public class Add implements LoadMenu {
 
     public void setSession(Map<Integer, Set<String>> session) {
         this.session = session;
-    }
-
-    public int getMapNumber() {
-        return mapNumber;
-    }
-
-    public void setMapNumber(int mapNumber) {
-        this.mapNumber = mapNumber;
     }
 
     public StringBuilder getStringBuilder() {
@@ -61,9 +50,10 @@ public class Add implements LoadMenu {
     /**
      *
      * @param session the session with the needed files
-     * @return
+     * @param sessionNumber the number of the current session
      * @throws IOException
-     * The function adds new file in the session's set for files
+     * The function adds new file in the session's set of files and writes the commands name
+     * in the session's history and prints message
      */
     @Override
     public LoadMenu executeLoad(Session session, int sessionNumber) throws IOException {

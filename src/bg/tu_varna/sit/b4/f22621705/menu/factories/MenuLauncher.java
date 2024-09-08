@@ -1,10 +1,13 @@
 package bg.tu_varna.sit.b4.f22621705.menu.factories;
 
+import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles.PixelException;
 import bg.tu_varna.sit.b4.f22621705.files.Session;
 import bg.tu_varna.sit.b4.f22621705.menu.CommandException;
 import bg.tu_varna.sit.b4.f22621705.menu.CreateFiles;
 import bg.tu_varna.sit.b4.f22621705.menu.models.Menu;
 import bg.tu_varna.sit.b4.f22621705.files.OpenedFiles;
+import bg.tu_varna.sit.b4.f22621705.menu.models.load.models.DirectionException;
+import bg.tu_varna.sit.b4.f22621705.menu.models.load.models.switchh.SwitchException;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -60,7 +63,8 @@ public abstract class MenuLauncher {
      *
      * @param string command
      * @return returns the command if there is any
-     * @throws CommandException
+     * @throws CommandException catches if the command is not written correctly
+     *checks if the command exists
      */
     public Menu goToCommand(String string) throws CommandException {
         for (Map.Entry<String, Menu> element : menuMap.entrySet()) {
@@ -70,9 +74,24 @@ public abstract class MenuLauncher {
                 }
             }else {throw new CommandException("There is no such command");}
         }return null;}
+
+    /**
+     * updates the map with new data
+     * @throws CommandException catches if the command is not written correctly
+     */
     public void updateMenu() throws CommandException {
         createFiles.putInMap(getOpenedFiles(),getSession(),getStringBuilder());
     }
+
+    /**
+     *
+     * @param stringBuilder the command
+     * @return string
+     * the function checks if the commands name has more data. If there
+     * isn't, the command's name is returned. If there is the first word
+     * is returned (the command's name). If the string builder is "save
+     * as" it is returned "save as"
+     */
     public String takeCommand(StringBuilder stringBuilder){
         if (stringBuilder.toString().contains("save as")){
             return "save as";
@@ -83,13 +102,16 @@ public abstract class MenuLauncher {
     }
     /**
      *
-     * @param string The command written
      * @return returns the execute function of the wanted command
      * @throws IOException
-     * @throws CommandException
+     * @throws CommandException catches the wrong commands
+     * the method creates the menu and waits for a command to be written. Then checks if
+     * the command exists and if it does, calls the method of the wanted command. When
+     * the function ends the string builder is cleaned and a new command from the console
+     * is written
      */
-    public Menu commands() throws IOException, CommandException {
-        createFiles.setE(this);
+    public Menu commands() throws IOException, CommandException, PixelException, SwitchException, DirectionException {
+        createFiles.setMenuLauncher(this);
         updateMenu();
         Scanner scanner=new Scanner(System.in);
         scanner.useDelimiter("\n");
@@ -103,7 +125,7 @@ public abstract class MenuLauncher {
             }
         return null;
     }
-    public void launchMenu() throws IOException, CommandException {
+    public void launchMenu() throws IOException, CommandException, PixelException, SwitchException, DirectionException {
         Menu menu=executeCommand();
         menu.execute();
     }

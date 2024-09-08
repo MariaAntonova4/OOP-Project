@@ -11,9 +11,7 @@ public class Row {
         if (!this.pixelsList.isEmpty()){
             Iterator<Pixel>iterator=this.pixelsList.iterator();
             while (iterator.hasNext()){
-                Pixel i=(Pixel) iterator.next();
-
-                System.out.println(i.getNumber());
+                Pixel pixel=(Pixel) iterator.next();
             }}
         return pixelsList;
     }
@@ -22,8 +20,19 @@ public class Row {
         this.pixelsList = pixelsList;
     }
 
+    /**
+     *
+     * @param pixels the pixel that has to be added in the list
+     *               the method adds pixel in the list
+     */
     public void putInRow(Pixel pixels){
         pixelsList.add(pixels);
     }
+
+    /**
+     *
+     * @param pixel the pixel that has to be removed
+     *              the method removes pixel from the list
+     */
     public void deleteNumber(Pixel pixel){pixelsList.remove(pixel);}
 }

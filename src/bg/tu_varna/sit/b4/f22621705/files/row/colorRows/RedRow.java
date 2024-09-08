@@ -11,7 +11,11 @@ public class RedRow extends Row {
     public List<Pixel> getPixelsList() {
         return super.getPixelsList();
     }
-
+    /**
+     *
+     * @param pixels the pixel that has to be added in the list
+     *               the method adds pixel in the list
+     */
     @Override
     public void putInRow(Pixel pixels) {
         super.putInRow(pixels);

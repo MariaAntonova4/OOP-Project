@@ -15,6 +15,13 @@ public class Close implements Menu {
         this.menuLauncher=menuLauncher;
     }
 
+    /**
+     *
+     * @return
+     * @throws IOException
+     * @throws CommandException catches if the command is not written correctly
+     * sets new classes for the opened files, the session and updates the menu
+     */
     @Override
     public Menu execute() throws IOException, CommandException {
         menuLauncher.setOpenedFiles(new OpenedFiles());

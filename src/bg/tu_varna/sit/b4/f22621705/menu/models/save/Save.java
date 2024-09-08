@@ -13,6 +13,12 @@ public class Save implements Menu {
         this.session = session;
     }
 
+    /**
+     *
+     * @return the save method
+     * @throws IOException
+     * calls the save method
+     */
     @Override
     public Menu execute() throws IOException {
 

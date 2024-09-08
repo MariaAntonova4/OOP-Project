@@ -27,6 +27,7 @@ public class CreateFiles {
     /**
      *
      * @throws CommandException if there is no such command
+     * the commands in the new menu are loaded
      */
     public void putInMap(OpenedFiles openedFiles, Session session, StringBuilder stringBuilder) throws CommandException {
         menuLauncher.puttingInMap(Commands.OPEN.getCommand(),new OpenLauncher(openedFiles,stringBuilder).executeCommand());

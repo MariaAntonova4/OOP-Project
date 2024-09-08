@@ -21,7 +21,7 @@ public interface NetpbmFiles {
     void deleteRow(Row row);
     void setRows(List<Row> rows);
     List<Row> getRows();
-    void createRow(Pixel pixel);
+    void createRow(Pixel pixel)throws PixelException;
     void setRow(Row row);
     Row getRow();
 }

@@ -19,6 +19,13 @@ public class Session {
     public void setSession(Map<Integer, Set<NetpbmFiles>> session) {
         this.session = session;
     }
+
+    /**
+     *
+     * @param numberSession - the number of yhe current session
+     * @param newListOfFiles- set of new files
+     *                      the method adds set of files in the current session
+     */
     public void addListOfFiles(int numberSession,Set<NetpbmFiles>newListOfFiles){
         Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = this.getSession().entrySet();
         for(Map.Entry<Integer,Set<NetpbmFiles>>entry:entries){
@@ -30,7 +37,10 @@ public class Session {
 
     /**
      *
-     * @param commandName the name of the command which was executed
+     * @param numberSession - shows the number of the current session
+     * @param commandName- shows the name of the command that has to be added
+     *                   the method adds the name of the last executed command. If there
+     *                   is not a created list for the session yet, a list is created
      */
     public void addInHistory(int numberSession,String commandName){
         Set<Map.Entry<Integer,List<String>>>entries=this.commandHistory.entrySet();
@@ -46,6 +56,13 @@ public class Session {
         }
     }
 
+    /**
+     *
+     * @param sessionNumber- the session number
+     * @param newFile- the new file that has to be addedd
+     *               the method adds a new file in the set of images in the current session
+     *               if there is not such session, one is created
+     */
     public void addFile(int sessionNumber,NetpbmFiles newFile){
         Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = session.entrySet();
         if (session.keySet().contains(sessionNumber)) {
@@ -60,6 +77,8 @@ public class Session {
      *
      * @param sessionNumber the unique number which will be written in the map of sessions
      * @param fileName the file name which will be written in the map of sessions
+     *                 it creates session by creating new set of images, adds the file in it
+     *                 and then the set is put in the session
      */
         public void createSession(int sessionNumber, NetpbmFiles fileName){
             Set<NetpbmFiles>images=new HashSet<>();

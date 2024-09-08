@@ -56,6 +56,10 @@ public class PGMFile implements NetpbmFiles{
         this.height = height;
     }
 
+    /**
+     * The method adds row to the list
+     * @param row the row that has to be added
+     */
     public void addRow(Row row){
         rows.add(row);
     }
@@ -65,9 +69,7 @@ public class PGMFile implements NetpbmFiles{
         if (!this.rows.isEmpty()){
             Iterator<Row>iterator=this.rows.iterator();
             while (iterator.hasNext()){
-                Row i=(Row) iterator.next();
-
-                System.out.println(i.getPixelsList());
+                Row row=(Row) iterator.next();
             }
         }
         return rows;
@@ -86,15 +88,23 @@ public class PGMFile implements NetpbmFiles{
         }
         else this.row = row;
     }
+
+    /**
+     * The method puts pixel in the row. If the row is full, it creates a new row
+     * @param pixels the pixel that has to be added in the list
+     */
     @Override
-    public void createRow(Pixel pixels) {
+    public void createRow(Pixel pixels) throws PixelException{
         setRow(row);
-        if (row.getPixelsList().size()<this.getWidth()){
-            row.putInRow(pixels);}
-        else {
-            this.addRow(row);
-            row=new Row();
-            row.putInRow(pixels);}
+        if (pixels.getNumber()<=this.getMaximumValue()){
+            if (row.getPixelsList().size()<this.getWidth()){
+                row.putInRow(pixels);}
+            else {
+                this.addRow(row);
+                row=new Row();
+                row.putInRow(pixels);}
+        }
+        else {throw new PixelException("The number should not be below the maximum value");}
     }
     @Override
     public void setRows(List<Row> rows) {

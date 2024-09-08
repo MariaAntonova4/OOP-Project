@@ -11,38 +11,39 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-public class MonochromeFilter implements LoadMenu {
+public class Monochrome implements LoadMenu {
     /**
      *
      * @param session the session with the files in it
      * @return
      * @throws IOException
-     * the function checks the format of the file and calls the needed function in new class
+     * the function finds the current session, takes all the files that are not PBM files
+     * and finds the middle by dividing the maximum number. If the pixel is less than the middle
+     * number 0 is set as pixel. If it is more the maximum value is written
      */
     @Override
     public LoadMenu executeLoad(Session session, int sessionNumber) throws IOException {
         Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = session.getSession().entrySet();
 
-
         for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
             if (entry.getKey()==sessionNumber){
             Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
             while (iterator.hasNext()){
-            NetpbmFiles s=iterator.next();
-            if (!s.getFileName().contains(".pbm")){
-                if (!s.showRows().isEmpty()){
-                    Iterator<Row> iterators=s.showRows().iterator();
-                    while (iterators.hasNext()){
-                        Row b=(Row) iterators.next();
-                        if (!b.getPixelsList().isEmpty()){
+            NetpbmFiles netpbmFiles=iterator.next();
+            if (!netpbmFiles.getFileName().contains(".pbm")){
+                if (!netpbmFiles.showRows().isEmpty()){
+                    Iterator<Row> rowIterator=netpbmFiles.showRows().iterator();
+                    while (rowIterator.hasNext()){
+                        Row row=(Row) rowIterator.next();
+                        if (!row.getPixelsList().isEmpty()){
 
-                            Iterator<Pixel> iteratorPixel=b.getPixelsList().iterator();
+                            Iterator<Pixel> iteratorPixel=row.getPixelsList().iterator();
                             while (iteratorPixel.hasNext()){
                                 Pixel pixel=(Pixel) iteratorPixel.next();
-                                if (pixel.getNumber()<(s.getMaximumValue()/2)){
+                                if (pixel.getNumber()<(netpbmFiles.getMaximumValue()/2)){
                                     pixel.setNumber(0);
                                 }
-                                else {pixel.setNumber(s.getMaximumValue());}
+                                else {pixel.setNumber(netpbmFiles.getMaximumValue());}
                             }
                         }
 
@@ -51,7 +52,8 @@ public class MonochromeFilter implements LoadMenu {
 
     }
             }
-        }}
+        }
+            System.out.println("The command monochrome is executed");}
         session.addInHistory(sessionNumber,"monochrome");
         return null;
     }

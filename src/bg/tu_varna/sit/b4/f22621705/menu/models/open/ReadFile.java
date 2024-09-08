@@ -2,10 +2,7 @@ package bg.tu_varna.sit.b4.f22621705.menu.models.open;
 
 import java.io.*;
 
-import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles.NetpbmFiles;
-import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles.PBMFile;
-import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles.PGMFile;
-import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles.PPMFile;
+import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles.*;
 import bg.tu_varna.sit.b4.f22621705.files.OpenedFiles;
 import bg.tu_varna.sit.b4.f22621705.files.row.Pixel;
 import bg.tu_varna.sit.b4.f22621705.menu.models.Menu;
@@ -27,7 +24,19 @@ public class ReadFile {
         return file;
     }
 
-        public Menu checkIfFileExists(NetpbmFiles netpbmFiles, String fileName) throws IOException {
+    /**
+     *
+     * @param netpbmFiles the file that has to be red
+     * @param fileName the name of the file
+     * @return
+     * @throws IOException
+     * The method checks if the file exists. If it doesn't the reader is closed. If it exists
+     * the program creates a new file and sets the name. The file is red until the character is
+     * number. Then it saves data such as magic number, height, width... Then new pixel is created
+     * and saved in the file until the reader reaches the end of the file. The file is saved in
+     * the opened files class
+     */
+        public Menu checkIfFileExists(NetpbmFiles netpbmFiles, String fileName) throws IOException, PixelException {
 
             setFile(fileName);
             if (file.exists())

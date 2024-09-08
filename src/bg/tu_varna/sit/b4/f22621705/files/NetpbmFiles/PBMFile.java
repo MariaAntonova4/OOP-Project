@@ -18,13 +18,16 @@ public class PBMFile implements NetpbmFiles{
         if (!this.rows.isEmpty()){
             Iterator<Row>iterator=this.rows.iterator();
             while (iterator.hasNext()){
-                Row i=(Row) iterator.next();
-                System.out.println(i.getPixelsList());
+                Row row=(Row) iterator.next();
             }
         }
         return rows;
     }
 
+    /**
+     * the method deletes the row in the list
+     * @param row the row that has to be removed
+     */
     @Override
     public void deleteRow(Row row) {
         this.rows.remove(row);
@@ -68,6 +71,11 @@ public class PBMFile implements NetpbmFiles{
         this.height = height;
     }
 
+    /**
+     *
+     * @param row the row that has to be added
+     *            the method adds row in the list of rows
+     */
     public void addRow(Row row){
         rows.add(row);
     }
@@ -75,21 +83,38 @@ public class PBMFile implements NetpbmFiles{
     public List<Row> getRows() {
         return rows;
     }
+
+    /**
+     *
+     * @param row the row that has to be written
+     *            the method checks if the row is empty. If it is is created new one
+     */
     public void setRow(Row row) {
         if (row==null){
             this.row=new Row();
         }
         else this.row = row;
     }
+
+    /**
+     *
+     * @param pixels the pixel that has to be added
+     *               the method writes pixel in the list of rows. If the row is full, new
+     *               one is created
+     */
     @Override
-    public void createRow(Pixel pixels) {
+    public void createRow(Pixel pixels)throws PixelException {
         setRow(row);
-        if (row.getPixelsList().size()<this.getWidth()){
-            row.putInRow(pixels);}
-        else {
-            this.addRow(row);
-            row=new Row();
-            row.putInRow(pixels);}
+        if (pixels.getNumber()==0||pixels.getNumber()==1){
+            if (row.getPixelsList().size()<this.getWidth()){
+                row.putInRow(pixels);}
+            else {
+                this.addRow(row);
+                row=new Row();
+                row.putInRow(pixels);}
+        }else {
+            throw new PixelException("The data of the file should be 1 or 0");
+        }
     }
 
     public Row getRow() {

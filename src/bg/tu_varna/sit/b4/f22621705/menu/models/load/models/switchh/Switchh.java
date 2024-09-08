@@ -12,35 +12,35 @@ import java.util.Set;
 
 public class Switchh implements LoadMenu {
     private Load load;
-    private Session newSession;
+    private StringBuilder stringBuilder;
 
-    public Switchh(Load load) {
+    public Switchh(Load load,StringBuilder stringBuilder) {
         this.load = load;
+        this.stringBuilder=stringBuilder;
     }
 
-    public Session getNewSession() {
-        return newSession;
-    }
-
-    public void setNewSession(Session newSession) {
-        this.newSession = newSession;
-    }
-
+    /**
+     *
+     * @param session the session
+     * @param sessionNumber the session number
+     * @return
+     * @throws IOException
+     * finds the old session number and sets new session number.If the old number is not
+     * founded a message is written. The command name is added in the session history
+     */
     @Override
-    public LoadMenu executeLoad(Session session, int sessionNumber) throws IOException {
+    public LoadMenu executeLoad(Session session, int sessionNumber) throws IOException,SwitchException {
         Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = session.getSession().entrySet();
+        int newSessionNumber= Integer.parseInt(stringBuilder.substring(stringBuilder.indexOf(" ")+1, stringBuilder.length()));
 
-
-        int newSessionNumber;
-        Scanner scanner=new Scanner(System.in);
-        newSessionNumber= Integer.parseInt(scanner.nextLine());
         for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
             if (entry.getKey()==newSessionNumber){
                 load.setMapNum(newSessionNumber);
+                System.out.println("The session are switched");
                 break;
             }
             else {
-                System.out.println("There is No such number");
+                throw new SwitchException("There is No such number");
             }
         }session.addInHistory(sessionNumber,"switch");
         return null;

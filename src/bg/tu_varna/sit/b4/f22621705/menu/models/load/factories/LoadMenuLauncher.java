@@ -1,7 +1,10 @@
 package bg.tu_varna.sit.b4.f22621705.menu.models.load.factories;
 
+import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles.PixelException;
 import bg.tu_varna.sit.b4.f22621705.files.Session;
+import bg.tu_varna.sit.b4.f22621705.menu.models.load.models.DirectionException;
 import bg.tu_varna.sit.b4.f22621705.menu.models.load.models.LoadMenu;
+import bg.tu_varna.sit.b4.f22621705.menu.models.load.models.switchh.SwitchException;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -13,8 +16,8 @@ public abstract class LoadMenuLauncher {
 
     private Map<String, LoadMenu>loadMenu=new HashMap<>();
 
-    public void putLoad(String command, LoadMenu aa){
-        loadMenu.put(command,aa);
+    public void putLoad(String command, LoadMenu loadMenu2){
+        loadMenu.put(command,loadMenu2);
     }
 
 
@@ -49,14 +52,14 @@ public abstract class LoadMenuLauncher {
             }
         }return null;}
 
-    public LoadMenu commands(String string, Session session, int sessionNumber) throws IOException {
+    public LoadMenu commands(String string, Session session, int sessionNumber) throws IOException, PixelException, SwitchException, DirectionException {
         return goToCommand(string).executeLoad(session,sessionNumber);
     }
 
 
-    public void aA(Map<Integer, Set<String>> session){
-        LoadMenu aa=aAA();
-        //aa.executeLoad(session);
+    public void launchLoadMenu(Map<Integer, Set<String>> session){
+        LoadMenu loadMenu=executeLoadCommand();
+        //loadMenu.executeLoad();
     }
-    public abstract LoadMenu aAA();
+    public abstract LoadMenu executeLoadCommand();
 }

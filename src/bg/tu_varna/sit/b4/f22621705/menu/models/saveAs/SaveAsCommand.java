@@ -13,6 +13,12 @@ public class SaveAsCommand implements Menu {
         this.stringBuilder=stringBuilder;
     }
 
+    /**
+     *
+     * @return the save as method
+     * @throws IOException
+     * deletes the "save as" from the string builder and calls the save as method
+     */
     @Override
     public Menu execute() throws IOException {
         String nameOfFile=stringBuilder.substring(8, stringBuilder.length());

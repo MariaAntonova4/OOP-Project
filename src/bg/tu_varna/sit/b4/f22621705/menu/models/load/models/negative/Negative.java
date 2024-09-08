@@ -11,44 +11,43 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-public class NegativeFilter implements LoadMenu {
+public class Negative implements LoadMenu {
     /**
      *
      * @param session the session in which the files are put
      * @return
      * @throws IOException
-     * the function checks for the format of the file and calls the needed function in new class
+     * the function checks if the pixel of the function is 0. If it is written the
+     * maximum value. If the pixel is not 0 the maximum value is from the current pixel
      */
     @Override
     public LoadMenu executeLoad(Session session, int sessionNumber) throws IOException {
        Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = session.getSession().entrySet();
-        System.out.println("This is the negative picture:");
 
         for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
             if (entry.getKey()==sessionNumber){
             Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
             while (iterator.hasNext()){
-            NetpbmFiles s=iterator.next();
+            NetpbmFiles netpbmFiles=iterator.next();
 
-            int max=s.getMaximumValue();
+            int max=netpbmFiles.getMaximumValue();
 
-            if (!s.showRows().isEmpty()){
-                Iterator<Row>iterator2=s.showRows().iterator();
-                while (iterator2.hasNext()){
-                    Row i=(Row) iterator2.next();
+            if (!netpbmFiles.showRows().isEmpty()){
+                Iterator<Row>rowIterator=netpbmFiles.showRows().iterator();
+                while (rowIterator.hasNext()){
+                    Row row=(Row) rowIterator.next();
 
-                    if (!i.getPixelsList().isEmpty()){
-                        Iterator<Pixel> iterators=i.getPixelsList().iterator();
-                        while (iterators.hasNext()){
-                            Pixel b=(Pixel) iterators.next();
-                            if (b.getNumber()==0){
-                                b.setNumber(max);
-                            }else b.setNumber(max-b.getNumber());
+                    if (!row.getPixelsList().isEmpty()){
+                        Iterator<Pixel> pixelIterator=row.getPixelsList().iterator();
+                        while (pixelIterator.hasNext()){
+                            Pixel pixel=(Pixel) pixelIterator.next();
+                            if (pixel.getNumber()==0){
+                                pixel.setNumber(max);
+                            }else pixel.setNumber(max-pixel.getNumber());
                         }}
                 }
             }}
+                System.out.println("The files are negative");
         }}session.addInHistory(sessionNumber,"negative");
         return null;
-
-        }
-        }
+        }}

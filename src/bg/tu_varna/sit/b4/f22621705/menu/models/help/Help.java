@@ -23,7 +23,6 @@ public class Help implements Menu {
 
     /**
      *
-     * @param session the session with all the files
      * @return
      * @throws IOException
      * The function calls the function addHelp which adds the information in StringBuilder and prints it

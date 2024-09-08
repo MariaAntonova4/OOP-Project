@@ -7,10 +7,19 @@ public class Pixel {
         this.number = number;
     }
 
+    /**
+     * the method returns the number of the pixel
+     * @return the number of the pixel
+     */
     public int getNumber() {
         return number;
     }
 
+    /**
+     *
+     * @param number the number that has to be saved
+     *               the method writes the pixel
+     */
     public void setNumber(int number) {
         this.number = number;
     }
