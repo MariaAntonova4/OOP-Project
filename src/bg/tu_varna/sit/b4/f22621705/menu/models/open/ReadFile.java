@@ -5,7 +5,7 @@ import java.io.*;
 import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles.*;
 import bg.tu_varna.sit.b4.f22621705.files.OpenedFiles;
 import bg.tu_varna.sit.b4.f22621705.files.row.Pixel;
-import bg.tu_varna.sit.b4.f22621705.menu.models.Menu;
+import bg.tu_varna.sit.b4.f22621705.menu.models.MainCommandExecute;
 
 public class ReadFile {
     private File file;
@@ -24,6 +24,19 @@ public class ReadFile {
         return file;
     }
 
+    public int fileRead(FileReader reader) throws IOException {
+        int numbers=(char)reader.read();
+
+        while (!((numbers >47) &&(numbers<58))){
+            if (numbers!=65535){
+            numbers=(char)reader.read();}
+            else
+                return 65535;
+        }
+        numbers=Character.getNumericValue(numbers);
+        return numbers;
+    }
+
     /**
      *
      * @param netpbmFiles the file that has to be red
@@ -36,68 +49,36 @@ public class ReadFile {
      * and saved in the file until the reader reaches the end of the file. The file is saved in
      * the opened files class
      */
-        public Menu checkIfFileExists(NetpbmFiles netpbmFiles, String fileName) throws IOException, PixelException {
+        public MainCommandExecute checkIfFileExists(NetpbmFiles netpbmFiles, String fileName) throws IOException, PixelException {
 
             setFile(fileName);
             if (file.exists())
             {
-                if(fileName.contains(".pbm")){
-                    netpbmFiles=new PBMFile();
-                } else if (fileName.contains(".pgm")) {
-                    netpbmFiles=new PGMFile();
-                } else if (fileName.contains(".ppm")) {
-                    netpbmFiles=new PPMFile();
-                }else {
-                    System.out.println("There is NOT a created file");
-                }
+                netpbmFiles=new PGMFile();
+                netpbmFiles=netpbmFiles.createNewFile(fileName);
+
                 netpbmFiles.setFileName(fileName);
-                java.io.FileReader reader=new java.io.FileReader(getFile());
+                FileReader reader=new FileReader(getFile());
+
+                int numbers=0;
+
+                netpbmFiles.setMagicNumber((char)fileRead(reader));
+
+                netpbmFiles.setWidth(fileRead(reader));
+
+                netpbmFiles.setHeight(fileRead(reader));
 
 
-                int numbers=(char)reader.read();
-                while (!(numbers >47) &&(numbers<58)){
-                    numbers=(char)reader.read();
-                }
-                numbers=Character.getNumericValue(numbers);
-                netpbmFiles.setMagicNumber((char) reader.read());
+                if (!(netpbmFiles instanceof PBMFile)){
 
-
-
-                numbers=(char)reader.read();
-                while (!(numbers >47) &&(numbers<58)){
-                    numbers=(char)reader.read();
-                }
-
-                numbers=Character.getNumericValue(numbers);
-                netpbmFiles.setWidth(numbers);
-
-
-
-
-                numbers=(char)reader.read();
-                while (!(numbers >47) &&(numbers<58)){
-                    numbers=(char)reader.read();
-                }
-                numbers=Character.getNumericValue(numbers);
-                netpbmFiles.setHeight(numbers);
-
-
-                if (!fileName.contains(".pbm")){
-                numbers=(char)reader.read();
-                while (!(numbers>47)&&(numbers<58)){
-                    numbers=(char)reader.read();
-                }
-                numbers=Character.getNumericValue(numbers);
-                netpbmFiles.setMaximumValue(numbers);
+                netpbmFiles.setMaximumValue(fileRead(reader));
             }
                 while (numbers!=65535){
-                    numbers=(char)reader.read();
+                    numbers=fileRead(reader);
 
-                    if (numbers>47&&numbers<58){
-                    numbers=Character.getNumericValue(numbers);
+                    if (numbers!=65535){
                     pixel=new Pixel(numbers);
                     netpbmFiles.createRow(pixel);
-
                     }
 
                 }netpbmFiles.addRow(netpbmFiles.getRow());

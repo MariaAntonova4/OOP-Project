@@ -22,19 +22,15 @@ public class Undo implements LoadMenu {
         this.load = load;
     }
     public void undoFiles(Session session,int sessionNumber,StringBuilder stringBuilder) throws IOException, PixelException {
-        Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = session.getSession().entrySet();
-        for(Map.Entry<Integer,Set<NetpbmFiles>>entry:entries){
-            if (entry.getKey()==sessionNumber){
-                Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
+
+                Iterator<NetpbmFiles> iterator=session.currentSession(session,sessionNumber).iterator();
                 while (iterator.hasNext()){
                     NetpbmFiles netpbmFiles=iterator.next();
                     if (stringBuilder!=null&&stringBuilder.toString().contains(netpbmFiles.getFileName())){
                         continue;
                     }
                     readFile.checkIfFileExists(netpbmFiles,netpbmFiles.getFileName());}
-                entry.getValue().clear();
-            }
-        }
+                session.currentSession(session,sessionNumber).clear();
         session.addListOfFiles(sessionNumber,openedFiles.getOpenedFiles());
     }
 

@@ -1,11 +1,12 @@
 package bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles;
 
+import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles.filesInterface.MethodsOfFiles;
 import bg.tu_varna.sit.b4.f22621705.files.row.Pixel;
 import bg.tu_varna.sit.b4.f22621705.files.row.Row;
 
 import java.util.*;
 
-public class PGMFile implements NetpbmFiles{
+public class PGMFile extends NetpbmFiles implements MethodsOfFiles {
     private String fileName;
     private String magicNumber="P";
     private int maximumValue;
@@ -28,7 +29,7 @@ public class PGMFile implements NetpbmFiles{
         return magicNumber;
     }
 
-    public void setMagicNumber(char magicNum) {
+    public void setMagicNumber(int magicNum) {
         this.magicNumber = magicNumber+magicNum;
     }
 

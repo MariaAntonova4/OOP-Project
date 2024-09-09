@@ -20,11 +20,8 @@ public class RightRotation {
      * the new row list is added in the file
      */
     public void rotateRight(Session session,int sessionNumber) throws IOException {
-        Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = session.getSession().entrySet();
 
-        for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
-            if (entry.getKey()==sessionNumber){
-            Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
+            Iterator<NetpbmFiles> iterator=session.currentSession(session, sessionNumber).iterator();
             while (iterator.hasNext()){
             NetpbmFiles netpbmFiles=iterator.next();
             List<Row> newRowList=new ArrayList<>();
@@ -62,10 +59,7 @@ public class RightRotation {
                     }else {netpbmFiles.getRows().clear();
                         break;
                     }}
-
                 }
             }netpbmFiles.setRows(newRowList);
-
             }
         }}
-    }}

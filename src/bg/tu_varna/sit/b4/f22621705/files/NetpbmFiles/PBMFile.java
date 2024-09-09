@@ -5,7 +5,7 @@ import bg.tu_varna.sit.b4.f22621705.files.row.Row;
 
 import java.util.*;
 
-public class PBMFile implements NetpbmFiles{
+public class PBMFile extends NetpbmFiles{
     private String fileName;
     private String magicNumber="P";
     private static int maximumValue=1;
@@ -45,7 +45,8 @@ public class PBMFile implements NetpbmFiles{
         return magicNumber;
     }
 
-    public void setMagicNumber(char magicNum) {
+    public void setMagicNumber(int magicNum) {
+
         this.magicNumber = magicNumber+magicNum;
     }
     public int getMaximumValue() {

@@ -7,6 +7,6 @@ import bg.tu_varna.sit.b4.f22621705.menu.models.load.models.switchh.SwitchExcept
 
 import java.io.IOException;
 
-public interface Menu {
-    Menu execute() throws IOException, CommandException, PixelException, SwitchException, DirectionException;
+public interface MainCommandExecute {
+    MainCommandExecute execute() throws IOException, CommandException, PixelException, SwitchException, DirectionException;
 }

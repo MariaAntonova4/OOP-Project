@@ -85,4 +85,12 @@ public class Session {
             images.add(fileName);
             session.put(sessionNumber,images);
         }
+        public Set<NetpbmFiles> currentSession(Session session,int mapKey){
+            Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = session.getSession().entrySet();
+
+            for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
+                if (entry.getKey()==mapKey){
+                    return entry.getValue();
+                }}return null;
+        }
 }

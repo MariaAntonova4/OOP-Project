@@ -2,20 +2,20 @@ package bg.tu_varna.sit.b4.f22621705.menu.models.load;
 
 import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles.PixelException;
 import bg.tu_varna.sit.b4.f22621705.files.Session;
-import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.CollageLauncher;
-import bg.tu_varna.sit.b4.f22621705.menu.models.Menu;
-import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.AddLauncher;
+import bg.tu_varna.sit.b4.f22621705.menu.models.MainCommandExecute;
 import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.LoadMenuLauncher;
-import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.GrayscaleLauncher;
-import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.MonochromeLauncher;
-import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.NegativeLauncher;
-import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.RotationLauncher;
-import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.SessionInfoLauncher;
-import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.SwitchLauncher;
-import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.UndoLauncher;
 import bg.tu_varna.sit.b4.f22621705.files.OpenedFiles;
 import bg.tu_varna.sit.b4.f22621705.menu.models.load.models.DirectionException;
+import bg.tu_varna.sit.b4.f22621705.menu.models.load.models.add.Add;
+import bg.tu_varna.sit.b4.f22621705.menu.models.load.models.collage.Collage;
+import bg.tu_varna.sit.b4.f22621705.menu.models.load.models.grayscale.Grayscale;
+import bg.tu_varna.sit.b4.f22621705.menu.models.load.models.monochrome.Monochrome;
+import bg.tu_varna.sit.b4.f22621705.menu.models.load.models.negative.Negative;
+import bg.tu_varna.sit.b4.f22621705.menu.models.load.models.rotate.Rotate;
+import bg.tu_varna.sit.b4.f22621705.menu.models.load.models.session_info.SessionInfo;
 import bg.tu_varna.sit.b4.f22621705.menu.models.load.models.switchh.SwitchException;
+import bg.tu_varna.sit.b4.f22621705.menu.models.load.models.switchh.Switchh;
+import bg.tu_varna.sit.b4.f22621705.menu.models.load.models.undo.Undo;
 
 import java.io.IOException;
 import java.util.*;
@@ -71,7 +71,7 @@ public class Load {
 
     public void setLoadMenuLauncher(LoadMenuLauncher loadMenuLauncher) {
         if (loadMenuLauncher==null){
-            this.loadMenuLauncher=new NegativeLauncher();
+            this.loadMenuLauncher=new LoadMenuLauncher();
         }
         else this.loadMenuLauncher = loadMenuLauncher;
     }
@@ -80,15 +80,15 @@ public class Load {
      * adds the commands of the load menu
      */
     public void loadMapping(OpenedFiles openedFiles1,int numberMap){
-        getLoadMenuLauncher().putLoad(LoadCommands.NEGATIVE.getLoadCommand(), new NegativeLauncher().executeLoadCommand());
-        getLoadMenuLauncher().putLoad(LoadCommands.ROTATE.getLoadCommand(), new RotationLauncher(getCommandName()).executeLoadCommand());
-        getLoadMenuLauncher().putLoad(LoadCommands.GRAYSCALE.getLoadCommand(), new GrayscaleLauncher().executeLoadCommand());
-        getLoadMenuLauncher().putLoad(LoadCommands.MONOCHROME.getLoadCommand(), new MonochromeLauncher().executeLoadCommand());
-        getLoadMenuLauncher().putLoad(LoadCommands.UNDO.getLoadCommand(), new UndoLauncher(this).executeLoadCommand());
-        getLoadMenuLauncher().putLoad(LoadCommands.ADD.getLoadCommand(), new AddLauncher(openedFiles1,getCommandName()).executeLoadCommand());
-        getLoadMenuLauncher().putLoad(LoadCommands.SESSION_INFO.getLoadCommand(), new SessionInfoLauncher().executeLoadCommand());
-        getLoadMenuLauncher().putLoad(LoadCommands.SWITCH.getLoadCommand(), new SwitchLauncher(this,getCommandName()).executeLoadCommand());
-        getLoadMenuLauncher().putLoad(LoadCommands.COLLAGE.getLoadCommand(), new CollageLauncher(openedFiles1,getCommandName()).executeLoadCommand());
+        getLoadMenuLauncher().putLoad(LoadCommands.NEGATIVE.getLoadCommand(), new Negative());
+        getLoadMenuLauncher().putLoad(LoadCommands.ROTATE.getLoadCommand(), new Rotate(getCommandName()));
+        getLoadMenuLauncher().putLoad(LoadCommands.GRAYSCALE.getLoadCommand(), new Grayscale());
+        getLoadMenuLauncher().putLoad(LoadCommands.MONOCHROME.getLoadCommand(), new Monochrome());
+        getLoadMenuLauncher().putLoad(LoadCommands.UNDO.getLoadCommand(), new Undo(this));
+        getLoadMenuLauncher().putLoad(LoadCommands.ADD.getLoadCommand(), new Add(openedFiles1,getCommandName()));
+        getLoadMenuLauncher().putLoad(LoadCommands.SESSION_INFO.getLoadCommand(), new SessionInfo());
+        getLoadMenuLauncher().putLoad(LoadCommands.SWITCH.getLoadCommand(), new Switchh(this,getCommandName()));
+        getLoadMenuLauncher().putLoad(LoadCommands.COLLAGE.getLoadCommand(), new Collage(openedFiles1,getCommandName()));
     }
 
     /**
@@ -121,7 +121,7 @@ public class Load {
      * command the stringBuilder is cleaned and a new command is written in it from the console.
      * The method continues until the commands are in the menu.
      */
-    public Menu exe(StringBuilder stringBuilder3, OpenedFiles openedFiles) throws IOException, PixelException, SwitchException, DirectionException {
+    public MainCommandExecute exe(StringBuilder stringBuilder3, OpenedFiles openedFiles) throws IOException, PixelException, SwitchException, DirectionException {
         setLoadMenuLauncher(loadMenuLauncher);
         setCommandName(commandName);
         setMapNum(mapNum);

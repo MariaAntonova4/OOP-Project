@@ -12,14 +12,13 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-public abstract class LoadMenuLauncher {
+public class LoadMenuLauncher {
 
     private Map<String, LoadMenu>loadMenu=new HashMap<>();
 
     public void putLoad(String command, LoadMenu loadMenu2){
         loadMenu.put(command,loadMenu2);
     }
-
 
     /**
      *
@@ -56,10 +55,4 @@ public abstract class LoadMenuLauncher {
         return goToCommand(string).executeLoad(session,sessionNumber);
     }
 
-
-    public void launchLoadMenu(Map<Integer, Set<String>> session){
-        LoadMenu loadMenu=executeLoadCommand();
-        //loadMenu.executeLoad();
-    }
-    public abstract LoadMenu executeLoadCommand();
 }

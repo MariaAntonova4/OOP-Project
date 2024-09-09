@@ -4,13 +4,11 @@ import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles.NetpbmFiles;
 import bg.tu_varna.sit.b4.f22621705.files.row.Pixel;
 import bg.tu_varna.sit.b4.f22621705.files.row.Row;
 import bg.tu_varna.sit.b4.f22621705.files.Session;
-import bg.tu_varna.sit.b4.f22621705.oldClasses.SaveInPBMFile;
 
 import java.io.IOException;
 import java.util.*;
 
 public class LeftRotation {
-    private SaveInPBMFile saveInFile;
     private List<Row> newRowList=new ArrayList<>();
 
     /**
@@ -26,11 +24,8 @@ public class LeftRotation {
      */
 
     public void rotateLeft(Session session,int sessionNumber) throws IOException {
-        Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = session.getSession().entrySet();
 
-        for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
-            if (entry.getKey()==sessionNumber){
-            Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
+            Iterator<NetpbmFiles> iterator=session.currentSession(session, sessionNumber).iterator();
             while (iterator.hasNext()){
             NetpbmFiles netpbmFiles=iterator.next();
             int newWidth=netpbmFiles.getWidth();
@@ -62,7 +57,7 @@ public class LeftRotation {
             netpbmFiles.setRows(newRowList);
             newRowList=new ArrayList<>();
             }
-        }}}}
+        }}
 
 
 

@@ -20,17 +20,12 @@ public class HorizontalCollage {
      * file, the file is returned
      */
     public NetpbmFiles horizontalCollage(NetpbmFiles firstFile, NetpbmFiles secondFile, NetpbmFiles newFile)throws PixelException {
-            if (firstFile.getFileName().contains(".pbm")){
-                newFile=new PBMFile();
-            } else if (firstFile.getFileName().contains(".pgm")) {
-                newFile=new PGMFile();
-            } else if (firstFile.getFileName().contains(".ppm")) {
-                newFile=new PPMFile();
-            }
+            newFile=new PPMFile();
+            newFile=newFile.createNewFile(firstFile.getFileName());
 
             newFile.setWidth(firstFile.getWidth()+secondFile.getWidth());
             newFile.setHeight(firstFile.getHeight());
-            newFile.setMagicNumber(firstFile.getMagicNumber().charAt(1));
+            newFile.setMagicNumber(firstFile.getMagicNumber().charAt(1)-'0');
             if (!firstFile.showRows().isEmpty()&&!secondFile.showRows().isEmpty()){
                 Iterator<Row> firstIRow=firstFile.showRows().iterator();
                 Iterator<Row>secondIRow=secondFile.showRows().iterator();

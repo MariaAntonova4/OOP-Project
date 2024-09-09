@@ -1,10 +1,10 @@
 package bg.tu_varna.sit.b4.f22621705.menu.models.help;
 
-import bg.tu_varna.sit.b4.f22621705.menu.models.Menu;
+import bg.tu_varna.sit.b4.f22621705.menu.models.MainCommandExecute;
 
 import java.io.IOException;
 
-public class Help implements Menu {
+public class Help implements MainCommandExecute {
     private StringBuilder stringBuilder=new StringBuilder();
 
     /**
@@ -28,7 +28,7 @@ public class Help implements Menu {
      * The function calls the function addHelp which adds the information in StringBuilder and prints it
      */
     @Override
-    public Menu execute() throws IOException {
+    public MainCommandExecute execute() throws IOException {
         addHelp();
         System.out.println(stringBuilder);
         return null;

@@ -18,14 +18,10 @@ public class VerticalCollage {
      * into the collage. The collage is returned
      */
     public NetpbmFiles verticalCollage(NetpbmFiles firstFile, NetpbmFiles secondFile, NetpbmFiles newFile)throws PixelException {
-        if (firstFile.getFileName().contains(".pbm")){
-            newFile=new PBMFile();
-        } else if (firstFile.getFileName().contains(".pgm")) {
-            newFile=new PGMFile();
-        } else if (firstFile.getFileName().contains(".ppm")) {
-            newFile=new PPMFile();
-        }
-        newFile.setMagicNumber(firstFile.getMagicNumber().charAt(1));
+        newFile=new PPMFile();
+        newFile=newFile.createNewFile(firstFile.getFileName());
+
+        newFile.setMagicNumber(firstFile.getMagicNumber().charAt(1)-'0');
         newFile.setWidth(firstFile.getWidth());
         newFile.setHeight(firstFile.getHeight()+secondFile.getHeight());
         if (!firstFile.showRows().isEmpty()){

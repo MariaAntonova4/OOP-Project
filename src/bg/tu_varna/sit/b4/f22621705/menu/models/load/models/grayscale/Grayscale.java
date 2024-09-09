@@ -1,6 +1,7 @@
 package bg.tu_varna.sit.b4.f22621705.menu.models.load.models.grayscale;
 
 import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles.NetpbmFiles;
+import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles.PPMFile;
 import bg.tu_varna.sit.b4.f22621705.files.row.Pixel;
 import bg.tu_varna.sit.b4.f22621705.files.row.Row;
 import bg.tu_varna.sit.b4.f22621705.files.row.colorRows.BlueRow;
@@ -26,14 +27,11 @@ public class Grayscale implements LoadMenu {
     @Override
     public LoadMenu executeLoad(Session session, int sessionNumber) throws IOException {
 
-        Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = session.getSession().entrySet();
 
-        for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
-            if (entry.getKey()==sessionNumber){
-            Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
+            Iterator<NetpbmFiles> iterator=session.currentSession(session, sessionNumber).iterator();
             while (iterator.hasNext()){
                 NetpbmFiles netpbmFiles=iterator.next();
-            if (netpbmFiles.getFileName().contains(".ppm")){
+            if (netpbmFiles instanceof PPMFile){
             if (!netpbmFiles.showRows().isEmpty()){
                 Iterator<Row> rowIterator=netpbmFiles.showRows().iterator();
                 while (rowIterator.hasNext()){
@@ -54,7 +52,7 @@ public class Grayscale implements LoadMenu {
                         }}
                 }}
             }}
-        }
-            System.out.println("The command grayscale is executed");
-    }session.addInHistory(sessionNumber,"grayscale");
+
+    System.out.println("The command grayscale is executed");
+        session.addInHistory(sessionNumber,"grayscale");
         return null;}}

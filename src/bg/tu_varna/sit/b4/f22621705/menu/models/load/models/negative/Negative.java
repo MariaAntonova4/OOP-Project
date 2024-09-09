@@ -22,11 +22,8 @@ public class Negative implements LoadMenu {
      */
     @Override
     public LoadMenu executeLoad(Session session, int sessionNumber) throws IOException {
-       Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = session.getSession().entrySet();
 
-        for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
-            if (entry.getKey()==sessionNumber){
-            Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
+            Iterator<NetpbmFiles> iterator=session.currentSession(session, sessionNumber).iterator();
             while (iterator.hasNext()){
             NetpbmFiles netpbmFiles=iterator.next();
 
@@ -48,6 +45,6 @@ public class Negative implements LoadMenu {
                 }
             }}
                 System.out.println("The files are negative");
-        }}session.addInHistory(sessionNumber,"negative");
+        session.addInHistory(sessionNumber,"negative");
         return null;
         }}

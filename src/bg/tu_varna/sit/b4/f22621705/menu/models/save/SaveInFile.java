@@ -3,9 +3,7 @@ package bg.tu_varna.sit.b4.f22621705.menu.models.save;
 import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles.NetpbmFiles;
 import bg.tu_varna.sit.b4.f22621705.files.row.Pixel;
 import bg.tu_varna.sit.b4.f22621705.files.row.Row;
-import bg.tu_varna.sit.b4.f22621705.menu.models.Menu;
-import bg.tu_varna.sit.b4.f22621705.menu.models.load.models.LoadMenu;
-import bg.tu_varna.sit.b4.f22621705.menu.models.load.factories.LoadMenuLauncher;
+import bg.tu_varna.sit.b4.f22621705.menu.models.MainCommandExecute;
 import bg.tu_varna.sit.b4.f22621705.files.Session;
 
 import java.io.File;
@@ -28,7 +26,7 @@ public class SaveInFile{
      * the original file. The numbers have to be converted in string format so that it
      * can be written in the file
      */
-    public Menu saveFile(Session session) throws IOException {
+    public MainCommandExecute saveFile(Session session) throws IOException {
         Set<Map.Entry<Integer, Set<NetpbmFiles>>>entries=session.getSession().entrySet();
             for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
                     Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
@@ -40,7 +38,7 @@ public class SaveInFile{
                 fileWriter.write('\n');
                 fileWriter.write(String.valueOf(netpbmFiles.getWidth()).getBytes());
                 fileWriter.write(' ');
-                fileWriter.write(netpbmFiles.getHeight()+'0');
+                fileWriter.write(String.valueOf(netpbmFiles.getHeight()).getBytes());
                 fileWriter.write('\n');
                 if (!netpbmFiles.getFileName().contains(".pbm")){
                     fileWriter.write(netpbmFiles.getMaximumValue()+'0');

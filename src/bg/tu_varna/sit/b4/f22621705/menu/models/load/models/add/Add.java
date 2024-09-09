@@ -2,8 +2,6 @@ package bg.tu_varna.sit.b4.f22621705.menu.models.load.models.add;
 
 import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles.NetpbmFiles;
 import bg.tu_varna.sit.b4.f22621705.menu.models.load.models.LoadMenu;
-import bg.tu_varna.sit.b4.f22621705.menu.factories.CloseLauncher;
-import bg.tu_varna.sit.b4.f22621705.menu.models.load.Load;
 import bg.tu_varna.sit.b4.f22621705.files.Session;
 import bg.tu_varna.sit.b4.f22621705.files.OpenedFiles;
 
@@ -58,18 +56,13 @@ public class Add implements LoadMenu {
     @Override
     public LoadMenu executeLoad(Session session, int sessionNumber) throws IOException {
 
-        Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = session.getSession().entrySet();
 
-        for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
-            if (entry.getKey()==sessionNumber){
                 if (openedFiles.CheckNamesOfOpenedFiles(fileName(fileName))){
-                    entry.getValue().add(openedFiles.NamesOfOpenedFiles(fileName(fileName)));
-                }
-            }
+                    session.currentSession(session,sessionNumber).add(openedFiles.NamesOfOpenedFiles(fileName(fileName)));
+
 
         }session.addInHistory(sessionNumber,"add "+fileName(fileName));
         System.out.println("Image "+fileName(fileName)+" added");
         fileName=null;
         return null;}
-
 }

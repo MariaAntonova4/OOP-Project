@@ -32,18 +32,14 @@ public class SessionInfo implements LoadMenu {
                 }
             }
         }
-        Set<Map.Entry<Integer, Set<NetpbmFiles>>> entries = session.getSession().entrySet();
-        System.out.println("Session Number:"+sessionNumber);
-        for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
 
-            if (entry.getKey()==sessionNumber){
-                Iterator<NetpbmFiles> iterator=entry.getValue().iterator();
+        System.out.println("Session Number:"+sessionNumber);
+
+                Iterator<NetpbmFiles> iterator=session.currentSession(session, sessionNumber).iterator();
                 System.out.println("Name of images in the session:");
                 while (iterator.hasNext()){
                 NetpbmFiles netpbmFiles=iterator.next();
                 System.out.println(netpbmFiles.getFileName());}
-            }
-        }
 
         return null;
     }

@@ -3,8 +3,8 @@ package bg.tu_varna.sit.b4.f22621705.menu.factories;
 import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles.PixelException;
 import bg.tu_varna.sit.b4.f22621705.files.Session;
 import bg.tu_varna.sit.b4.f22621705.menu.CommandException;
-import bg.tu_varna.sit.b4.f22621705.menu.CreateFiles;
-import bg.tu_varna.sit.b4.f22621705.menu.models.Menu;
+import bg.tu_varna.sit.b4.f22621705.menu.CreateMap;
+import bg.tu_varna.sit.b4.f22621705.menu.models.MainCommandExecute;
 import bg.tu_varna.sit.b4.f22621705.files.OpenedFiles;
 import bg.tu_varna.sit.b4.f22621705.menu.models.load.models.DirectionException;
 import bg.tu_varna.sit.b4.f22621705.menu.models.load.models.switchh.SwitchException;
@@ -15,12 +15,12 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Scanner;
 
-public abstract class MenuLauncher {
+public class MenuLauncher {
     private StringBuilder stringBuilder;
     private OpenedFiles openedFiles;
     private Session session;
-    private CreateFiles createFiles=new CreateFiles();
-    private Map<String, Menu> menuMap=new HashMap<>();
+    private CreateMap createMap=new CreateMap();
+    private Map<String, MainCommandExecute> menuMap=new HashMap<>();
 
     public MenuLauncher() throws CommandException {
     }
@@ -28,11 +28,11 @@ public abstract class MenuLauncher {
         this.session=session;
     }
 
-    public Map<String, Menu> getMenuMap() {
+    public Map<String, MainCommandExecute> getMenuMap() {
         return menuMap;
     }
 
-    public void puttingInMap(String commandName, Menu menu){
+    public void puttingInMap(String commandName, MainCommandExecute menu){
         menuMap.put(commandName,menu);
     }
 
@@ -66,8 +66,8 @@ public abstract class MenuLauncher {
      * @throws CommandException catches if the command is not written correctly
      *checks if the command exists
      */
-    public Menu goToCommand(String string) throws CommandException {
-        for (Map.Entry<String, Menu> element : menuMap.entrySet()) {
+    public MainCommandExecute goToCommand(String string) throws CommandException {
+        for (Map.Entry<String, MainCommandExecute> element : menuMap.entrySet()) {
             if (getMenuMap().containsKey(string)) {
                 if (Objects.equals(element.getKey(), string)) {
                     return element.getValue();
@@ -79,8 +79,8 @@ public abstract class MenuLauncher {
      * updates the map with new data
      * @throws CommandException catches if the command is not written correctly
      */
-    public void updateMenu() throws CommandException {
-        createFiles.putInMap(getOpenedFiles(),getSession(),getStringBuilder());
+    public void updateMenu() throws CommandException, PixelException, SwitchException, IOException, DirectionException {
+        createMap.putInMap(getOpenedFiles(),getSession(),getStringBuilder());
     }
 
     /**
@@ -110,8 +110,8 @@ public abstract class MenuLauncher {
      * the function ends the string builder is cleaned and a new command from the console
      * is written
      */
-    public Menu commands() throws IOException, CommandException, PixelException, SwitchException, DirectionException {
-        createFiles.setMenuLauncher(this);
+    public MainCommandExecute commands() throws IOException, CommandException, PixelException, SwitchException, DirectionException {
+        createMap.setMenuLauncher(this);
         updateMenu();
         Scanner scanner=new Scanner(System.in);
         scanner.useDelimiter("\n");
@@ -125,9 +125,4 @@ public abstract class MenuLauncher {
             }
         return null;
     }
-    public void launchMenu() throws IOException, CommandException, PixelException, SwitchException, DirectionException {
-        Menu menu=executeCommand();
-        menu.execute();
-    }
-    public abstract Menu executeCommand ();
 }

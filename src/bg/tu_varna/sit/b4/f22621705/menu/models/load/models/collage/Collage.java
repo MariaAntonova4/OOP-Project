@@ -99,9 +99,8 @@ public class Collage implements LoadMenu {
         NetpbmFiles secondFile=null;
         setData();
                     if (firstFileName.substring(firstFileName.indexOf("."),firstFileName.length()).equals(secondFileName.substring(secondFileName.indexOf("."),secondFileName.length()))){
-                        for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
-                            if (entry.getKey()==sessionNumber) {
-                                Iterator<NetpbmFiles> iterator = entry.getValue().iterator();
+
+                                Iterator<NetpbmFiles> iterator = session.currentSession(session,sessionNumber).iterator();
                                 while (iterator.hasNext()){
                                     NetpbmFiles netpbmFiles = iterator.next();
                                     if (netpbmFiles.getFileName().equals(firstFileName)){
@@ -111,28 +110,25 @@ public class Collage implements LoadMenu {
                                         secondFile=netpbmFiles;
                                     }
                                 }
-                            }}
 
                         if (firstFile.getWidth()==secondFile.getWidth()&&firstFile.getHeight()==secondFile.getHeight()){
                             if (stringDirection.equals(CollageDirection.HORIZONTAL.getCollageDirection())){
                                 session.addInHistory(sessionNumber,"collage horizontal "+firstFileName+" "+secondFileName+" "+newFileName);
                             newFile=new HorizontalCollage().horizontalCollage(firstFile,secondFile,newFile);
                             newFile.setFileName(newFileName);
-                            for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
-                                    if (entry.getKey()==sessionNumber) {
-                                        entry.getValue().add(newFile);
+
+                                        session.currentSession(session,sessionNumber).add(newFile);
                                         System.out.println("The horizontal collage is added");
-                                    }}
+
                         }
                             else if(stringDirection.equals(CollageDirection.VERTICAL.getCollageDirection())){
                                 session.addInHistory(sessionNumber,"collage vertical "+firstFileName+" "+secondFileName+" "+newFileName);
                                 newFile=new VerticalCollage().verticalCollage(firstFile,secondFile,newFile);
                                 newFile.setFileName(newFileName);
-                                for(Map.Entry<Integer, Set<NetpbmFiles>>entry:entries){
-                                    if (entry.getKey()==sessionNumber) {
-                                        entry.getValue().add(newFile);
+
+                                        session.currentSession(session, sessionNumber).add(newFile);
                                         System.out.println("The vertical collage is added");
-                                    }}
+
                             }else{
                                 throw new DirectionException("This is Not a Direction");
                             }

@@ -2,7 +2,6 @@ package bg.tu_varna.sit.b4.f22621705;
 
 
 import bg.tu_varna.sit.b4.f22621705.files.NetpbmFiles.PixelException;
-import bg.tu_varna.sit.b4.f22621705.menu.factories.HelpLauncher;
 import bg.tu_varna.sit.b4.f22621705.files.Session;
 import bg.tu_varna.sit.b4.f22621705.menu.*;
 import bg.tu_varna.sit.b4.f22621705.menu.factories.MenuLauncher;
@@ -15,12 +14,12 @@ import java.io.*;
 
 public class Application {
     public static void main(String[] args) throws IOException, CommandException, PixelException, SwitchException, DirectionException {
-        MenuLauncher mapClass= new HelpLauncher();
-        mapClass.setOpenedFiles(new OpenedFiles());
-        mapClass.setSession(new Session());
-        mapClass.setStringBuilder(mapClass.getStringBuilder());
+        MenuLauncher menuLauncher= new MenuLauncher();
+        menuLauncher.setOpenedFiles(new OpenedFiles());
+        menuLauncher.setSession(new Session());
+        menuLauncher.setStringBuilder(menuLauncher.getStringBuilder());
             try{
-                mapClass.commands();
+                menuLauncher.commands();
 
         }catch (CommandException | PixelException |SwitchException |DirectionException e)
         {
